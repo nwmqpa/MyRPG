@@ -1,0 +1,21 @@
+.vscode/
+.idea/
+
+# Objects
+*.o
+my_rpg
+
+# Linux
+*.a
+*.so
+
+# Windows
+*.dll
+*.lib
+
+# Miscalneous
+vgcore*
+*.gcda
+*.gcno
+*.out
+*.gcov
