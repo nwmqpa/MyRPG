@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+xdg-open https://trello.com/b/tPxXhj1O/myrpg 
