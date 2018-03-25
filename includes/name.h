@@ -5,8 +5,12 @@
 ** Name
 */
 
-#ifndef NAME
-#define NAME
+#ifndef NAME_H_
+#define NAME_H_
+
+#ifndef GAME_NAME
+#	define NAME "Unammed"
+#endif /* GAME_NAME */
 
 /*
 ** Game: 
@@ -17,4 +21,4 @@ typedef struct game_s {
 	int gamemode;
 } game_t;
 
-#endif /* NAME */
+#endif /* NAME_H_ */
