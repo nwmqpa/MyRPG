@@ -9,7 +9,7 @@
 #define NAME_H_
 
 #ifndef GAME_NAME
-#	define NAME "Unammed"
+#define NAME "Unammed"
 #endif /* GAME_NAME */
 
 /*
