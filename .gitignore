@@ -19,3 +19,6 @@ vgcore*
 *.gcno
 *.out
 *.gcov
+*~
+#*#
+*.swp
