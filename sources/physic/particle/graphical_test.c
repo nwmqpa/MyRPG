@@ -17,14 +17,21 @@ int main(int argc, char *argv[])
 	particle_system_t *particles;
 	sfTexture *texture;
 	sfRenderWindow_setFramerateLimit(win, 30);
+	sfEvent event;
+	bool active = true;
 
 	srandom((long) texture);
 	texture = sfTexture_createFromFile("../../../ressources/test.png", NULL);
-	particles = particle_system_create(texture, 1000, true, 5);
+	particles = particle_system_create(texture, 1000, true, 10);
 	set_particle_infinite(particles, true);
 	while (sfRenderWindow_isOpen(win)) {
+		while (sfRenderWindow_pollEvent(win, &event)) {
+			if (event.type == sfEvtMouseMoved) {
+				particle_system_set_point();
+			}
+		}
 		sfRenderWindow_clear(win, sfBlack);
-		particle_system_draw(particles, win);
+		(active) ? particle_system_draw(particles, win) : 1;
 		sfRenderWindow_display(win);
 	}
 	return (0);

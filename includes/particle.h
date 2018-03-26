@@ -11,10 +11,15 @@
 #include <SFML/Graphics.h>
 #include <stdbool.h>
 
-#define GRAVITY 0.98
+#define GRAVITY 9.8
 
 /* typedef particle */
-typedef sfSprite particle_t;
+typedef struct particle_s {
+	sfVector2f velocity;
+	sfVector2f position;
+	sfSprite   *sprite;
+	float	   life_time;
+} particle_t;
 
 /*
 ** Particle system:
@@ -22,15 +27,15 @@ typedef sfSprite particle_t;
 */ 
 typedef struct particle_system_s {
 	sfTexture    *texture;
-	sfVector2f   *vectors;
-	particle_t   **particles;
+	particle_t   *particles;
 	unsigned int nb_elem;
-	unsigned int life_time;
+	sfVector2f   point;
+	float	     global_life_time;
 	float	     dispersion;
 	float	     speed;
 	bool	     is_light;
 	bool	     is_infinite;
-	bool	     is_gravity;a
+	bool	     is_gravity;
 } particle_system_t;
 
 sfVector2f random_vector2f(void);

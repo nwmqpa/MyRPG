@@ -11,9 +11,9 @@
 
 sfVector2f random_vector2f()
 {
-	sfVector2f vec = {0, 0};
+	sfVector2f vec = {.x = 0, .y = 0};
 
-	while (!vec.y || !vec.x) {
+	while (vec.y == 0 || vec.x == 0) {
 		vec.y = (random() % 100 + 1) - 50;
 		vec.x = (random() % 100 + 1) - 50;
 	}
