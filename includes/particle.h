@@ -17,7 +17,6 @@
 typedef struct particle_s {
 	sfVector2f velocity;
 	sfVector2f position;
-	sfSprite   *sprite;
 	float	   life_time;
 } particle_t;
 
@@ -31,30 +30,22 @@ typedef struct particle_system_s {
 	unsigned int nb_elem;
 	sfVector2f   point;
 	float	     global_life_time;
-	float	     dispersion;
+	int	     dispersion;
 	float	     speed;
+	sfSprite     *sprite;
 	bool	     is_light;
 	bool	     is_infinite;
 	bool	     is_gravity;
 } particle_system_t;
 
-sfVector2f random_vector2f(void);
+sfVector2f random_vector2f(float speed, int dispertion);
 void particle_system_draw(particle_system_t *particle_sys, sfRenderWindow *win);
 particle_system_t *particle_system_create(
         sfTexture *texture, int nb_elem, int is_gravity, float speed);
+void particle_system_set_point(particle_system_t *particle, sfVector2f pos);
 void set_particle_dispertion(particle_system_t *particle, float dispertion);
 void set_particle_light(particle_system_t *particle, _Bool is_light);
 void set_particle_infinite(particle_system_t *particle, int is_infinite);
-
-//TODO: Make this shit
-//typedef struct animated_particle_system_s {
-//	animation_t  animation;
-//	unsigned int dispersion;
-//	unsigned int speed;
-//	unsigned int nb_elem;
-//	_Bool	     is_light;
-//	_Bool	     is_gravity;
-//} animated_particle_system_t;
 
 
 #endif /* PARTICLE_H_ */

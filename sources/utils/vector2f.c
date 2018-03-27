@@ -9,13 +9,13 @@
 #include <SFML/Graphics.h>
 #include <stdio.h>
 
-sfVector2f random_vector2f()
+sfVector2f random_vector2f(float speed, int disp)
 {
 	sfVector2f vec = {.x = 0, .y = 0};
 
 	while (vec.y == 0 || vec.x == 0) {
-		vec.y = (random() % 100 + 1) - 50;
-		vec.x = (random() % 100 + 1) - 50;
+		vec.y = ((rand() % disp + 1) - (disp / 2));
+		vec.x = ((rand() % disp + 1) - (disp / 2));
 	}
 	return (vec);
 }

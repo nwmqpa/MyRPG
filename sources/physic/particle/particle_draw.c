@@ -5,8 +5,29 @@
 ** particle system drawer
 */
 
+#include <stdlib.h>
 #include <SFML/Graphics.h>
 #include "particle.h"
+
+static void set_new_position(particle_system_t *particle_sys, particle_t *particle)
+{
+	int x = 0;
+	int y = 0;
+
+	x = particle->position.x += particle->velocity.x * 
+		particle_sys->speed * 0.3;
+	y = particle->position.y += particle->velocity.y * 
+		particle_sys->speed * 0.3;
+	switch (particle_sys->is_gravity) {
+	case true:
+		particle->velocity.y += GRAVITY * 0.3;
+		break;
+	case false:
+		particle->velocity.y -= GRAVITY * 0.3;
+		break;
+	}
+	(particle->life_time) += 0.03;
+}
 
 /*
 ** Particle system drawer:
@@ -15,23 +36,28 @@
 */
 void particle_system_draw(particle_system_t *particle_sys, sfRenderWindow *win)
 {
-	int x = 0;
-	int y = 0;
 	particle_t *particle;
 
 	for (int i = 0; i < particle_sys->nb_elem; ++i) {
 		particle = &particle_sys->particles[i];
-		if (particle->life_time >= particle_sys->global_life_time) {
+		if (particle->life_time >= particle_sys->global_life_time &&
+		particle_sys->is_infinite) {
 			particle->life_time = 0;
 			particle->position  = particle_sys->point;
-			particle->velocity  = random_vector2f();
+			particle->velocity  = 
+				random_vector2f(particle_sys->speed, particle_sys->dispersion);
 			continue;
 		}
-		sfRenderWindow_drawSprite(win, particle->sprite, NULL);
-		x = particle->position.x += particle->velocity.x;
-		y = particle->position.y += particle->velocity.y;
-		particle->velocity.y	 += (particle_sys->is_gravity) ? GRAVITY * 0.06 : 0;
-		sfSprite_setPosition(particle_sys->particles[i].sprite, (sfVector2f){x, y});
-		(particle->life_time) += 0.03;
+	sfSprite_setPosition(particle_sys->sprite, particle->position);
+	sfRenderWindow_drawSprite(win, particle_sys->sprite, NULL);
+	set_new_position(particle_sys, particle);
 	}
+}
+
+void destroy_particle_sys(particle_system_t *particle)
+{
+	for (int i = 0; i < particle->nb_elem; ++i) {
+		//free(particle->particles[i].sprite);
+	}
+	free(particle->particles);
 }

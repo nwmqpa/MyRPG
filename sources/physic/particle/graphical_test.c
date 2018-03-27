@@ -10,10 +10,11 @@
 #include <stdlib.h>
 #include "particle.h"
 
+#ifndef DEBUG_MODE
 int main(int argc, char *argv[])
 {
 	sfVideoMode mode = {1600, 900, 32};
-	sfRenderWindow *win = sfRenderWindow_create(mode, "Test", sfResize, NULL);
+	sfRenderWindow *win = sfRenderWindow_create(mode, "Test", sfResize | sfFullscreen, NULL);
 	particle_system_t *particles;
 	sfTexture *texture;
 	sfRenderWindow_setFramerateLimit(win, 30);
@@ -22,17 +23,20 @@ int main(int argc, char *argv[])
 
 	srandom((long) texture);
 	texture = sfTexture_createFromFile("../../../ressources/test.png", NULL);
-	particles = particle_system_create(texture, 1000, true, 10);
+	particles = particle_system_create(texture, 20000, false, 3);
+	particles->dispersion = 25;
 	set_particle_infinite(particles, true);
 	while (sfRenderWindow_isOpen(win)) {
 		while (sfRenderWindow_pollEvent(win, &event)) {
 			if (event.type == sfEvtMouseMoved) {
-				particle_system_set_point();
+				particle_system_set_point(particles, \
+				(sfVector2f){event.mouseMove.x, event.mouseMove.y});
 			}
 		}
 		sfRenderWindow_clear(win, sfBlack);
-		(active) ? particle_system_draw(particles, win) : 1;
+		particle_system_draw(particles, win);
 		sfRenderWindow_display(win);
 	}
 	return (0);
 }
+#endif /* DEBUG_MODE */
