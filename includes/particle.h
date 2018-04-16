@@ -13,7 +13,7 @@
 
 #define GRAVITY 9.8
 
-/* typedef particle */
+/* typedef particle velocity => direction | position => pos in 2D*/
 typedef struct particle_s {
 	sfVector2f velocity;
 	sfVector2f position;
@@ -23,6 +23,16 @@ typedef struct particle_s {
 /*
 ** Particle system:
 **	Particle drawer system
+**	texture => texture use for all particle
+**	point   => space position in 2 dimension of the source
+**	is_light => //TODO
+**	dispertion => the way particle are expanding 
+**	is_infinite => if the particle when they are dead repop
+**	global_life_time => life time of all particle
+**	is_gravity => are they sensible to gravity or are they volatile
+**	nb_elem => nomber of particles
+**	speed => speed of the particle
+**	sprite => the sprite use for the particle
 */ 
 typedef struct particle_system_s {
 	sfTexture    *texture;
@@ -36,16 +46,18 @@ typedef struct particle_system_s {
 	bool	     is_light;
 	bool	     is_infinite;
 	bool	     is_gravity;
-} particle_system_t;
+} part_sys_t;
 
+//------------------NaN
 sfVector2f random_vector2f(float speed, int dispertion);
-void particle_system_draw(particle_system_t *particle_sys, sfRenderWindow *win);
-particle_system_t *particle_system_create(
-        sfTexture *texture, int nb_elem, int is_gravity, float speed);
-void particle_system_set_point(particle_system_t *particle, sfVector2f pos);
-void set_particle_dispertion(particle_system_t *particle, float dispertion);
-void set_particle_light(particle_system_t *particle, _Bool is_light);
-void set_particle_infinite(particle_system_t *particle, int is_infinite);
-
-
+//------------------Setter
+void particle_system_set_point(part_sys_t *particle, sfVector2f pos);
+void set_particle_dispertion(part_sys_t *particle, float dispertion);
+void set_particle_light(part_sys_t *particle, _Bool is_light);
+void set_particle_infinite(part_sys_t *particle, int is_infinite);
+//------------------Constuctor
+part_sys_t 
+*part_sys_create(sfTexture *texture, int nb_elem, int is_gravity, float speed);
+//------------------Use this to draw the particle sys as sfSprite_draw();
+void particle_system_draw(part_sys_t *particle_sys, sfRenderWindow *win);
 #endif /* PARTICLE_H_ */
