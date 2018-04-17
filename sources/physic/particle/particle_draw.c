@@ -11,12 +11,9 @@
 
 static void set_new_position(part_sys_t *particle_sys, particle_t *particle)
 {
-	int x = 0;
-	int y = 0;
-
-	x = particle->position.x += particle->velocity.x * 
+	particle->position.x += particle->velocity.x * 
 		particle_sys->speed * 0.3;
-	y = particle->position.y += particle->velocity.y * 
+	particle->position.y += particle->velocity.y * 
 		particle_sys->speed * 0.3;
 	switch (particle_sys->is_gravity) {
 	case true:
@@ -38,7 +35,7 @@ void part_sys_draw(part_sys_t *particle_sys, sfRenderWindow *win)
 {
 	particle_t *particle;
 
-	for (int i = 0; i < particle_sys->nb_elem; ++i) {
+	for (unsigned int i = 0; i < particle_sys->nb_elem; ++i) {
 		particle = &particle_sys->particles[i];
 		if (particle->life_time >= particle_sys->global_life_time &&
 		particle_sys->is_infinite) {
@@ -56,7 +53,7 @@ void part_sys_draw(part_sys_t *particle_sys, sfRenderWindow *win)
 
 void destroy_particle_sys(part_sys_t *particle)
 {
-	for (int i = 0; i < particle->nb_elem; ++i) {
+	for (unsigned int i = 0; i < particle->nb_elem; ++i) {
 		//free(particle->particles[i].sprite);
 	}
 	free(particle->particles);

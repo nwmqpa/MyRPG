@@ -5,7 +5,8 @@
 ** assets functions
 */
 
-#include "assets_mng.h"
+#include "assets_manager.h"
+#include "utils.h"
 
 assets_mng_t *create_assets_mng(char *path)
 {

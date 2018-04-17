@@ -11,27 +11,27 @@ SRC_DIR	=	.
 
 CC	=	gcc
 
-NAME	=	mysh
+NAME	=	my_rpg
 
 REAL	=	$(ROOT)/release
 
-SRC	=	main.c					\
-		my_rpg.c				\
-		game_logic/ressources_manager		\
-		graphic/animation/animation.c		\
-		graphic/animation/animation_extern.c	\
-		graphic/assets_manager/assets_mng.c	\
-		physic/particle/graphical_test.c	\
-		physic/particle/particle_create.c	\
-		physic/particle/particle_draw.c		\
-		utils/get_struct.c			\
-		utils/vector2f.c
+SRC	=	$(SRC_DIR)/main.c					\
+		$(SRC_DIR)/my_rpg.c				\
+		$(SRC_DIR)/graphic/animation/animation.c		\
+		$(SRC_DIR)/graphic/animation/animation_extern.c	\
+		$(SRC_DIR)/managers/assets_mng.c			\
+		$(SRC_DIR)/managers/ress_mng.c			\
+		$(SRC_DIR)/physic/particle/particle_create.c	\
+		$(SRC_DIR)/physic/particle/particle_draw.c	\
+		$(SRC_DIR)/utils/get_struct.c			\
+		$(SRC_DIR)/utils/vector2f.c			\
+		$(SRC_DIR)/utils/utils.c
 
 WARN	=	-W -Wall -Wextra
 
 CFLAGS	=	-I $(ROOT)/include $(WARN)
 
-LDFLAGS	=	-L $(ROOT)/library -l myprintf
+LDFLAGS	=	-L $(ROOT)/library -l c_graph_prog
 
 LIB	?=	1
 

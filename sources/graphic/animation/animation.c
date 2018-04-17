@@ -9,17 +9,17 @@
 #include <SFML/Graphics.h>
 #include "anim.h"
 
-Animation_t *create_anim_path(const char *path, int cnt, float speed, int size)
+anim_t *create_anim_path(const char *path, int cnt, float speed, int size)
 {
 	sfTexture *tex = sfTexture_createFromFile(path, NULL);
-	Animation_t *anim = create_anim(tex, cnt, speed, size);
+	anim_t *anim = create_anim(tex, cnt, speed, size);
 
 	return (anim);
 }
 
-Animation_t *create_anim(sfTexture *tex, int count , float speed, int size)
+anim_t *create_anim(sfTexture *tex, int count , float speed, int size)
 {
-	Animation_t *anim = malloc(sizeof(Animation_t));
+	anim_t *anim = malloc(sizeof(anim_t));
 	sfIntRect rect = {.top = 0};
 
 	anim->tex = tex;
