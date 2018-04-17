@@ -7,7 +7,7 @@
 
 DEB 	?=	0
 
-NAME	=	mysh
+NAME	=	my_rpg
 
 all:	$(NAME)
 
