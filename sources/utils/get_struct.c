@@ -16,7 +16,17 @@ assets_mng_t *get_assets_manager(assets_mng_t *assets)
 		assets_manager = assets;
 	}
 	return (assets_manager);
+}
 
+ress_mng_t *get_ressources_manager(ress_mng_t *ress)
+{
+	static ress_mng_t *ress_manager = NULL;
+
+	if (!ress_mng_t) {
+		ress_manager = ress;
+	}
+	return (ress_manager);
+}
 
 game_t *get_game(game_t *game_given)
 {

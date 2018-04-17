@@ -15,8 +15,17 @@ NAME	=	mysh
 
 REAL	=	$(ROOT)/release
 
-SRC	=	main.c		\
-		my_rpg.c
+SRC	=	main.c					\
+		my_rpg.c				\
+		game_logic/ressources_manager		\
+		graphic/animation/animation.c		\
+		graphic/animation/animation_extern.c	\
+		graphic/assets_manager/assets_mng.c	\
+		physic/particle/graphical_test.c	\
+		physic/particle/particle_create.c	\
+		physic/particle/particle_draw.c		\
+		utils/get_struct.c			\
+		utils/vector2f.c
 
 WARN	=	-W -Wall -Wextra
 
