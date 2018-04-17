@@ -13,9 +13,9 @@
 #ifndef DEBUG_MODE
 int main(int argc, char *argv[])
 {
-	sfVideoMode mode = {1600, 900, 32};
+	sfVideoMode mode = {1920, 1080, 32};
 	sfRenderWindow *win = sfRenderWindow_create(mode, "Test", sfResize | sfFullscreen, NULL);
-	particle_system_t *particles;
+	part_sys_t *particles;
 	sfTexture *texture;
 	sfRenderWindow_setFramerateLimit(win, 30);
 	sfEvent event;

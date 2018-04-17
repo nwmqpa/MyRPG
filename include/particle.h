@@ -50,11 +50,6 @@ typedef struct particle_system_s {
 
 //------------------NaN
 sfVector2f random_vector2f(float speed, int dispertion);
-//------------------Setter
-void particle_system_set_point(part_sys_t *particle, sfVector2f pos);
-void set_particle_dispertion(part_sys_t *particle, float dispertion);
-void set_particle_light(part_sys_t *particle, _Bool is_light);
-void set_particle_infinite(part_sys_t *particle, int is_infinite);
 //------------------Constuctor
 part_sys_t 
 *part_sys_create(sfTexture *texture, int nb_elem, int is_gravity, float speed);

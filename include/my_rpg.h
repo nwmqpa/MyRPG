@@ -1,19 +1,26 @@
 /*
 ** EPITECH PROJECT, 2017
-** name.c
+** my_rpg.h
 ** File description:
-** Name
+** my_rpg.h
 */
 
-#ifndef NAME_H_
-#define NAME_H_
+#ifndef MY_RPG_H_
+#define MY_RPG_H_
 
-#ifndef GAME_NAME
 #define NAME "Unammed"
-#endif /* GAME_NAME */
 
 #define Y 1
 #define X 0
+#define WIDTH   1920
+#define HEIGHT  1080
+#define MAX_FPS 30
+
+enum gamemode {
+	OVERWORLD,
+	INSTANCE,
+	DONJON
+};
 
 /*
 ** Game: 
@@ -21,9 +28,12 @@
 ** 	game datas inside all the game.
 */
 typedef struct game_s {
+	sfRenderWindow *win;
 	int gamemode;
 	float delta_time;
 	int size[2];
 } game_t;
 
-#endif /* NAME_H_ */
+int my_rpg(game_t *game);
+
+#endif /* MY_RPG_H_ */
