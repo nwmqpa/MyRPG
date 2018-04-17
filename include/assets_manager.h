@@ -44,10 +44,16 @@ typedef struct {
 	animation_t **animations;
 } assets_mng_t;
 
-assets_mng_t 	*create_assets_mng(char *path_to_assets);
-assets_mng_t	*get_assets_mng(void);
-sfSprite 	**get_sprites(void);
-sfSound 	**get_sounds(void);
-sfMusic 	**get_music(void);
+//Getter of the struct
+assets_mng_t *get_assets_mng(assets_mng_t *assets);
+//Constructor
+assets_mng_t *create_assets_mng(char *path_to_assets);
+//Getter
+sfSprite     **get_sprites(void);
+sfsprite     *get_sprite(int which);
+sfSound      **get_sounds(void);
+sfSound      *get_sound(int which);
+sfMusic      **get_music(void);
+sfMusic      *get_music(int which);
 
 #endif /* RESSOURCES_MANAGER_H */

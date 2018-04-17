@@ -16,6 +16,8 @@
 #define HEIGHT  1080
 #define MAX_FPS 30
 
+#include <SFML/Graphics.h>
+
 enum gamemode {
 	OVERWORLD,
 	INSTANCE,
