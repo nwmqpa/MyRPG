@@ -5,26 +5,24 @@
 ## makefile of the source file
 ##
 
-
-#_-_-_-_-_-_-_-_-_-_-DEFINE_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-
 ROOT	=	..
 
 SRC_DIR	=	.
 
 CC	=	gcc
 
-NAME	?=	my_rpg
+NAME	=	mysh
 
 REAL	=	$(ROOT)/release
 
-SRC	=	main.c
+SRC	=	main.c		\
+		my_rpg.c
 
 WARN	=	-W -Wall -Wextra
 
-CFLAGS	=	-I $(ROOT)/includes $(WARN) -g
+CFLAGS	=	-I $(ROOT)/include $(WARN)
 
-LDFLAGS	=	-l c_graph_prog -g
+LDFLAGS	=	-L $(ROOT)/library -l myprintf
 
 LIB	?=	1
 
@@ -36,69 +34,52 @@ G	=	-g
 
 V	?=	@
 
-OBJS	=	$(patsubst $(SRC_DIR)/%.c, $(REAL)/%.o, $(SRC))
-
-
-
-
-#_-_-_-_-_-_-_-_-_-_-_-_CONDITIONS_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-
+OBJS	=	$(patsubst %.c, $(REAL)/%.o, $(SRC))
 
 ifeq ($(DEB), 1)
-		CFLAGS += $(G)
-		CFLAGS += -D DEBUG
+	CFLAGS += $(G)
 endif
 
 ifeq ($(TEST), 1)
-		CFLAGS	+= $(MACRO)
+	CFLAGS	+= $(MACRO)
 endif
 
+#COLOR
 
+GREEN	=	\e[1;32m
 
-#-_-_-_-_-_-_-_-_-_-_-_-_-_COLOR_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+WHITE	=	\e[0m
 
+ORANGE	=	\e[1;33m
 
+RED	=	\e[1;35m
 
-
-GREEN	=		\e[1;32m
-
-WHITE	=		\e[0m
-
-ORANGE	=		\e[1;33m
-
-RED	=		\e[1;35m
-
-BLUE	=		\e[1;34m
-
-
-#_-_-_-_-_-_-_-_-_-_-_-_-RULES_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+BLUE	=	\e[1;34m
 
 all:			$(NAME)
 
 $(NAME):		echo_build $(REAL)/$(NAME)
 			$(V)cp $(REAL)/$(NAME) $(ROOT)
 			$(V)printf "$(GREEN)Dup $(NAME) into root directory.$(WHITE)\n"
-			$(V)todo="$(shell grep -rni $(SRC_DIR)/*.c -e "//TODO" | tr -d '/')" && [ "$$todo" != "0" ] && printf "${RED}Don't forget !\n$$todo${WHITE}\n"
 
 
 $(REAL)/$(NAME):	buildrepo $(OBJS)
-			$(V)printf "$(GREEN)Compiling sources.$(WHITE)\n"
+			$(V)printf "$(GREEN)Compile sources.$(WHITE)\n"
 			$(V)$(CC) -o $(REAL)/$(NAME) $(OBJS) $(LDFLAGS)
 			$(V)printf "$(GREEN)Linking obj and Libraries.$(WHITE)\n"
 
 $(REAL)/%.o:		$(SRC_DIR)/%.c
-			$(V)printf "$(BLUE)Compiling [${ORANGE}$(notdir $<)$(BLUE) -> $(RED)$(notdir $@)$(BLUE)]$(WHITE)\n"
+			$(V)printf "$(BLUE)Compiling [$(GREEN)$(notdir $<)$(BLUE) -> $(RED)$(notdir $@)$(BLUE)]\n$(WHITE)"
 			$(V)$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
 
 clean:
 			$(V)rm -rf $(OBJS)
-			$(V)printf "$(ORANGE)removing object files.$(WHITE)\n"
+			$(V)printf "$(ORANGE)Removing object files.$(WHITE)\n"
 
-fclean:	clean
+fclean:			clean
 			$(V)rm -f $(REAL)/$(NAME)
 			$(V)rm -f $(ROOT)/$(NAME)
-			$(V)printf "$(ORANGE)removing binary file.$(WHITE)\n"
+			$(V)printf "$(ORANGE)Removing binary file.$(WHITE)\n"
 
 buildrepo:
 			$(call make-repo)
@@ -111,20 +92,14 @@ echo_build:		echo_debug
 
 echo_debug:
 			$(V)if [ $(DEB) == 1 ]; then\
-				printf "$(RED)debug mode initialized.$(WHITE)\n";\
+				printf "$(RED)Debug mode initialized.$(WHITE)\n";\
 			fi
 
-.PHONY: 		clean fclean debug all re echo_build echo_debug buildrepo
-
-
-
-#_-_-_-_-_-_-_-_-_-_-_-FUNCTIONS_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-
-
+.PHONY: clean fclean debug all re echo_build echo_debug buildrepo
 
 define make-repo
-			$(V)for dir in $(dir $(OBJS)); \
-			do 			  \
-				mkdir -p $$dir;	  \
-			done
+	$(V)for dir in $(dir $(OBJS)); \
+	do 			  \
+		mkdir -p $$dir;	  \
+	done
 endef

@@ -7,7 +7,7 @@
 
 DEB 	?=	0
 
-NAME	=	my_rpg
+NAME	=	mysh
 
 all:	$(NAME)
 
@@ -25,13 +25,11 @@ clean:
 
 fclean:
 	@make --no-print-directory -C sources/ fclean
-	@rm -rf vgcore*
-	@rm -rf release
 
 test_run:
-	@make --no-print-directory -C bonus/unitest re
+	@make --no-print-directory -C bonus/unittest re
 
 test_clear:
-	@make --no-print-directory -C bonus/unitest fclean
+	@make --no-print-directory -C bonus/unittest fclean
 
-.PHONY:	re	clean	fclean	test_run test_clear
+.PHONY:	re	clean	fclean	test_run test_clear all

@@ -1,36 +1,36 @@
 /*
 ** EPITECH PROJECT, 2017
-** animation_extern.c
+** anim_extern.c
 ** File description:
-** Extern function from animation feature.
+** Extern function from anim feature.
 */
 
 #include <stdlib.h> 
 #include <SFML/Graphics.h>
-#include "animation.h"
+#include "anim.h"
 
-void animation_set_position(animation_t *animation, sfVector2f offset)
+void anim_set_position(anim_t *anim, sfVector2f offset)
 {
          int i = 0;
  	
-	 while (i < animation->count)
-                 sfSprite_setPosition((animation->sprite)[i++], offset);
+	 while (i < anim->count)
+                 sfSprite_setPosition((anim->sprite)[i++], offset);
 }
 
-void animation_move(animation_t *animation, sfVector2f offset)
+void anim_move(anim_t *anim, sfVector2f offset)
 {
         int i = 0;
         
-	while (i < animation->count)
-                sfSprite_move((animation->sprite)[i++], offset);
+	while (i < anim->count)
+                sfSprite_move((anim->sprite)[i++], offset);
 }
 
-void animation_scale(animation_t *animation, sfVector2f factor)
+void anim_scale(anim_t *anim, sfVector2f factor)
 {
         int i = 0;
         
-	while (i < animation->count)
-                sfSprite_scale((animation->sprite)[i++], factor);
+	while (i < anim->count)
+                sfSprite_scale((anim->sprite)[i++], factor);
 }
 
 
