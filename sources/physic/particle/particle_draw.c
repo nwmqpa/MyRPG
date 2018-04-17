@@ -9,7 +9,7 @@
 #include <SFML/Graphics.h>
 #include "particle.h"
 
-static void set_new_position(particle_system_t *particle_sys, particle_t *particle)
+static void set_new_position(part_sys_t *particle_sys, particle_t *particle)
 {
 	int x = 0;
 	int y = 0;
@@ -34,7 +34,7 @@ static void set_new_position(particle_system_t *particle_sys, particle_t *partic
 **	Should draw each particle and update there position and
 **	velocity at each cycle in time.
 */
-void particle_system_draw(particle_system_t *particle_sys, sfRenderWindow *win)
+void part_sys_draw(part_sys_t *particle_sys, sfRenderWindow *win)
 {
 	particle_t *particle;
 
@@ -54,7 +54,7 @@ void particle_system_draw(particle_system_t *particle_sys, sfRenderWindow *win)
 	}
 }
 
-void destroy_particle_sys(particle_system_t *particle)
+void destroy_particle_sys(part_sys_t *particle)
 {
 	for (int i = 0; i < particle->nb_elem; ++i) {
 		//free(particle->particles[i].sprite);

@@ -22,19 +22,19 @@ int main(int argc, char *argv[])
 	bool active = true;
 
 	srandom((long) texture);
-	texture = sfTexture_createFromFile("../../../ressources/test.png", NULL);
-	particles = particle_system_create(texture, 20000, false, 3);
+	texture = sfTexture_createFromFile("../../../assets/test_2.png", NULL);
+	particles = part_sys_create(texture, 20000, false, 3);
 	particles->dispersion = 25;
-	set_particle_infinite(particles, true);
+	particles->is_infinite = true;
 	while (sfRenderWindow_isOpen(win)) {
 		while (sfRenderWindow_pollEvent(win, &event)) {
 			if (event.type == sfEvtMouseMoved) {
-				particle_system_set_point(particles, \
-				(sfVector2f){event.mouseMove.x, event.mouseMove.y});
+				particles->point = 
+				(sfVector2f){event.mouseMove.x, event.mouseMove.y};
 			}
 		}
 		sfRenderWindow_clear(win, sfBlack);
-		particle_system_draw(particles, win);
+		part_sys_draw(particles, win);
 		sfRenderWindow_display(win);
 	}
 	return (0);

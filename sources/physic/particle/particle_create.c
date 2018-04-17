@@ -13,10 +13,10 @@
 /*
 ** Create a basic particles set
 */
-particle_system_t *particle_system_create(
-	sfTexture *texture, int nb_elem, int is_gravity, float speed)
+part_sys_t 
+*part_sys_create(sfTexture *texture, int nb_elem, int is_gravity, float speed)
 {
-	particle_system_t *particle = malloc(sizeof(particle_system_t));
+	part_sys_t *particle = malloc(sizeof(part_sys_t));
 
 	particle->texture    = texture;
 	particle->speed      = speed;
@@ -34,24 +34,4 @@ particle_system_t *particle_system_create(
 		particle->particles[i].life_time = (float)rand()/(float)(RAND_MAX/4);
 	}
 	return (particle);
-}
-
-void particle_system_set_point(particle_system_t *particle, sfVector2f pos)
-{
-	particle->point = pos;
-}
-
-void set_particle_dispertion(particle_system_t *particle, float dispertion)
-{
-	particle->dispersion = dispertion;
-}
-
-void set_particle_infinite(particle_system_t *particle, int is_infinite)
-{
-	particle->is_infinite = (bool) is_infinite;
-}
-
-void set_particle_light(particle_system_t *particle, _Bool is_light)
-{
-	particle->is_light = is_light;
 }
