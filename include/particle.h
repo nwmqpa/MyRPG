@@ -54,5 +54,5 @@ sfVector2f random_vector2f(float speed, int dispertion);
 part_sys_t 
 *part_sys_create(sfTexture *texture, int nb_elem, int is_gravity, float speed);
 //------------------Use this to draw the particle sys as sfSprite_draw();
-void particle_system_draw(part_sys_t *particle_sys, sfRenderWindow *win);
+void part_sys_draw(part_sys_t *particle_sys, sfRenderWindow *win);
 #endif /* PARTICLE_H_ */
