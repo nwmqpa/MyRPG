@@ -8,7 +8,7 @@
 #include "structs.h"
 
 /*
-** djb2 by Dan Bernstein
+** djb2.
 */
 hash_t hash(const char *str)
 {
@@ -44,6 +44,7 @@ int pop_hash_elem(hashmap_t *hashmap, const char *key)
 
 void *get_hash_elem(hashmap_t *hashmap, const char *key)
 {
+	hash_t h = hash(key);
 }
 
 int has_hash_elem(hashmap_t *hashmap, const char *key)

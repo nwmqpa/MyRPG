@@ -12,7 +12,7 @@ typedef struct elem elem_t;
 typedef struct elem list_t;
 typedef struct hash_elem hash_elem_t;
 typedef struct hash_elem hashmap_t;
-typedef unsigned int hash_t;
+typedef unsigned long int hash_t;
 
 struct elem {
 	struct elem *next;
