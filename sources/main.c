@@ -23,7 +23,7 @@ static game_t *init_game(char *assets_path, char *ressources_path)
 	game->win = sfRenderWindow_create(mode, NAME, sfResize , NULL);
 	sfRenderWindow_setFramerateLimit(game->win, MAX_FPS);
 	game->delta_time = 1 / MAX_FPS;
-	return (0x0);
+	return (game);
 }
 
 int main(void)

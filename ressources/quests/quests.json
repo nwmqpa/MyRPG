@@ -1,0 +1,11 @@
+"quests" : {
+   123 : {
+      "id": 123,
+      "name": "The beginning",
+      "begin": "The tower",
+      "end": "The tower",
+      "description": "Talk to warry",
+      "xp": 100,
+      "win": NaN
+   }
+}
