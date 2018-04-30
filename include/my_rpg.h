@@ -23,7 +23,6 @@ enum gamemode {
 	INSTANCE,
 	DONJON
 };
-
 /*
 ** Game: 
 ** 	Main game structure that represent game state and

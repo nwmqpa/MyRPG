@@ -12,7 +12,7 @@ void *my_malloc(size_t size)
 	void *ret = malloc(size);
 
 	if (ret == NULL)
-		exit(84);
+		return (ret);
 	return (ret);
 }
 
