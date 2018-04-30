@@ -15,17 +15,18 @@ NAME	=	my_rpg
 
 REAL	=	$(ROOT)/release
 
-SRC	=	$(SRC_DIR)/main.c					\
+SRC	=	$(SRC_DIR)/main.c				\
 		$(SRC_DIR)/my_rpg.c				\
-		$(SRC_DIR)/graphic/animation/animation.c		\
+		$(SRC_DIR)/graphic/animation/animation.c	\
 		$(SRC_DIR)/graphic/animation/animation_extern.c	\
-		$(SRC_DIR)/managers/assets_mng.c			\
+		$(SRC_DIR)/managers/assets_mng.c		\
 		$(SRC_DIR)/managers/ress_mng.c			\
 		$(SRC_DIR)/physic/particle/particle_create.c	\
 		$(SRC_DIR)/physic/particle/particle_draw.c	\
 		$(SRC_DIR)/utils/get_struct.c			\
 		$(SRC_DIR)/utils/vector2f.c			\
-		$(SRC_DIR)/utils/utils.c
+		$(SRC_DIR)/utils/utils.c			\
+		$(SRC_DIR)/managers/cinematique_mng.c 
 
 WARN	=	-W -Wall -Wextra
 
