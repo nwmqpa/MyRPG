@@ -12,6 +12,7 @@ typedef struct elem elem_t;
 typedef struct elem list_t;
 typedef struct hash_elem hash_elem_t;
 typedef struct hash_elem hashmap_t;
+typedef struct vector pos_t;
 typedef unsigned long int hash_t;
 
 struct elem {
@@ -25,6 +26,11 @@ struct hash_elem {
 	struct hash_elem *prev;
 	void *data;
 	hash_t *hash;
+};
+
+struct vector {
+	unsigned int x;
+	unsigned int y;
 };
 
 hash_t hash(const char *str);
