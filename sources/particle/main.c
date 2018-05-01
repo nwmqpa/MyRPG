@@ -16,6 +16,7 @@ int loop(sfRenderWindow *win, particles *system)
 	float i = 0;
 	sfEvent event;
 	sfShader *shader = sfShader_createFromFile("shaders/simple.vert", "shaders/glow.frag");
+	sfShader_setCurrentTextureParameter(shader, "texture");
 	sfRenderStates state = {sfBlendAlpha, sfTransform_Identity, NULL, shader};
 
 	while (sfRenderWindow_isOpen(win)) {
