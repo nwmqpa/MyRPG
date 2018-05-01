@@ -7,7 +7,7 @@
 
 #include "ress_manager.h"
 #include "assets_manager.h"
-#include "my_rpg.h"
+#include "cybend2200.h"
 
 assets_mng_t *get_assets_mng(assets_mng_t *assets)
 {

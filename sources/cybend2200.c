@@ -6,7 +6,7 @@
 */
 
 #include <SFML/Graphics.h>
-#include "my_rpg.h"
+#include "cybend2200.h"
 
 int game_loop(game_t *game)
 {
