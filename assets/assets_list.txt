@@ -1,0 +1,19 @@
+a: playerIdleProfile
+a: playerMovingProfile
+a: PlayerJumpingProfile
+a: PlayerTalkingProfile
+
+t: UI_Hearth
+t: UI_Minimap
+t: UI_Inventory
+t: UI_ChestInventory
+
+m: Intro
+m: HowToPlay
+m: Sad
+
+f: Thorne-n.ttf
+
+s: heavy
+s: light
+s: footstep

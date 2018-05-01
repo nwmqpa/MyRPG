@@ -10,7 +10,7 @@
 void draw_life(sfRenderWindow *win, int nb_life)
 {
     for (int i = 0; i < nb_life; ++i) {
-        
+        sfRenderWindow(win, ass_mng_get_sprite("hearth"), NULL);
     }
 }
 
