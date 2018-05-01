@@ -39,7 +39,8 @@ unsigned int inv_nb_of(struct inventory *inv, struct object object);
 int inv_insert(struct inventory *inv, struct object object);
 int inv_remove(struct inventory *inv, struct object object);
 struct vector inv_get_sizes(struct inventory *inv);
-struct inventory *create_inv(int nb_slots);
+struct inventory *inv_create(int nb_slots);
+void inv_free(struct inventory **inv);
 
 
 #endif /* OBJECTS_H_ */
