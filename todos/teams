@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-xdg-open https://teams.microsoft.com/_#/conversations/General?threadId=19:80b5d0ffe0a048708d70458644bc09e6@thread.skype&ctx=channel 
