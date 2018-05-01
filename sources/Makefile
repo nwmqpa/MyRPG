@@ -25,7 +25,10 @@ SRC	=	$(SRC_DIR)/main.c					\
 		$(SRC_DIR)/physic/particle/particle_draw.c	\
 		$(SRC_DIR)/utils/get_struct.c			\
 		$(SRC_DIR)/utils/vector2f.c			\
-		$(SRC_DIR)/utils/utils.c
+		$(SRC_DIR)/utils/utils.c			\
+		$(SRC_DIR)/inventory/management.c		\
+		$(SRC_DIR)/inventory/mem_management.c 		\
+		$(SRC_DIR)/inventory/sort.c
 
 WARN	=	-W -Wall -Wextra
 

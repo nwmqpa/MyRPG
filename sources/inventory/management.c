@@ -12,7 +12,7 @@ int inv_is_full(struct inventory *inv)
 	unsigned int size = inv->size;
 	union to_data to_data;
 
-	for (int i = 0; i < size; i++) {
+	for (unsigned int i = 0; i < size; i++) {
 		to_data.object = inv->objects[i];
 		if (!to_data.data)
 			return (0);
@@ -22,13 +22,13 @@ int inv_is_full(struct inventory *inv)
 
 unsigned int inv_nb_of(struct inventory *inv, struct object object)
 {
-	int size = inv->size;
+	unsigned int size = inv->size;
 	int nb = 0;
 	union to_data searched;
 	union to_data tested;
 
 	searched.object = object;
-	for (int i = 0; i < size; i++) {
+	for (unsigned int i = 0; i < size; i++) {
 		tested.object = inv->objects[i];
 		if (INSTANCEOF(tested.data) == INSTANCEOF(searched.data))
 			nb += tested.object.qty;
@@ -38,13 +38,13 @@ unsigned int inv_nb_of(struct inventory *inv, struct object object)
 
 int inv_insert(struct inventory *inv, struct object object)
 {
-	int size = inv->size;
+	unsigned int size = inv->size;
 	unsigned int temp = object.qty;
 	union to_data to_insert;
 	union to_data tested;
 
 	to_insert.object = object;
-	for (int i = 0; i < size; i++) {
+	for (unsigned int i = 0; i < size; i++) {
 		tested.object = inv->objects[i];
 		if (INSTANCEOF(tested.data) == INSTANCEOF(to_insert.data)) {
 			inv->objects[i].qty += object.qty -
@@ -61,11 +61,11 @@ int inv_insert(struct inventory *inv, struct object object)
 
 int inv_purge(struct inventory *inv)
 {
-	int size = inv->size;
+	unsigned int size = inv->size;
 	union to_data null;
 
 	null.data = 0;
-	for (int i = 0; i < size; i++) {
+	for (unsigned int i = 0; i < size; i++) {
 		if (!(inv->objects[i].qty))
 			inv->objects[i] = null.object;
 	}
@@ -74,16 +74,15 @@ int inv_purge(struct inventory *inv)
 
 int inv_remove(struct inventory *inv, struct object object)
 {
-	int size = inv->size;
-	unsigned int temp = 0;
-	unsigned int transactions = 0;
+	unsigned int size = inv->size;
 	union to_data to_remove;
 	union to_data tested;
 
 	inv_purge(inv);
+	to_remove.object = object;
 	if (object.qty == 0)
 		return (0);
-	for (int i = 0; i < size; i++) {
+	for (unsigned int i = 0; i < size; i++) {
 		tested.object = inv->objects[i];
 		if (INSTANCEOF(tested.data) == INSTANCEOF(to_remove.data)) {
 			inv->objects[i].qty -= object.qty;

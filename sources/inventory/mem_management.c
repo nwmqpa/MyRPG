@@ -5,6 +5,7 @@
 ** Memory management of inventory.
 */
 
+#include <stdlib.h>
 #include "objects.h"
 #include "utils.h"
 
