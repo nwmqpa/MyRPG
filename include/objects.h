@@ -13,6 +13,8 @@ typedef struct object ammo_t;
 typedef struct object cons_t;
 typedef struct inventory inv_t;
 
+#define INSTANCEOF(object) (object & 0xf03fffff)
+
 struct object {
 	unsigned int type: 4;
 	unsigned int qty: 6;
@@ -26,5 +28,20 @@ struct inventory {
 	struct object *objects;
 	unsigned int size;
 };
+
+union to_data {
+	unsigned int data;
+	struct object object;
+};
+
+int inv_is_full(struct inventory *inv);
+unsigned int inv_nb_of(struct inventory *inv, struct object object);
+int inv_insert(struct inventory *inv, struct object object);
+int inv_remove(struct inventory *inv, struct object object);
+int inv_sort(struct inventory **inv);
+struct vector inv_get_sizes(struct inventory *inv);
+struct inventory *inv_create(int nb_slots);
+void inv_free(struct inventory **inv);
+
 
 #endif /* OBJECTS_H_ */
