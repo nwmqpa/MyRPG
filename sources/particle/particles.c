@@ -12,36 +12,6 @@
 
 sfVector2f rand_vector(int disp);
 
-float set_lives(float a, float limit)
-{
-	if (a > limit)
-		return (a - limit);
-	return (a);
-}
-
-particles *create_particles(size_t size, sfColor color, bool inf, bool grav)
-{
-	particles *system = calloc(1, sizeof(particles));
-
-	system->vertex    = calloc(size * 4, sizeof(sfVertex));
-	system->speed     = calloc(size, sizeof(sfVector2f));
-	system->color	  = color;
-	system->size      = size;
-	system->lifes     = calloc(size, sizeof(float));
-	system->life_time = 1;
-	system->infinite  = inf;
-	system->gravity   = (grav) ? GRAVITY : -GRAVITY;
-	system->pos	  = (sfVector2f){0, 0};
-	system->size_part = 5;
-	for (unsigned int i = 0; i < system->size; ++i) {
-		set_particles(system, rand_angle(30), 8, i);
-		system->speed[i] = rand_angle(30);
-		system->lifes[i] = (float)rand() /
-			(float)(RAND_MAX/system->life_time);
-	}
-	return (system);
-}
-
 void reset_particles(particles *this, size_t i)
 {
 	this->vertex[i * 4 + 0].position = this->pos;
@@ -96,9 +66,12 @@ void set_particles(particles *this, sfVector2f speed, int size, size_t id)
 {
 	this->size_part = size;
 	this->vertex[id * 4 + 0].position = this->pos;
-	this->vertex[id * 4 + 1].position = (sfVector2f){this->pos.x + size, this->pos.y};
-	this->vertex[id * 4 + 2].position = (sfVector2f){this->pos.x + size, this->pos.y + size};
-	this->vertex[id * 4 + 3].position = (sfVector2f){this->pos.x , this->pos.y + size};
+	this->vertex[id * 4 + 1].position = 
+		(sfVector2f){this->pos.x + size, this->pos.y};
+	this->vertex[id * 4 + 2].position = 
+		(sfVector2f){this->pos.x + size, this->pos.y + size};
+	this->vertex[id * 4 + 3].position = 
+		(sfVector2f){this->pos.x , this->pos.y + size};
 	this->speed[id] = speed;
 	for (int x = 0; x < 4; ++x)
 		this->vertex[id * 4 + x].color = this->color;
