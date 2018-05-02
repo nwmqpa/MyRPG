@@ -31,7 +31,8 @@ SRC	=	$(SRC_DIR)/main.c				\
 		$(SRC_DIR)/inventory/mem_management.c 		\
 		$(SRC_DIR)/inventory/sort.c			\
 		$(SRC_DIR)/projectiles/management.c 		\
-		$(SRC_DIR)/projectiles/mem_management.c
+		$(SRC_DIR)/projectiles/mem_management.c		\
+		$(SRC_DIR)/entity/management.c
 
 WARN	=	-W -Wall -Wextra
 

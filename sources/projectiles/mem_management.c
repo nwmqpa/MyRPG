@@ -5,6 +5,7 @@
 ** Memory management of projectiles.
 */
 
+#include <stdlib.h>
 #include "entities.h"
 #include "projectiles.h"
 #include "objects.h"
