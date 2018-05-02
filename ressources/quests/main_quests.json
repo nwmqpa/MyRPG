@@ -1,0 +1,38 @@
+"quests" : {
+   "The Begin": {
+      "id": 1,
+      "name": "Awake",
+      "begin": "?",
+      "end": "?",
+      "desc": "Find a way to get out",
+      "xp": 100,
+      "need": 0
+   },
+   "Find them": {
+	"id": 2,
+	"name": "Fight",
+	"begin": "UnderGround",
+	"end": "UnderGround",
+	"desc": "Fight gang members",
+	"xp": 100,
+	"need": 1
+   },
+  "Get out": {
+  	"id": 3,
+	"name": "Out !",
+	"begin": "UnderGround",
+	"end": "MainCity",
+	"desc": "Find the way out",
+	"xp": 200,
+	"nedd": 2
+  },
+  "Find Karla": {
+	"id": 4,
+	"name": "Where is Karla",
+	"begin": "MainCity",
+	"end": "Karla House",
+	"desc": "Go find Karla in the city",
+	"xp": 200,
+	"need": 3
+  }
+}
