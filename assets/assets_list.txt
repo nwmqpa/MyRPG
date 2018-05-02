@@ -3,6 +3,8 @@ a: playerMovingProfile
 a: PlayerJumpingProfile
 a: PlayerTalkingProfile
 
+a: HearthShaking
+
 t: UI_Hearth
 t: UI_Minimap
 t: UI_Inventory
@@ -13,6 +15,7 @@ m: HowToPlay
 m: Sad
 
 f: Thorne-n.ttf
+f: Flighter.ttf
 
 s: heavy
 s: light
