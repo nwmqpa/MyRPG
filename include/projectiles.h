@@ -18,7 +18,7 @@ struct projectile {
 	struct vector fire_pos;
 };
 
-typedef struct projectile ammo_t;
+typedef struct projectile proj_t;
 
 struct vector proj_compute_pos(struct projectile *proj, float time);
 struct vector proj_compute_delta(struct projectile *proj, float delta);
