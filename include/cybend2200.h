@@ -8,7 +8,7 @@
 #ifndef MY_RPG_H_
 #define MY_RPG_H_
 
-#define NAME "Unammed"
+#define NAME "Cybend2200"
 
 #define Y 1
 #define X 0

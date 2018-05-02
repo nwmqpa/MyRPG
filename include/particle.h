@@ -1,58 +1,38 @@
 /*
 ** EPITECH PROJECT, 2017
-** particle.h
+** name 
 ** File description:
-** Particle system for my_rpg
+** as
 */
 
-#ifndef PARTICLE_H_
-#define PARTICLE_H_
+#pragma once
 
 #include <SFML/Graphics.h>
 #include <stdbool.h>
+#include <math.h>
+#include <stdlib.h>
 
+#define HEIGHT 1080
+#define WIDTH  1920
 #define GRAVITY 9.8
 
-/* typedef particle velocity => direction | position => pos in 2D*/
-typedef struct particle_s {
-	sfVector2f velocity;
-	sfVector2f position;
-	float	   life_time;
-} particle_t;
+#define RAD(x) ((x) * M_PI / 180)
 
-/*
-** Particle system:
-**	Particle drawer system
-**	texture => texture use for all particle
-**	point   => space position in 2 dimension of the source
-**	is_light => //TODO
-**	dispertion => the way particle are expanding 
-**	is_infinite => if the particle when they are dead repop
-**	global_life_time => life time of all particle
-**	is_gravity => are they sensible to gravity or are they volatile
-**	nb_elem => nomber of particles
-**	speed => speed of the particle
-**	sprite => the sprite use for the particle
-*/ 
-typedef struct particle_system_s {
-	sfTexture    *texture;
-	particle_t   *particles;
-	unsigned int nb_elem;
-	sfVector2f   point;
-	float	     global_life_time;
-	int	     dispersion;
-	float	     speed;
-	sfSprite     *sprite;
-	bool	     is_light;
-	bool	     is_infinite;
-	bool	     is_gravity;
-} part_sys_t;
+typedef struct part_s {
+	sfVertex *vertex;
+	float *lifes;
+	float life_time;
+	sfColor color;
+	sfVector2f *speed;
+	sfVector2f pos;
+	unsigned int size;
+	int size_part;
+	bool infinite;
+	float gravity;
+} particles;
 
-//------------------NaN
-sfVector2f random_vector2f(float speed, int dispertion);
-//------------------Constuctor
-part_sys_t 
-*part_sys_create(sfTexture *texture, int nb_elem, int is_gravity, float speed);
-//------------------Use this to draw the particle sys as sfSprite_draw();
-void part_sys_draw(part_sys_t *particle_sys, sfRenderWindow *win);
-#endif /* PARTICLE_H_ */
+void update_particles(particles *system, float delta_time);
+sfVector2f rand_angle(int disp);
+particles *create_particles(size_t size, sfColor color, bool inf, bool grav);
+void draw_particles(particles *this, sfRenderWindow *win, sfRenderStates *shader);
+void set_particles(particles *this, sfVector2f speed, int size, size_t id);
