@@ -36,7 +36,7 @@ anim_t *create_anim(sfTexture *tex, int count, float speed, int size);
 //Create Animation from path of a file and some other things
 anim_t *create_anim_path(const char *path, int count , float speed, int size);
 //Set position of all sprites of the anim
-void anim_setPosition(anim_t *anim, sfVector2f factor);
+void anim_set_position(anim_t *anim, sfVector2f factor);
 //Move the anim
 void anim_move(anim_t *anim, sfVector2f factor);
 //Scale the anim 
