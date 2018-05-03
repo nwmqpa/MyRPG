@@ -9,7 +9,7 @@
 #include "utils.h"
 #include "entities.h"
 
-int map_update(map_t *map, player_t *player,float d_time)
+int map_update(map_t *map, struct player *player,float d_time)
 {
     return (0);
 }
