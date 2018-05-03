@@ -26,7 +26,7 @@ enum MAP {
 };
 
 struct map_s {
-    sfSprite *parrallax[5];
+    sfSprite *sprites[5];
     sfTexture *texture[5];
     char *name;
     int id;
@@ -35,7 +35,7 @@ struct map_s {
 
 typedef struct map_s map_t;
 
-map_t *map_load(char *path, char *name, int id);
+map_t *map_load(char *path, char *name);
 int map_draw(map_t *map, float d_time);
 int map_update(map_t *map, float d_time);
 

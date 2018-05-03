@@ -15,21 +15,22 @@ NAME	=	my_rpg
 
 REAL	=	$(ROOT)/release
 
-SRC	=	$(SRC_DIR)/cybend2200.c				\
-		$(SRC_DIR)/animation/animation.c	\
-		$(SRC_DIR)/animation/animation_extern.c	\
-		$(SRC_DIR)/managers/assets_mng.c		\
-		$(SRC_DIR)/managers/ress_mng.c			\
-		$(SRC_DIR)/utils/get_struct.c			\
-		$(SRC_DIR)/utils/vector2f.c			\
-		$(SRC_DIR)/utils/utils.c			\
+SRC	=	$(SRC_DIR)/cybend2200.c						\
+		$(SRC_DIR)/animation/animation.c			\
+		$(SRC_DIR)/animation/animation_extern.c		\
+		$(SRC_DIR)/managers/assets_mng.c			\
+		$(SRC_DIR)/managers/ress_mng.c				\
+		$(SRC_DIR)/utils/get_struct.c				\
+		$(SRC_DIR)/utils/vector2f.c					\
+		$(SRC_DIR)/utils/utils.c					\
 		$(SRC_DIR)/managers/cinematique_mng.c 		\
-		$(SRC_DIR)/particle/particles.c 		\
-		$(SRC_DIR)/particle/particles_2.c 		\
-		$(SRC_DIR)/particle/utils.c			\
-		$(SRC_DIR)/inventory/management.c		\
+		$(SRC_DIR)/particle/particles.c 			\
+		$(SRC_DIR)/particle/particles_2.c	 		\
+		$(SRC_DIR)/particle/utils.c					\
+		$(SRC_DIR)/map/map.c						\
+		$(SRC_DIR)/inventory/management.c			\
 		$(SRC_DIR)/inventory/mem_management.c 		\
-		$(SRC_DIR)/inventory/sort.c			\
+		$(SRC_DIR)/inventory/sort.c					\
 		$(SRC_DIR)/projectiles/management.c 		\
 		$(SRC_DIR)/projectiles/mem_management.c		\
 		$(SRC_DIR)/entity/management.c				\
