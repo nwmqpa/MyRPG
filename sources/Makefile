@@ -25,12 +25,13 @@ SRC	=	$(SRC_DIR)/main.c 				\
 		$(SRC_DIR)/utils/vector2f.c			\
 		$(SRC_DIR)/utils/utils.c			\
 		$(SRC_DIR)/managers/cinematique_mng.c 		\
-		$(SRC_DIR)/particle/particles.c 		\
-		$(SRC_DIR)/particle/particles_2.c 		\
-		$(SRC_DIR)/particle/utils.c			\
-		$(SRC_DIR)/inventory/management.c		\
+		$(SRC_DIR)/particle/particles.c 			\
+		$(SRC_DIR)/particle/particles_2.c	 		\
+		$(SRC_DIR)/particle/utils.c					\
+		$(SRC_DIR)/map/map.c						\
+		$(SRC_DIR)/inventory/management.c			\
 		$(SRC_DIR)/inventory/mem_management.c 		\
-		$(SRC_DIR)/inventory/sort.c			\
+		$(SRC_DIR)/inventory/sort.c					\
 		$(SRC_DIR)/projectiles/management.c 		\
 		$(SRC_DIR)/projectiles/mem_management.c		\
 		$(SRC_DIR)/entity/management.c				\

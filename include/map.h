@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
+#include "entities.h"
 
 enum MAP {
     BACK,
@@ -26,7 +26,7 @@ enum MAP {
 };
 
 struct map_s {
-    sfSprite *parrallax[5];
+    sfSprite *sprites[5];
     sfTexture *texture[5];
     char *name;
     int id;
@@ -35,8 +35,8 @@ struct map_s {
 
 typedef struct map_s map_t;
 
-map_t *map_load(char *path, char *name, int id);
-int map_draw(map_t *map, float d_time);
-int map_update(map_t *map, float d_time);
+map_t *map_load(char *path, char *name);
+int map_draw(sfRenderWindow *win, map_t *map, float d_time);
+int map_update(map_t *map, struct player *player, float d_time);
 
 #endif /* MAP_H_ */
