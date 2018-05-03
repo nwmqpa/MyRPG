@@ -15,9 +15,10 @@ NAME	=	my_rpg
 
 REAL	=	$(ROOT)/release
 
-SRC	=	$(SRC_DIR)/cybend2200.c				\
-		$(SRC_DIR)/animation/animation.c	\
-		$(SRC_DIR)/animation/animation_extern.c	\
+SRC	=	$(SRC_DIR)/main.c 				\
+		$(SRC_DIR)/cybend2200.c				\
+		$(SRC_DIR)/animation/animation.c		\
+		$(SRC_DIR)/animation/animation_extern.c		\
 		$(SRC_DIR)/managers/assets_mng.c		\
 		$(SRC_DIR)/managers/ress_mng.c			\
 		$(SRC_DIR)/utils/get_struct.c			\

@@ -89,6 +89,7 @@ anim_t *create_anim_path(const char *path, int cnt, float speed, int size)
 	return (anim);
 }
 
+#ifdef ANIMATION_COMPILE_
 int main(void)
 {
 	sfRenderWindow *win = sfRenderWindow_create(
@@ -96,15 +97,15 @@ int main(void)
 	sfRenderWindow_setFramerateLimit(win, 60);
 	
 	anim_t *idle = create_anim_path_rect(
-	"../../../assets/textures/Player/PlayerIdleAnim.png",
+	"../../assets/textures/Player/PlayerIdleAnim.png",
 	4, 0.1, (sfIntRect){0, 0, 100, 200});
 
 	anim_t *running = create_anim_path_rect(
-	"../../../assets/textures/Player/PlayerRunningLeft.png",
+	"../../assets/textures/Player/PlayerRunningLeft.png",
 	4, 0.1, (sfIntRect){0, 0, 100, 200});
 
 	anim_t *lifes = create_anim_path(
-	"../../../assets/UI/LifesAnimation.png",
+	"../../assets/UI/LifesAnimation.png",
 	2, 0.15, 100);
 	
 	anim_set_position(running, (sfVector2f){0, 400});
@@ -124,3 +125,4 @@ int main(void)
 	}
 	return (0);
 }
+#endif /* ANIMATION_COMPILE_ */
