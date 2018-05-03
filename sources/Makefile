@@ -9,15 +9,15 @@ ROOT	=	..
 
 SRC_DIR	=	.
 
-CC	=	gcc
+CC		=	gcc
 
 NAME	=	my_rpg
 
 REAL	=	$(ROOT)/release
 
 SRC	=	$(SRC_DIR)/cybend2200.c				\
-		$(SRC_DIR)/graphic/animation/animation.c	\
-		$(SRC_DIR)/graphic/animation/animation_extern.c	\
+		$(SRC_DIR)/animation/animation.c	\
+		$(SRC_DIR)/animation/animation_extern.c	\
 		$(SRC_DIR)/managers/assets_mng.c		\
 		$(SRC_DIR)/managers/ress_mng.c			\
 		$(SRC_DIR)/utils/get_struct.c			\
@@ -32,7 +32,8 @@ SRC	=	$(SRC_DIR)/cybend2200.c				\
 		$(SRC_DIR)/inventory/sort.c			\
 		$(SRC_DIR)/projectiles/management.c 		\
 		$(SRC_DIR)/projectiles/mem_management.c		\
-		$(SRC_DIR)/entity/management.c
+		$(SRC_DIR)/entity/management.c				\
+		$(SRC_DIR)/update.c
 
 WARN	=	-W -Wall -Wextra
 

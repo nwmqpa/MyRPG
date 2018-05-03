@@ -20,9 +20,10 @@ static game_t *init_game(char *assets_path, char *ressources_path)
 
 	game->size[X] = WIDTH;
 	game->size[Y] = HEIGHT;
-	game->win = sfRenderWindow_create(mode, NAME, sfResize , NULL);
+	game->win = sfRenderWindow_create(mode, NAME, sfResize | sfClose , NULL);
 	sfRenderWindow_setFramerateLimit(game->win, MAX_FPS);
-	game->delta_time = 1 / MAX_FPS;
+	sfRenderWindow_setVerticalSyncEnabled(game->win, sfTrue);
+	game->delta_time = 1.0 / MAX_FPS;
 	return (game);
 }
 

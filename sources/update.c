@@ -15,7 +15,7 @@ int draw_menu(game_t *game)
 
 int draw_game(game_t *game)
 {
-    //Draw profile game
+    //
     return (0);
 }
 

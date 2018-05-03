@@ -11,12 +11,12 @@
 
 uint32_t compute_player_power(struct player *player)
 {
-
+	return (32);
 }
 
 uint32_t compute_entity_power(struct entity *entity)
 {
-
+	return (32);
 }
 
 int compute_xp(uint32_t player_power, uint32_t entity_power)

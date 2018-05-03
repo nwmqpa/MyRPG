@@ -10,13 +10,16 @@
 
 int update_game(game_t *game)
 {
-	switch (game->scene) {
+	switch (game->gamemode) {
 	case MENU:
 		draw_menu(game);
+		break;
 	case GAME:
 		draw_game(game);
+		break;
 	case COMBAT:
 		draw_combat(game);
+		break;
 	}
 	return (0);
 }
