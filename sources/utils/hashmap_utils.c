@@ -7,27 +7,15 @@
 
 #include "structs.h"
 
-/*
-** djb2.
-*/
-hash_t hash(const char *str)
-{
-	unsigned long hash = 5381;
-	char c;
-
-	while (*str) {
-		c = *str;
-		hash = ((hash << 5) + hash) + c;
-		str++;
-	}
-	return (hash);
-}
-
 int insert_hash_elem(hashmap_t *hashmap, const char *key, void *data)
 {
 	hash_t h = hash(key);
 	hash_elem_t *temp = hashmap;
 
+	if (!temp->hash) {
+		temp->hash = h;
+		temp->data = data;	
+	}
 	for (; temp->next; temp = temp->next);
 	temp->next = my_calloc(sizeof(hash_elem_t));
 	temp->next->prev = temp->next;

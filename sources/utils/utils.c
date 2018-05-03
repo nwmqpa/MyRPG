@@ -6,6 +6,23 @@
 */
 
 #include <stdlib.h>
+#include "structs.h"
+
+/*
+** djb2.
+*/
+hash_t hash(const char *str)
+{
+	unsigned long hash = 5381;
+	char c;
+
+	while (*str) {
+		c = *str;
+		hash = ((hash << 5) + hash) + c;
+		str++;
+	}
+	return (hash);
+}
 
 void *my_malloc(size_t size)
 {
