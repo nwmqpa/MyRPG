@@ -13,6 +13,6 @@
 void *my_malloc(size_t size);
 int my_strlen(const char *str);
 void *my_calloc(size_t size);
-char *get_home(char *env[]);
+float get_dtime(float time);
 
 #endif /* UTILS_H_ */

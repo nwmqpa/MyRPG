@@ -19,10 +19,11 @@
 #include <SFML/Graphics.h>
 
 enum gamemode {
-	OVERWORLD,
-	INSTANCE,
-	DONJON
+	MENU,
+	GAME,
+	COMBAT
 };
+
 /*
 ** Game: 
 ** 	Main game structure that represent game state and
@@ -36,5 +37,10 @@ typedef struct game_s {
 } game_t;
 
 int my_rpg(game_t *game);
+int update_game(game_t *game);
+int game_loop(game_t *game);
+int draw_menu(game_t *game);
+int draw_game(game_t *game);
+int draw_combat(game_t *game);
 
 #endif /* MY_RPG_H_ */

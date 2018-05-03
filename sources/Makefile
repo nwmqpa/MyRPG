@@ -68,13 +68,13 @@ WHITE	=	\e[0m
 
 ORANGE	=	\e[1;33m
 
-RED	=	\e[1;35m
+RED		=	\e[1;35m
 
 BLUE	=	\e[1;34m
 
 all:			$(NAME)
 
-$(NAME):		echo_build $(REAL)/$(NAME)
+$(NAME):	echo_build $(REAL)/$(NAME)
 			$(V)cp $(REAL)/$(NAME) $(ROOT)
 			$(V)printf "$(GREEN)Dup $(NAME) into root directory.$(WHITE)\n"
 

@@ -28,6 +28,15 @@ void *my_calloc(size_t size)
 	return (temp);
 }
 
+float get_dtime(float time)
+{
+	static float d_time = 0.016;
+
+	if (time != -1)
+		d_time = time;
+	return (d_time);
+}
+
 int my_nblen(int nb)
 {
 	int ret = 0;
