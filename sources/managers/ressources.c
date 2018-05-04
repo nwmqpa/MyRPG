@@ -39,7 +39,7 @@ void create_cin(struct ressources *ress)
 
 struct ressources *create_ressources(void)
 {
-	ress_mng_t *ress = my_calloc(sizeof(ress_mng_t));
+	struct ressources *ress = my_calloc(sizeof(struct ressources));
 
 	create_quests(ress);
 	ress->player = create_player();

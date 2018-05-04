@@ -11,6 +11,10 @@
 #define NB_NPCS 2
 #define NB_CIN	1
 
+#include <SFML/Graphics.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 /*
 ** Assets Manager:
 **	Represent one instance of all the ressources
@@ -26,5 +30,7 @@ struct ressources {
 typedef struct ressources ressources_t;
 
 struct ressources *create_ressources(void);
+
+struct ressources *get_ressources(struct ressources *ress);
 
 #endif /* RESSOURCES_MANAGER_H */

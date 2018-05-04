@@ -15,9 +15,9 @@ static game_t *init_game(char *assets_path, char *ressources_path)
 {
 	game_t *game = my_calloc(sizeof(game_t));
 	sfVideoMode mode = {WIDTH, HEIGHT, 32};
-	get_assets_mng(create_assets_mng(assets_path));
-	get_ress_mng(create_ress_mng(ressources_path));
 
+	get_assets(create_assets());
+	get_ressources(create_ressources());
 	game->size[X] = WIDTH;
 	game->size[Y] = HEIGHT;
 	game->win = sfRenderWindow_create(mode, NAME, sfResize | sfClose , NULL);
