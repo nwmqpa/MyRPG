@@ -9,7 +9,7 @@ ROOT	=	..
 
 SRC_DIR	=	.
 
-CC		=	gcc
+CC	=	gcc
 
 NAME	=	my_rpg
 
@@ -25,19 +25,22 @@ SRC	=	$(SRC_DIR)/main.c 				\
 		$(SRC_DIR)/utils/vector2f.c			\
 		$(SRC_DIR)/utils/utils.c			\
 		$(SRC_DIR)/managers/cinematique_mng.c 		\
-		$(SRC_DIR)/particle/particles.c 			\
-		$(SRC_DIR)/particle/particles_2.c	 		\
-		$(SRC_DIR)/particle/utils.c					\
-		$(SRC_DIR)/map/map.c						\
-		$(SRC_DIR)/inventory/management.c			\
+		$(SRC_DIR)/particle/particles.c			\
+		$(SRC_DIR)/particle/particles_2.c		\
+		$(SRC_DIR)/particle/utils.c			\
+		$(SRC_DIR)/map/map.c				\
+		$(SRC_DIR)/inventory/management.c		\
 		$(SRC_DIR)/inventory/mem_management.c 		\
-		$(SRC_DIR)/inventory/sort.c					\
+		$(SRC_DIR)/inventory/sort.c			\
 		$(SRC_DIR)/projectiles/management.c 		\
 		$(SRC_DIR)/projectiles/mem_management.c		\
-		$(SRC_DIR)/entity/management.c				\
-		$(SRC_DIR)/update.c
+		$(SRC_DIR)/entity/management.c			\
+		$(SRC_DIR)/update.c				\
+		$(SRC_DIR)/utils/str_utils.c			\
+		$(SRC_DIR)/utils/str_utils_2.c			\
+		$(SRC_DIR)/utils/my_atoi.c
 
-WARN	=	-W -Wall -Wextra
+WARN	=	-W -Wall
 
 CFLAGS	=	-I $(ROOT)/include $(WARN)
 
@@ -71,13 +74,13 @@ WHITE	=	\e[0m
 
 ORANGE	=	\e[1;33m
 
-RED		=	\e[1;35m
+RED	=	\e[1;35m
 
 BLUE	=	\e[1;34m
 
 all:			$(NAME)
 
-$(NAME):	echo_build $(REAL)/$(NAME)
+$(NAME):		echo_build $(REAL)/$(NAME)
 			$(V)cp $(REAL)/$(NAME) $(ROOT)
 			$(V)printf "$(GREEN)Dup $(NAME) into root directory.$(WHITE)\n"
 
