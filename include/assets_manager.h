@@ -13,8 +13,8 @@
 #include "anim.h"
 
 enum MUSIC {
-	MUSIC1,
-	MUSIC2
+	CAVE,
+	CITY
 };
 
 enum SOUND {

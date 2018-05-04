@@ -30,8 +30,8 @@ struct assets *create_assets(void)
 
 	assets->fonts[0] = sfFont_createFromFile("assets/fonts/Flighter.ttf");
 	assets->fonts[1] = sfFont_createFromFile("assets/fonts/Thorne-n.ttf");
-	//assets->musics[0] = sfMusic_createFromFile("");
-	//assets->musics[1] = sfMusic_createFromFile("");
+	assets->musics[0] = sfMusic_createFromFile("assets/music/cave.ogg");
+	assets->musics[1] = sfMusic_createFromFile("assets/music/city.ogg");
 	set_sound(assets);
 	return (assets);
 }
