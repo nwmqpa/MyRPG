@@ -7,9 +7,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "map_parser.h"
 #include "structs.h"
 #include "utils.h"
+#include "str_utils.h"
 
 struct map_manager *map_create_manager(char *map_path)
 {
@@ -34,7 +36,7 @@ void parse_maps(struct map_manager *map_mgr)
 	FILE *file = 0x0;
 	char *map_path = 0x0;
 	char *line = 0x0;
-	int bytes = 0;
+	long unsigned int bytes = 0;
 
 	while (getline(&line, &bytes, map_mgr->map_descriptor) != -1) {
 		map_path = my_strcat(my_strdup(map_mgr->maps_folder), line);

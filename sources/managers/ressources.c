@@ -22,8 +22,9 @@ void create_cin(struct ressources *ress)
 {
 	FILE *file = fopen("ressources/cinematique/intro.txt", "r");
 	char *str = NULL;
+	long unsigned int bytes = 0;
 
-	getline(str, 0, file);
+	getline(&str, &bytes, file);
 	for (int i = 0; str[i]; ++i) {
 		if (str[i] == '~') {
 			str[i] = '\n';

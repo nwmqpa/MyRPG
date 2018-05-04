@@ -8,8 +8,9 @@
 #include <stdlib.h>
 #include <SFML/Graphics.h>
 #include <stdio.h>
+#include "utils.h"
 
-sfVector2f random_vector2f(float speed, int disp)
+sfVector2f random_vector2f(UNUSED float speed, int disp)
 {
 	sfVector2f vec = {.x = 0, .y = 0};
 

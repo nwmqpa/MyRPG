@@ -5,7 +5,9 @@
 ** graphical management of the map_parser.
 */
 
+#include <stdlib.h>
 #include "map_parser.h"
+#include "str_utils.h"
 
 static void map_graph_init(struct map *map, char const *base_path)
 {
@@ -19,7 +21,7 @@ static void map_graph_init(struct map *map, char const *base_path)
 		file = my_strcat(file, layer_tmp->image);
 		printf("%s\n", file);
 		layer_tmp->texture = sfTexture_createFromFile(file, NULL);
-		layer_tmp->image = sfSprite_create();
+		layer_tmp->sprite = sfSprite_create();
 		sfSprite_setTexture(layer_tmp->sprite, layer_tmp->texture, 1);
 		free(file);
 		file = my_strcat(my_strdup(base_path), "/");
@@ -28,8 +30,6 @@ static void map_graph_init(struct map *map, char const *base_path)
 
 void map_all_graph_init(struct map_manager *m_mgr)
 {
-	struct map *map_tmp = 0x0;
-
 	for (struct hash_elem *tmp = m_mgr->maps; tmp; tmp = tmp->next) {
 		map_graph_init((struct map *) tmp->data, m_mgr->maps_folder);
 	}

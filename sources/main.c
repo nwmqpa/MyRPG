@@ -11,7 +11,7 @@
 #include "ress_manager.h"
 #include "assets_manager.h"
 
-static game_t *init_game(char *assets_path, char *ressources_path)
+static game_t *init_game(UNUSED char *assets_path, UNUSED char *ressources_path)
 {
 	game_t *game = my_calloc(sizeof(game_t));
 	sfVideoMode mode = {WIDTH, HEIGHT, 32};

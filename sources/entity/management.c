@@ -8,13 +8,14 @@
 #include <math.h>
 #include "structs.h"
 #include "entities.h"
+#include "utils.h"
 
-uint32_t compute_player_power(struct player *player)
+uint32_t compute_player_power(UNUSED struct player *player)
 {
 	return (32);
 }
 
-uint32_t compute_entity_power(struct entity *entity)
+uint32_t compute_entity_power(UNUSED struct entity *entity)
 {
 	return (32);
 }
