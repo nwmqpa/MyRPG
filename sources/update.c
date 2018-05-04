@@ -6,6 +6,7 @@
 */
 
 #include "cybend2200.h"
+#include "map.h"
 
 int draw_menu(game_t *game)
 {
@@ -15,7 +16,7 @@ int draw_menu(game_t *game)
 
 int draw_game(game_t *game)
 {
-    //
+    map_t *map = map_load("assets/Cave/", "Cave");
     return (0);
 }
 
