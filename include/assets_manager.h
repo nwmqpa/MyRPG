@@ -12,49 +12,40 @@
 #include <SFML/Audio.h>
 #include "anim.h"
 
-enum sprite {
-	NAME_1,
-	NAME_2
-};
-/*
-enum sound {
-	NAME_1,
-	NAME_2
+enum MUSIC {
+	MUSIC1,
+	MUSIC2
 };
 
-enum music {
-	NAME_1,
-	NAME_2
+enum SOUND {
+	FOOTSTEP,
+	PISTOL,
+	RIFLE
 };
 
-enum animation {
-	NAME_1,
-	NAME_2
-};
-*/
+enum FONT {
+	THORN,
+	FLIGHTER
+}
 
 /*
 ** Assets Manager:
 **	Represent one instance of all the assets
 **	of the game currently load.
 */
-typedef struct {
-	sfSprite **sprites;
-	sfSound **sounds;
-	sfMusic **musics;
-	anim_t **animations;
-} assets_mng_t;
+struct assets {
+	sfSound		*sounds[3];
+	sfSoundBuffer	*sound_buffer[3];
+	sfMusic		*musics[2];
+	sfFont		*fonts[2];
+};
+
+typedef struct assets assets_t;
 
 //Getter of the struct
-assets_mng_t *get_assets_mng(assets_mng_t *assets);
+struct assets *get_assets(struct assets *assets);
+
 //Constructor
-assets_mng_t *create_assets_mng(char *path_to_assets);
-//Getter
-sfSprite     **get_sprites(void);
-sfSprite     *get_sprite(int which);
-sfSound      **get_sounds(void);
-sfSound      *get_sound(int which);
-sfMusic      **get_musics(void);
-sfMusic      *get_music(int which);
+struct assets *create_assets_mng(void);
 
 #endif /* RESSOURCES_MANAGER_H */

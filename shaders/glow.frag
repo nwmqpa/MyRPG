@@ -1,12 +1,10 @@
 #version 130
 
+uniform sampler2D texture;
 uniform float u_time;
 
 void main()
 {
-    vec3 violet = vec3(1.0, 0.1, 0.8);
-    vec3 yellow = vec3(1.0, 1.0, 0);
-    vec3 color = mix(violet, yellow, abs(sin(u_time)));
-
-    gl_FragColor = vec4(color, 1.0);
+    vec4 pixel = texture2D(texture, gl_TexCoord[0].xy);
+    gl_FragColor = vec4(pixel.xyz, sin(u_time));
 }

@@ -14,6 +14,7 @@
 
 #define HEIGHT 1080
 #define WIDTH  1920
+
 #define GRAVITY 9.8
 
 #define RAD(x) ((x) * M_PI / 180)
