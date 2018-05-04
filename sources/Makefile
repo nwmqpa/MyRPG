@@ -17,7 +17,6 @@ REAL	=	$(ROOT)/release
 
 SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/update.c					\
-		$(SRC_DIR)/map/map.c					\
 		$(SRC_DIR)/cybend2200.c					\
 		$(SRC_DIR)/utils/utils.c				\
 		$(SRC_DIR)/utils/my_atoi.c				\

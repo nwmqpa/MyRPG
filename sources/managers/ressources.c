@@ -48,3 +48,12 @@ struct ressources *create_ressources(void)
 	create_cin(ress);
 	return (ress);
 }
+
+struct ressources *get_ressources(struct ressources *ress)
+{
+	static struct ressources *ressources = NULL;
+
+	if (ress != NULL)
+		ressources = ress;
+	return (ressources);
+}

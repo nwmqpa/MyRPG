@@ -8,7 +8,7 @@
 #ifndef CIN_MNG_H_
 #define CIN_MNG_H_
 
-struct cinematique_s {
+struct cinematique {
 	float time;
 	char *string;
 	sfText *text;
@@ -18,7 +18,7 @@ struct cinematique_s {
 	sfVector2f pos;
 };
 
-typedef struct cinematique_s cin_t;
+typedef struct cinematique cin_t;
 
 cin_t *cin_create(float time, char *string, sfFont *font, sfColor color);
 void cin_update(sfRenderWindow *win, cin_t *cin);

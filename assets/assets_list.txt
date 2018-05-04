@@ -10,9 +10,8 @@ t: UI_Minimap
 t: UI_Inventory
 t: UI_ChestInventory
 
-m: Intro
-m: HowToPlay
-m: Sad
+m: city
+m: cave
 
 f: Thorne-n.ttf
 f: Flighter.ttf
