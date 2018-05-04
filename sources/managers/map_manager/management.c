@@ -42,7 +42,7 @@ static void *parse_layer(char *layer_line, struct map *map)
 
 	if (!map->layers)
 		map->layers = my_calloc(sizeof(hashmap_t));
-	layer_struct->texture = layer[1];
+	layer_struct->image = layer[1];
 	insert_hash_elem(map->layers, layer[0], layer_struct);
 }
 
@@ -64,7 +64,7 @@ struct map *parse_map(FILE *file)
 	int bytes = 0;
 	int phase = 0;
 
-	while (getline(&line, &bytes, file) == -1) {
+	while (getline(&line, &bytes, file) != -1) {
 		if (parse_phase(phase, line) != -1)
 			continue;
 		switch (phase) {

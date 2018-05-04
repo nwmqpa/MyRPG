@@ -16,9 +16,11 @@
 struct map_manager {
 	hashmap_t *maps;
 	FILE *map_descriptor;
+	char *maps_folder;
 };
 
 struct map {
+	char *name;
 	hashmap_t *doors;
 	hashmap_t *containers;
 	hashmap_t *layers;
@@ -36,7 +38,9 @@ struct container {
 };
 
 struct layer {
-	char *texture;
+    	sfSprite *sprite;
+    	sfTexture *texture;
+	char *image;
 };
 
 typedef struct map_manager map_mgr_t;

@@ -6,6 +6,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "map_parser.h"
 #include "structs.h"
 #include "utils.h"
@@ -22,7 +23,30 @@ struct map_manager *map_create_manager(char *map_path)
 	}
 	fclose(file);
 	map_mgr = my_calloc(sizeof(struct map_manager));
+	map_mgr->maps_folder = my_strcat(my_strdup(map_path), "/");
 	map_mgr->map_descriptor = file;
 	map_mgr->maps = my_calloc(sizeof(hashmap_t));
 	return (map_mgr);
+}
+
+void parse_maps(struct map_manager *map_mgr)
+{
+	FILE *file = 0x0;
+	char *map_path = 0x0;
+	char *line = 0x0;
+	int bytes = 0;
+
+	while (getline(&line, &bytes, map_mgr->map_descriptor) != -1) {
+		map_path = my_strcat(my_strdup(map_mgr->maps_folder), line);
+		map_path = my_strcat(map_path, "/city.txt");
+		file = fopen(map_path, "r");
+		if (!file) {
+			write(2, "Cannot open ", 12);
+			write(2, map_path, my_strlen(map_path));
+			write(2, "\n", 1);
+			continue;
+		}
+		insert_hash_elem(map_mgr->maps, line, parse_map(file));
+		free(map_path);
+	}
 }
