@@ -9,6 +9,7 @@
 #define STR_UTILS_H_
 
 void my_putstr(const char *str);
+int my_strlen(const char *str);
 int my_strcmp(const char *dest, const char *str);
 int my_strsize(const char *str);
 char *my_strcat(char *dest, char const *str);
