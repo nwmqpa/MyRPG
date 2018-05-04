@@ -29,8 +29,7 @@ struct ressources {
 
 typedef struct ressources ressources_t;
 
-struct ressources *create_ressources(void);
-
 struct ressources *get_ressources(struct ressources *ress);
+struct ressources *create_ressources(void);
 
 #endif /* RESSOURCES_MANAGER_H */
