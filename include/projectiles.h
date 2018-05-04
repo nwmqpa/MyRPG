@@ -8,6 +8,7 @@
 #ifndef PROJECTILES_H_
 #define PROJECTILES_H_
 
+#include "entities.h"
 #include "structs.h"
 
 #define GET_SPEED_FROM_LVL(speed_lvl) (4 * speed_lvl)

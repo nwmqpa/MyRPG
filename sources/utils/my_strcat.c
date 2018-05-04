@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "utils.h"
+#include "str_utils.h"
 
 char *my_strcat(char *str1, char const *str2)
 {

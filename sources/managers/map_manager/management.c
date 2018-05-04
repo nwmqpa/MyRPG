@@ -10,6 +10,7 @@
 #include "structs.h"
 #include "map_parser.h"
 #include "utils.h"
+#include "str_utils.h"
 
 static void parse_door(char *door_line, struct map *map)
 {
@@ -20,22 +21,28 @@ static void parse_door(char *door_line, struct map *map)
 		map->doors = my_calloc(sizeof(hashmap_t));
 	door_sct->scene_ref = door[1];
 	door_sct->door_ref = door[2];
-	door_sct->bounds = (sfIntRect) {door[1], door[2], door[3], door[4]};
+	door_sct->bounds = (sfIntRect) {my_atoi(door[1]),
+					my_atoi(door[2]),
+					my_atoi(door[3]),
+					my_atoi(door[4])};
 	insert_hash_elem(map->doors, door[0], door_sct);
 }
 
 static void parse_container(char *container_line, struct map *map)
 {
 	char **cont = split_string(container_line, ':');
-	struct container *con_struct = my_calloc(sizeof(struct container));
+	struct container *cont_sct = my_calloc(sizeof(struct container));
 
 	if (!map->containers)
 		map->containers = my_calloc(sizeof(hashmap_t));
-	con_struct->bounds = (sfIntRect) {cont[1], cont[2], cont[3], cont[4]};
-	insert_hash_elem(map->containers, cont[0], con_struct);
+	cont_sct->bounds = (sfIntRect) {my_atoi(cont[1]),
+					my_atoi(cont[2]),
+					my_atoi(cont[3]),
+					my_atoi(cont[4])};
+	insert_hash_elem(map->containers, cont[0], cont_sct);
 }
 
-static void *parse_layer(char *layer_line, struct map *map)
+static void parse_layer(char *layer_line, struct map *map)
 {
 	char **layer = split_string(layer_line, ':');
 	struct layer *layer_struct = my_calloc(sizeof(struct layer));
@@ -46,7 +53,7 @@ static void *parse_layer(char *layer_line, struct map *map)
 	insert_hash_elem(map->layers, layer[0], layer_struct);
 }
 
-int parse_phase(int *prev_phase, char *line)
+static int parse_phase(int *prev_phase, char *line)
 {
 	if (my_memcmp(line, "layers") || my_memcmp(line, "doors"))
 		*prev_phase = my_memcmp(line, "doors");
@@ -61,11 +68,11 @@ struct map *parse_map(FILE *file)
 {
 	struct map *map = my_calloc(sizeof(struct map));
 	char *line = 0x0;
-	int bytes = 0;
+	long unsigned int bytes = 0;
 	int phase = 0;
 
 	while (getline(&line, &bytes, file) != -1) {
-		if (parse_phase(phase, line) != -1)
+		if (parse_phase(&phase, line) != -1)
 			continue;
 		switch (phase) {
 		case 0:

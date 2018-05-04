@@ -26,7 +26,7 @@ struct hash_elem {
 	struct hash_elem *next;
 	struct hash_elem *prev;
 	void *data;
-	hash_t *hash;
+	hash_t hash;
 };
 
 struct vector {

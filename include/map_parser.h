@@ -45,4 +45,9 @@ struct layer {
 
 typedef struct map_manager map_mgr_t;
 
+struct map *parse_map(FILE *file);
+void map_all_graph_init(struct map_manager *m_mgr);
+struct map_manager *map_create_manager(char *map_path);
+void parse_maps(struct map_manager *map_mgr);
+
 #endif /* MAP_PARSER_H_ */

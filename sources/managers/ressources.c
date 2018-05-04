@@ -8,12 +8,12 @@
 #include "ress_manager.h"
 #include "utils.h"
 
-void create_quests(struct ressources *ress)
+void create_quests(UNUSED struct ressources *ress)
 {
 	//TODO
 }
 
-void create_npcs(struct ressources *ress)
+void create_npcs(UNUSED struct ressources *ress)
 {
 	//TODO
 }
@@ -22,8 +22,9 @@ void create_cin(struct ressources *ress)
 {
 	FILE *file = fopen("ressources/cinematique/intro.txt", "r");
 	char *str = NULL;
+	long unsigned int bytes = 0;
 
-	getline(str, 0, file);
+	getline(&str, &bytes, file);
 	for (int i = 0; str[i]; ++i) {
 		if (str[i] == '~') {
 			str[i] = '\n';

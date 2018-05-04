@@ -6,6 +6,7 @@
 */
 
 #include "utils.h"
+#include "str_utils.h"
 
 char **split_string(char const *str, char c)
 {
