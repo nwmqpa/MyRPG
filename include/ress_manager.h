@@ -8,16 +8,23 @@
 #ifndef RESS_MANAGER_H_
 #define RESS_MANAGER_H_
 
+#define NB_NPCS 2
+#define NB_CIN	1
+
 /*
 ** Assets Manager:
 **	Represent one instance of all the ressources
 **	of the game currently load.
 */
-typedef struct {
-	//TODO Add ress attribute it 
-} ress_mng_t;
+struct ressources {
+	struct quest	*quest;
+	struct player	*player;
+	struct npc		*npcs[NB_NPCS];
+	struct cin_t	*cinematiques[NB_CIN];
+};
 
-ress_mng_t *create_ress_mng(char *path_to_ress);
-ress_mng_t *get_ress_mng(ress_mng_t *ress);
+typedef struct ressources ressources_t;
+
+struct ressources *create_ressources(void);
 
 #endif /* RESSOURCES_MANAGER_H */
