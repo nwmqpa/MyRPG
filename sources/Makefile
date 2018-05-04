@@ -42,7 +42,6 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/inventory/management.c			\
 		$(SRC_DIR)/projectiles/management.c 			\
 		$(SRC_DIR)/managers/cinematique_mng.c 			\
-		$(SRC_DIR)/managers/cinematique_mng.c 			\
 		$(SRC_DIR)/animation/animation_extern.c			\
 		$(SRC_DIR)/projectiles/mem_management.c			\
 		$(SRC_DIR)/managers/map_manager/management.c 		\
