@@ -12,10 +12,21 @@
 #include <SFML/Audio.h>
 #include "anim.h"
 
-enum sprite {
-	NAME_1,
-	NAME_2
+enum MUSIC {
+	MUSIC1,
+	MUSIC2
 };
+
+enum SOUND {
+	FOOTSTEP,
+	PISTOL,
+	RIFLE
+};
+
+enum FONT {
+	THORN,
+	FLIGHTER
+}
 
 /*
 ** Assets Manager:
@@ -23,8 +34,8 @@ enum sprite {
 **	of the game currently load.
 */
 struct assets {
-	sfSound		*sounds[2];
-	sfSoundBuffer	*sound_buffer[2];
+	sfSound		*sounds[3];
+	sfSoundBuffer	*sound_buffer[3];
 	sfMusic		*musics[2];
 	sfFont		*fonts[2];
 };

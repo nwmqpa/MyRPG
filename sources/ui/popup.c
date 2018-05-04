@@ -54,10 +54,3 @@ void popup_reset(struct popup *pop, char *string, int pause)
 	pop->time = 0;
 	pop->value = -249;
 }
-
-/*
-int main(void) 
-{
-	
-}
-*/
