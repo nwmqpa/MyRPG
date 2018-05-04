@@ -24,6 +24,7 @@ static void set_sound(struct assets *assets)
 	sfSound_setBuffer(assets->sounds[2], assets->sound_buffer[2]);
 }
 
+//Set all assets that are not sprites
 struct assets *create_assets(void)
 {
 	struct assets *assets = my_calloc(sizeof(struct assets));
