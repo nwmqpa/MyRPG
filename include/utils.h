@@ -12,6 +12,7 @@
 
 void *my_malloc(size_t size);
 int my_strlen(const char *str);
+char *my_strdup(char const *str);
 void *my_calloc(size_t size);
 float get_dtime(float time);
 
