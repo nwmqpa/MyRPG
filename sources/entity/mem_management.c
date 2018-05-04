@@ -9,7 +9,9 @@
 #include "objects.h"
 #include "entities.h"
 #include "structs.h"
+#include "objects.h"
 #include "utils.h"
+#include "stats.h"
 
 struct entity *ent_create(vec_t pos, uint32_t max_hp, uint32_t level)
 {
@@ -22,6 +24,19 @@ struct entity *ent_create(vec_t pos, uint32_t max_hp, uint32_t level)
 	ent->pos = pos;
 	ent->ammos = -1;
 	return (ent);
+}
+
+struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level)
+{
+	struct player *player = my_calloc(sizeof(struct player));
+
+	player->entity = ent_create(pos, max_hp, level);
+	skills_init(player);
+	stats_init(player);
+	player->inv = inv_create(18);
+	player->level = 1;
+	player->xp = (struct vector) {0, 0};
+	return (player);
 }
 
 void ent_free(struct entity **ent)

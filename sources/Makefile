@@ -33,6 +33,9 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/my_itoa.c				\
 		$(SRC_DIR)/utils/my_revstr.c				\
 		$(SRC_DIR)/entity/management.c				\
+		$(SRC_DIR)/entity/mem_management.c				\
+		$(SRC_DIR)/entity/stats_skills/stats.c			\
+		$(SRC_DIR)/entity/stats_skills/skills.c			\
 		$(SRC_DIR)/utils/split_string.c				\
 		$(SRC_DIR)/particle/particles.c 			\
 		$(SRC_DIR)/utils/hashmap_utils.c			\
