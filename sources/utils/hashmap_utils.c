@@ -5,7 +5,9 @@
 ** hashmap utilities
 */
 
+#include <stdlib.h>
 #include "structs.h"
+#include "utils.h"
 
 int insert_hash_elem(hashmap_t *hashmap, const char *key, void *data)
 {

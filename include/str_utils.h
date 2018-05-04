@@ -19,5 +19,6 @@ char *change_tilde_home(char *str, char *home);
 int my_atoi(char const *str);
 char *my_itoa(int nbr);
 void my_memcpy(char *str1, char const *str2, int len);
+int find_next(char const *mem, char c);
 
 #endif /* STR_UTILS_H */
