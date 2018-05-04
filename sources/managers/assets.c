@@ -28,8 +28,8 @@ struct assets *create_assets(void)
 {
 	struct assets *assets = my_calloc(sizeof(struct assets));
 
-	assets->font[0] = sfFont_createFromFile("assets/fonts/Flighter.ttf");
-	assets->font[1] = sfFont_createFromFile("assets/fonts/Thorne-n.ttf");
+	assets->fonts[0] = sfFont_createFromFile("assets/fonts/Flighter.ttf");
+	assets->fonts[1] = sfFont_createFromFile("assets/fonts/Thorne-n.ttf");
 	//assets->musics[0] = sfMusic_createFromFile("");
 	//assets->musics[1] = sfMusic_createFromFile("");
 	set_sound(assets);

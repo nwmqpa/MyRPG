@@ -20,7 +20,7 @@ void create_npcs(struct ressources *ress)
 
 void create_cin(struct ressources *ress)
 {
-	FILE *file = fopen("ressources/cinematique/intro.txt");
+	FILE *file = fopen("ressources/cinematique/intro.txt", "r");
 	char *str = NULL;
 
 	getline(str, 0, file);
@@ -32,7 +32,7 @@ void create_cin(struct ressources *ress)
 	ress->cinematiques[0] = cin_create(
 					30,
 					str,
-					get_font(get_assets(void), "Thorne"),
+					get_font(get_assets(), "Thorne"),
 					(sfColor){255, 255, 255, 255}
 					);
 }

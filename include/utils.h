@@ -12,10 +12,7 @@
 
 void *my_malloc(size_t size);
 int my_strlen(const char *str);
-char *my_strdup(char const *str);
-char *my_strcat(char *src1, char const *src2);
-char **split_string(char const *str);
-int my_atoi(char const *str);
+char **split_string(char const *str, char c);
 void *my_calloc(size_t size);
 float get_dtime(float time);
 

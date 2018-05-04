@@ -30,14 +30,14 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/my_strdup.c				\
 		$(SRC_DIR)/utils/my_strcat.c				\
 		$(SRC_DIR)/utils/my_strlen.c				\
-		$(SRC_DIR)/utils/get_struct.c				\
 		$(SRC_DIR)/entity/management.c				\
-		$(SRC_DIR)/managers/ress_mng.c				\
 		$(SRC_DIR)/utils/split_string.c				\
 		$(SRC_DIR)/particle/particles.c 			\
 		$(SRC_DIR)/utils/hashmap_utils.c			\
+		$(SRC_DIR)/managers/assets.c				\
+		$(SRC_DIR)/managers/ressources.c			\
+		$(SRC_DIR)/managers/assets_getter.c			\
 		$(SRC_DIR)/animation/animation.c			\
-		$(SRC_DIR)/managers/assets_mng.c			\
 		$(SRC_DIR)/particle/particles_2.c	 		\
 		$(SRC_DIR)/inventory/management.c			\
 		$(SRC_DIR)/projectiles/management.c 			\
