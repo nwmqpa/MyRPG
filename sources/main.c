@@ -21,6 +21,7 @@ static game_t *init_game(UNUSED char *assets_path, UNUSED char *ressources_path)
 	get_ressources(create_ressources());
 	get_map_mgr(map_create_manager("assets/maps"));
 	parse_maps(get_map_mgr(0x0));
+	map_all_graph_init(get_map_mgr(0x0));
 	game->size[X] = WIDTH;
 	game->size[Y] = HEIGHT;
 	game->win = sfRenderWindow_create(mode, NAME, sfResize | sfClose , NULL);

@@ -10,7 +10,7 @@ door0:tutorial:door0:11:12:13:14
 door1:tutorial:door0:11:12:13:14
 door2:main_city:door0:11:12:13:14
 door3:tutorial:door0:11:12:13:14
-door4:tutorial:door011:12:13:14
+door4:tutorial:door0:11:12:13:14
 chests
 chest0:11:12:13:14
 chest1:11:12:13:14

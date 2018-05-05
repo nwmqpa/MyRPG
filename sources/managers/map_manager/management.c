@@ -64,7 +64,7 @@ static int parse_phase(int *prev_phase, char *line)
 	return (0);
 }
 
-struct map *parse_map(FILE *file)
+struct map *parse_map(FILE *file, char *map_name)
 {
 	struct map *map = my_calloc(sizeof(struct map));
 	char *line = 0x0;
@@ -88,5 +88,6 @@ struct map *parse_map(FILE *file)
 		free(line);
 		bytes = 0;
 	}
+	map->name = my_strdup(map_name);
 	return (map);
 }
