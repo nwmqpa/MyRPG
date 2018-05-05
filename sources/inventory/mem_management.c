@@ -39,7 +39,7 @@ struct inventory *create_random_loots(unsigned int level)
 
 	inv->objects = my_calloc(sizeof(struct object) * size);
 	inv->size = size;
-	for (int i = 0; i < size; i++) {
+	for (unsigned int i = 0; i < size; i++) {
 		inv->objects[i] = obj_create(level);
 	}
 	return (inv);
