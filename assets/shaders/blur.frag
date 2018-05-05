@@ -6,5 +6,5 @@ uniform float u_time;
 void main()
 {
 //	vec4 pixel = texture2D(texture, gl_TexCoord[0].xy);
-//	gl_FragColor = vec4(pixel.xyz, 1);
+//	gl_FragColor = vec4(pixel.xyz, sin(u_time));
 }

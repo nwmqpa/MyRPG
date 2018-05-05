@@ -28,9 +28,9 @@ static void set_sound(struct assets *assets)
 static void set_shader(struct assets *assets)
 {
 	assets->shaders[LIGHT] = sfShader_createFromFile
-	("./assets/shaders/basic.vert", "./assets/shaders/glow.frag");
+	(NULL, "./assets/shaders/glow.frag");
 	assets->shaders[BLUR] = sfShader_createFromFile
-	("./assets/shaders/basic.vert", "./assets/shaders/blur.frag");
+	(NULL, "./assets/shaders/blur.frag");
 }
 
 // Set all assets from ./assets

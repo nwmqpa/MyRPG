@@ -24,7 +24,7 @@ int draw_map(game_t *game)
 			(game->win, temp_layer->sprite, NULL);
 		} else {
 			sfRenderWindow_drawSprite
-			(game->win, temp_layer->sprite, &st);
+			(game->win, temp_layer->sprite, NULL); //&st);
 		}
 		temp = temp->next;
 	}

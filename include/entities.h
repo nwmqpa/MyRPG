@@ -10,8 +10,27 @@
 #ifndef ENTITIES_H_
 #define ENTITIES_H_
 
+#include <SFML/Graphics.h>
+#include "anim.h"
 #include "structs.h"
 #include "objects.h"
+
+// Normal game animations
+enum ANIM_NORMAL {
+	N_IDLE,
+	N_LEFT,
+	N_RIGHT,
+	N_JUMP
+};
+
+// Fight top view animation
+enum ANIM_FIGHT {
+	F_IDLE,
+	F_LEFT,
+	F_RIGHT,
+	F_DOWN,
+	F_SHOOT
+};
 
 struct entity {
 	struct vector pos;
@@ -31,16 +50,19 @@ struct player {
 	unsigned int level;
 	unsigned int nb_stats;
 	unsigned int nb_skills;
+	sfSprite *idle;
+	anim_t *normal[5];
+	anim_t *fight[5];
 };
 
-//Entity
+// Entity
 struct entity *ent_create(vec_t pos, uint32_t max_hp, uint32_t level);
 void ent_free(struct entity **ent);
 
-//Player
+// Player
 struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level);
 
-//Player attributes
+// Player attributes
 uint32_t compute_player_power(struct player *player);
 uint32_t compute_entity_power(struct entity *entity);
 int compute_xp(uint32_t player_power, uint32_t entity_power);
