@@ -37,11 +37,11 @@ typedef struct game_s {
 	int size[2];
 } game_t;
 
+void draw_dialog(game_t *game);
 int my_rpg(game_t *game);
 int update_game(game_t *game);
 int game_loop(game_t *game);
 int draw_menu(game_t *game);
-int draw_dialog(game_t *game);
 int draw_game(game_t *game);
 int draw_combat(game_t *game);
 

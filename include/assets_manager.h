@@ -28,12 +28,18 @@ enum FONT {
 	FLIGHTER
 };
 
+enum SPRITE {
+	POPUP,
+	DIALOG_BOX
+};
+
 /*
 ** Assets Manager:
 **	Represent one instance of all the assets
 **	of the game currently load.
 */
 struct assets {
+	sfSprite	*sprites[2];
 	sfSound		*sounds[3];
 	sfSoundBuffer	*sound_buffer[3];
 	sfMusic		*musics[2];
@@ -46,7 +52,8 @@ typedef struct assets assets_t;
 struct assets *get_assets(struct assets *assets);
 
 //Getter
-sfFont	*get_font(struct assets *ass, int id);
+sfSprite *get_sprite(struct assets *ass, int id);
+sfFont *get_font(struct assets *ass, int id);
 sfSound	*get_sound(struct assets *ass, int id);
 sfMusic	*get_music(struct assets *ass, int id);
 

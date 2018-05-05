@@ -6,6 +6,7 @@
 */
 
 #include "npc.h"
+#include "assets_manager.h"
 
 char **load_dialogs(path)
 {
@@ -29,8 +30,15 @@ struct npc *npc_create(char *name, sfSprite *sprite, sfVector2f pos)
 	this->name = strdup(name);
 	this->pos  = pos;
 	this->anim = NULL;
-	this->dialogs = load_dialogs();
+	this->dialogs = load_dialogs(name);
 	return (this);
+}
+
+void draw_dialog(game_t *game)
+{
+	sfRenderWindow_drawSprite(game->win,
+		get_sprite(get_assets(NULL), DIALOG_BOX), NULL);
+	//sfRenderWindow_drawText(win, );
 }
 
 int
