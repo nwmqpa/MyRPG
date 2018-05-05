@@ -22,14 +22,27 @@ struct inventory *inv_create(int nb_slots)
 	return (inv);
 }
 
-struct object *obj_create(unsigned int level)
+// TODO: Create random object using level
+struct object obj_create(UNUSED unsigned int level)
 {
-	return (0x0);
+	union to_data returned_object;
+
+	returned_object.data = 0;
+	return (returned_object.object);
 }
 
+// TODO: Create random loots using level
 struct inventory *create_random_loots(unsigned int level)
 {
-	return (0x0);
+	unsigned int size = random() % 9;
+	struct inventory *inv = my_calloc(sizeof(struct inventory));
+
+	inv->objects = my_calloc(sizeof(struct object) * size);
+	inv->size = size;
+	for (int i = 0; i < size; i++) {
+		inv->objects[i] = obj_create(level);
+	}
+	return (inv);
 }
 
 void inv_free(struct inventory **inv)
