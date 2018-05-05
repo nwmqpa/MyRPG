@@ -22,6 +22,16 @@ struct inventory *inv_create(int nb_slots)
 	return (inv);
 }
 
+struct object *obj_create(unsigned int level)
+{
+	return (0x0);
+}
+
+struct inventory *create_random_loots(unsigned int level)
+{
+	return (0x0);
+}
+
 void inv_free(struct inventory **inv)
 {
 	free((*inv)->objects);
