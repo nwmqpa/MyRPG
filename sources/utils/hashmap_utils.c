@@ -16,7 +16,8 @@ int insert_hash_elem(hashmap_t *hashmap, const char *key, void *data)
 
 	if (!temp->hash) {
 		temp->hash = h;
-		temp->data = data;	
+		temp->data = data;
+		return (0);
 	}
 	for (; temp->next; temp = temp->next);
 	temp->next = my_calloc(sizeof(hash_elem_t));

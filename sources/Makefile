@@ -32,6 +32,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/my_strlen.c				\
 		$(SRC_DIR)/utils/my_itoa.c				\
 		$(SRC_DIR)/utils/my_revstr.c				\
+		$(SRC_DIR)/utils/getline_without_n.c 			\
 		$(SRC_DIR)/entity/management.c				\
 		$(SRC_DIR)/entity/mem_management.c			\
 		$(SRC_DIR)/entity/stats_skills/stats.c			\
@@ -57,7 +58,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 
 WARN	=	-W -Wall
 
-CFLAGS	=	-I $(ROOT)/include $(WARN)
+CFLAGS	=	-I $(ROOT)/include $(WARN) -g
 
 LDFLAGS	=	-L $(ROOT)/library -l c_graph_prog -l m
 

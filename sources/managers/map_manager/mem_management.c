@@ -23,7 +23,6 @@ struct map_manager *map_create_manager(char *map_path)
 		write(2, "The map descriptor file was not found.\n", 39);
 		return (map_mgr);
 	}
-	fclose(file);
 	map_mgr = my_calloc(sizeof(struct map_manager));
 	map_mgr->maps_folder = my_strcat(my_strdup(map_path), "/");
 	map_mgr->map_descriptor = file;
@@ -38,7 +37,7 @@ void parse_maps(struct map_manager *map_mgr)
 	char *line = 0x0;
 	long unsigned int bytes = 0;
 
-	while (getline(&line, &bytes, map_mgr->map_descriptor) != -1) {
+	while (getline_w_n(&line, &bytes, map_mgr->map_descriptor) != -1) {
 		map_path = my_strcat(my_strdup(map_mgr->maps_folder), line);
 		map_path = my_strcat(map_path, "/city.txt");
 		file = fopen(map_path, "r");

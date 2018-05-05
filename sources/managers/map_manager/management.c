@@ -21,10 +21,10 @@ static void parse_door(char *door_line, struct map *map)
 		map->doors = my_calloc(sizeof(hashmap_t));
 	door_sct->scene_ref = door[1];
 	door_sct->door_ref = door[2];
-	door_sct->bounds = (sfIntRect) {my_atoi(door[1]),
-					my_atoi(door[2]),
-					my_atoi(door[3]),
-					my_atoi(door[4])};
+	door_sct->bounds = (sfIntRect) {my_atoi(door[3]),
+					my_atoi(door[4]),
+					my_atoi(door[5]),
+					my_atoi(door[6])};
 	insert_hash_elem(map->doors, door[0], door_sct);
 }
 
@@ -71,7 +71,7 @@ struct map *parse_map(FILE *file)
 	long unsigned int bytes = 0;
 	int phase = 0;
 
-	while (getline(&line, &bytes, file) != -1) {
+	while (getline_w_n(&line, &bytes, file) != -1) {
 		if (parse_phase(&phase, line) != -1)
 			continue;
 		switch (phase) {
