@@ -42,6 +42,8 @@ int inv_sort(struct inventory **inv);
 struct vector inv_get_sizes(struct inventory *inv);
 struct inventory *inv_create(int nb_slots);
 void inv_free(struct inventory **inv);
+struct object obj_create(unsigned int level);
+struct inventory *create_random_loots(unsigned int level);
 
 
 #endif /* OBJECTS_H_ */

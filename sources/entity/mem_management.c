@@ -17,7 +17,8 @@ struct entity *ent_create(vec_t pos, uint32_t max_hp, uint32_t level)
 {
 	struct entity *ent = my_calloc(sizeof(struct entity));
 
-	ent->weapon = obj_create(level);
+	ent->weapon = my_calloc(sizeof(struct object));
+	*(ent->weapon) = obj_create(level);
 	ent->max_hp = max_hp;
 	ent->hp = max_hp;
 	ent->loots = create_random_loots(level);
@@ -42,6 +43,6 @@ struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level)
 void ent_free(struct entity **ent)
 {
 	free((*ent)->weapon);
-	inv_free((*ent)->loots);
+	inv_free(&((*ent)->loots));
 	free(*ent);
 }

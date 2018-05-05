@@ -6,6 +6,7 @@
 */
 
 #include "utils.h"
+#include "str_utils.h"
 
 int find_prec(char const *mem, int index, char c)
 {
