@@ -11,9 +11,10 @@
 #include <stdio.h>
 #include <SFML/Graphics.h>
 #include "structs.h"
+#include "cybend2200.h"
 #include "objects.h"
 
-static const char const *MAPS[3] = {"tutorial", "main_city", 0};
+static __attribute__ ((unused)) const char *MAPS[3] = {"tutorial", "main_city", 0};
 
 struct map_manager {
 	hashmap_t *maps;
@@ -52,5 +53,6 @@ void map_all_graph_init(struct map_manager *m_mgr);
 struct map_manager *map_create_manager(char *map_path);
 void parse_maps(struct map_manager *map_mgr);
 struct map_manager *get_map_mgr(struct map_manager *map_mgr);
+int draw_map(game_t *game);
 
 #endif /* MAP_PARSER_H_ */

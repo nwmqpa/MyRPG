@@ -8,6 +8,7 @@
 #include "cybend2200.h"
 #include "map.h"
 #include "utils.h"
+#include "map_parser.h"
 
 int draw_menu(UNUSED game_t *game)
 {

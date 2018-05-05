@@ -8,6 +8,7 @@
 #include "assets_manager.h"
 #include "utils.h"
 
+// Set sounds
 static void set_sound(struct assets *assets)
 {
 	assets->sound_buffer[0] =
@@ -24,7 +25,15 @@ static void set_sound(struct assets *assets)
 	sfSound_setBuffer(assets->sounds[2], assets->sound_buffer[2]);
 }
 
-//Set all assets that are not sprites
+static void set_shader(struct assets *assets)
+{
+	assets->shaders[LIGHT] = sfShader_createFromFile
+	("./assets/shaders/basic.vert", "./assets/shaders/glow.frag");
+	assets->shaders[BLUR] = sfShader_createFromFile
+	("./assets/shaders/basic.vert", "./assets/shaders/blur.frag");
+}
+
+// Set all assets from ./assets
 struct assets *create_assets(void)
 {
 	struct assets *assets = my_calloc(sizeof(struct assets));
@@ -34,5 +43,11 @@ struct assets *create_assets(void)
 	assets->musics[0] = sfMusic_createFromFile("assets/music/cave.ogg");
 	assets->musics[1] = sfMusic_createFromFile("assets/music/city.ogg");
 	set_sound(assets);
+	set_shader(assets);
 	return (assets);
+}
+
+sfShader *get_shader(struct assets *ass, int id)
+{
+	return (ass->shaders[id]);
 }
