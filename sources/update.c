@@ -17,7 +17,8 @@ int draw_menu(UNUSED game_t *game)
 
 int draw_game(UNUSED game_t *game)
 {
-    //UNUSED map_t *map = map_load("assets/Cave/", "Cave");
+    //draw_map();
+    //draw_player();
     return (0);
 }
 

@@ -7,17 +7,21 @@
 
 #include <SFML/Graphics.h>
 #include "cybend2200.h"
+#include "event.h"
 
 int update_game(game_t *game)
 {
 	switch (game->gamemode) {
 	case MENU:
+		menu_event(game);
 		draw_menu(game);
 		break;
 	case GAME:
+		game_event(game);
 		draw_game(game);
 		break;
 	case COMBAT:
+		fight_event(game);
 		draw_combat(game);
 		break;
 	case DIALOG:
