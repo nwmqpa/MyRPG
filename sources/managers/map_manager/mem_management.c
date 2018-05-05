@@ -52,3 +52,12 @@ void parse_maps(struct map_manager *map_mgr)
 		free(map_path);
 	}
 }
+
+struct map_manager *get_map_mgr(struct map_manager *map_mgr)
+{
+	static struct map_manager *map_manager = NULL;
+
+	if (map_mgr != NULL)
+		map_manager = map_mgr;
+	return (map_manager);
+}
