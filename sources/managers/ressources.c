@@ -5,7 +5,10 @@
 ** ressource manager source code
 */
 
+#include "assets_manager.h"
 #include "ress_manager.h"
+#include "cin_mng.h"
+#include "entities.h"
 #include "utils.h"
 
 void create_quests(UNUSED struct ressources *ress)
@@ -33,7 +36,7 @@ void create_cin(struct ressources *ress)
 	ress->cinematiques[0] = cin_create(
 					30,
 					str,
-					get_font(get_assets(), "Thorne"),
+					get_font(get_assets(NULL), THORN),
 					(sfColor){255, 255, 255, 255}
 					);
 }
@@ -43,7 +46,7 @@ struct ressources *create_ressources(void)
 	struct ressources *ress = my_calloc(sizeof(struct ressources));
 
 	create_quests(ress);
-	ress->player = create_player();
+	ress->player = create_player((vec_t){10, 10}, 100, 1);
 	create_npcs(ress);
 	create_cin(ress);
 	return (ress);

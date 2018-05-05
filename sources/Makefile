@@ -18,6 +18,7 @@ REAL	=	$(ROOT)/release
 SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/update.c					\
 		$(SRC_DIR)/cybend2200.c					\
+		$(SRC_DIR)/entity/npc.c					\
 		$(SRC_DIR)/utils/utils.c				\
 		$(SRC_DIR)/utils/my_atoi.c				\
 		$(SRC_DIR)/utils/vector2f.c				\
@@ -32,7 +33,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/my_itoa.c				\
 		$(SRC_DIR)/utils/my_revstr.c				\
 		$(SRC_DIR)/entity/management.c				\
-		$(SRC_DIR)/entity/mem_management.c				\
+		$(SRC_DIR)/entity/mem_management.c			\
 		$(SRC_DIR)/entity/stats_skills/stats.c			\
 		$(SRC_DIR)/entity/stats_skills/skills.c			\
 		$(SRC_DIR)/utils/split_string.c				\

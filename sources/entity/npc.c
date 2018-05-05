@@ -16,7 +16,7 @@ char **load_dialogs(path)
 
 	do {
 		str = NULL;
-		getline(str, 0, file);
+		getline(&str, 0, file);
 		dialogs[i++] = str;
 	} while (str != NULL);
 	return (dialogs);
@@ -34,7 +34,7 @@ struct npc *npc_create(char *name, sfSprite *sprite, sfVector2f pos)
 }
 
 int
-npc_launch_dialog(sfRenderWindow *win, game_t *game, struct npc *npc, int id)
+npc_launch_dialog(game_t *game, struct npc *npc, int id)
 {
 	game->gamemode = DIALOG;
 }
