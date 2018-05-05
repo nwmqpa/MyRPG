@@ -33,6 +33,7 @@ enum gamemode {
 typedef struct game_s {
 	sfRenderWindow *win;
 	int gamemode;
+	struct map *actual_map;
 	sfEvent event;
 	float delta_time;
 	int size[2];

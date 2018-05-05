@@ -4,7 +4,6 @@ layer1:layer1.png
 layer2:layer2.png
 layer3:layer3.png
 light:layer4.png
-inter:layer5.png
 doors
 door0:tutorial:door0:11:12:13:14
 door1:tutorial:door0:11:12:13:14

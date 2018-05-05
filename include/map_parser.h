@@ -13,6 +13,8 @@
 #include "structs.h"
 #include "objects.h"
 
+static const char const *MAPS[3] = {"tutorial", "main_city", 0};
+
 struct map_manager {
 	hashmap_t *maps;
 	FILE *map_descriptor;

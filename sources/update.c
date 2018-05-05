@@ -17,7 +17,7 @@ int draw_menu(UNUSED game_t *game)
 
 int draw_game(UNUSED game_t *game)
 {
-    //draw_map();
+    draw_map(game);
     //draw_player();
     return (0);
 }

@@ -12,7 +12,7 @@ int fight_event(game_t *game)
 	while (sfRenderWindow_pollEvent(game->win, &game->event)) {
 		switch (game->event.type) {
 		case sfEvtClosed:
-			game->gamemode = MENU;
+			sfRenderWindow_close(game->win);
 			break;
 		case sfEvtKeyPressed:
 			fight_key(game);
@@ -32,7 +32,7 @@ int menu_event(game_t *game)
 	while (sfRenderWindow_pollEvent(game->win, &game->event)) {
 		switch (game->event.type) {
 		case sfEvtClosed:
-			game->gamemode = GAME;
+			sfRenderWindow_close(game->win);
 			break;
 		case sfEvtKeyPressed:
 			menu_key(game);
@@ -52,7 +52,7 @@ int game_event(game_t *game)
 	while (sfRenderWindow_pollEvent(game->win, &game->event)) {
 		switch (game->event.type) {
 		case sfEvtClosed:
-			game->gamemode = MENU;
+			sfRenderWindow_close(game->win);
 			break;
 		case sfEvtKeyPressed:
 			game_key(game);

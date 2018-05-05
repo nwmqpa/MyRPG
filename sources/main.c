@@ -28,6 +28,7 @@ static game_t *init_game(UNUSED char *assets_path, UNUSED char *ressources_path)
 	sfRenderWindow_setFramerateLimit(game->win, MAX_FPS);
 	sfRenderWindow_setVerticalSyncEnabled(game->win, sfTrue);
 	game->delta_time = 1.0 / MAX_FPS;
+	game->gamemode = GAME;
 	return (game);
 }
 
@@ -39,6 +40,8 @@ int main(void)
 		write(2, "Error while loading the game try to reclone\n", 44);
 		return (84);
 	}
+	game->actual_map = get_hash_elem(get_map_mgr(NULL)->maps, MAPS[1]);
 	my_rpg(game);
+	sfRenderWindow_destroy(game->win);
 	return (0);
 }

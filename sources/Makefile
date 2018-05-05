@@ -43,6 +43,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/managers/assets.c				\
 		$(SRC_DIR)/managers/ressources.c			\
 		$(SRC_DIR)/managers/assets_getter.c			\
+		$(SRC_DIR)/managers/map_manager/draw_map.c		\
 		$(SRC_DIR)/event/event.c				\
 		$(SRC_DIR)/event/fight_event.c				\
 		$(SRC_DIR)/event/game_event.c				\
