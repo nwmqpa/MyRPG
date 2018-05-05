@@ -10,6 +10,7 @@
 #include "entities.h"
 #include "structs.h"
 #include "objects.h"
+#include "anim.h"
 #include "utils.h"
 #include "stats.h"
 
@@ -27,6 +28,41 @@ struct entity *ent_create(vec_t pos, uint32_t max_hp, uint32_t level)
 	return (ent);
 }
 
+void load_animation(struct player *player)
+{
+	player->normal[N_IDLE] = create_anim_path_rect(
+	"assets/anim/n_player_idle.png", 4, 0.1, (sfIntRect){0, 0, 100, 200});
+	player->normal[N_LEFT] = create_anim_path_rect(
+	"assets/anim/n_player_left.png", 4, 0.1, (sfIntRect){0, 0, 100, 200});
+	player->normal[N_RIGHT] = create_anim_path_rect(
+	"assets/anim/n_player_right.png", 4, 0.1, (sfIntRect){0, 0, 100, 200});
+	player->normal[N_JUMP] = create_anim_path_rect(
+	"assets/anim/n_player_jump.png", 4, 0.1, (sfIntRect){0, 0, 100, 200});
+	player->fight[F_IDLE] = create_anim_path_rect(
+	"assets/anim/f_player_idle.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
+	player->fight[F_LEFT] = create_anim_path_rect(
+	"assets/anim/f_player_left.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
+	player->fight[F_RIGHT] = create_anim_path_rect(
+	"assets/anim/f_player_right.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
+	player->fight[F_DOWN] = create_anim_path_rect(
+	"assets/anim/f_player_down.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
+	player->fight[F_SHOOT] = create_anim_path_rect(
+	"assets/anim/f_player_shoot.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
+}
+
+void load_assets(struct player *player)
+{
+	player->texture[0] = sfTexture_createFromFile(
+		"./assets/textures/Player/PlayerIdle.png", NULL);
+	player->texture[1] = sfTexture_createFromFile(
+		"assets/textures/Player/PlayerTopView.png", NULL);
+	player->n_idle = sfSprite_create();
+	player->f_idle = sfSprite_create();
+	sfSprite_setTexture(player->n_idle, player->texture[0], sfTrue);
+	sfSprite_setTexture(player->f_idle, player->texture[1], sfTrue);
+	load_animation(player);
+}
+
 struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level)
 {
 	struct player *player = my_calloc(sizeof(struct player));
@@ -37,6 +73,7 @@ struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level)
 	player->inv = inv_create(18);
 	player->level = 1;
 	player->xp = (struct vector) {0, 0};
+	load_assets(player);
 	return (player);
 }
 

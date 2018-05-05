@@ -50,7 +50,9 @@ struct player {
 	unsigned int level;
 	unsigned int nb_stats;
 	unsigned int nb_skills;
-	sfSprite *idle;
+	sfTexture *texture[2];
+	sfSprite *n_idle;
+	sfSprite *f_idle;
 	anim_t *normal[5];
 	anim_t *fight[5];
 };
