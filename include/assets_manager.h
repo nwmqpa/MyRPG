@@ -54,17 +54,17 @@ struct assets {
 
 typedef struct assets assets_t;
 
-//Getter of the struct
+// Getter of the struct
 struct assets *get_assets(struct assets *assets);
 
-//Getter
+// Getter
 sfShader *get_shader(struct assets *ass, int id);
 sfSprite *get_sprite(struct assets *ass, int id);
 sfSound	 *get_sound(struct assets *ass, int id);
 sfMusic	 *get_music(struct assets *ass, int id);
 sfFont	 *get_font(struct assets *ass, int id);
 
-//Constructor
+// Constructor
 struct assets *create_assets(void);
 
 #endif /* RESSOURCES_MANAGER_H */
