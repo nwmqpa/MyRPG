@@ -20,6 +20,9 @@ int update_game(game_t *game)
 	case COMBAT:
 		draw_combat(game);
 		break;
+	case DIALOG:
+		draw_dialog(game);
+		break;
 	}
 	return (0);
 }
