@@ -14,6 +14,7 @@
 #include <SFML/Graphics.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "cin_mng.h"
 
 /*
 ** Assets Manager:
@@ -23,8 +24,8 @@
 struct ressources {
 	struct quest	*quest;
 	struct player	*player;
-	struct npc		*npcs[NB_NPCS];
-	struct cin_t	*cinematiques[NB_CIN];
+	struct npc	*npcs[NB_NPCS];
+	cin_t		*cinematiques[NB_CIN];
 };
 
 typedef struct ressources ressources_t;
