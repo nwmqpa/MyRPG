@@ -102,7 +102,7 @@ int main(void)
 
 	anim_t *running = create_anim_path_rect(
 	"../../assets/textures/Player/PlayerRunningLeft.png",
-	4, 0.1, (sfIntRect){0, 0, 100, 200});
+	4, 0.05, (sfIntRect){0, 0, 100, 200});
 
 	anim_t *lifes = create_anim_path(
 	"../../assets/UI/LifesAnimation.png",
