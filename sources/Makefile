@@ -34,6 +34,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/my_revstr.c				\
 		$(SRC_DIR)/utils/getline_without_n.c 			\
 		$(SRC_DIR)/entity/management.c				\
+		$(SRC_DIR)/entity/player_api.c				\
 		$(SRC_DIR)/entity/mem_management.c			\
 		$(SRC_DIR)/entity/stats_skills/stats.c			\
 		$(SRC_DIR)/entity/stats_skills/skills.c			\

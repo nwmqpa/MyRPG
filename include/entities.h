@@ -16,6 +16,9 @@
 #include "cybend2200.h"
 #include "objects.h"
 
+#define NB_ANIM_N 4
+#define NB_ANIM_F 2
+
 #define LEFT	0b00000001
 #define TOP	0b00000010
 #define RIGHT	0b00000100
@@ -76,5 +79,10 @@ uint32_t compute_entity_power(struct entity *entity);
 int compute_xp(uint32_t player_power, uint32_t entity_power);
 int player_move(game_t *game, struct player *player, int dir);
 void draw_player(sfRenderWindow *win, struct player *player);
+int move_fight(struct player *player, int dir);
+int move_game(struct player *player, int dir);
+void player_move_assets(struct player *player, sfVector2f pos);
+int player_set_position(struct player *player, sfVector2f pos);
+int player_scale(struct player *player, sfVector2f scale);
 
 #endif /* ENTITIES_H_ */

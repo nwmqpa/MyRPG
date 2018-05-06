@@ -20,3 +20,8 @@ sfVector2f random_vector2f(UNUSED float speed, int disp)
 	}
 	return (vec);
 }
+
+void compute_dtime(void)
+{
+	return;
+}

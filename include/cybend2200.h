@@ -16,6 +16,7 @@
 #define HEIGHT  1080
 #define MAX_FPS 30
 
+#include <SFML/System.h>
 #include <SFML/Graphics.h>
 
 enum gamemode {

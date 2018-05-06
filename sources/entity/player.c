@@ -13,15 +13,7 @@ void draw_player(sfRenderWindow *win, struct player *player)
 		animate(win, player->actual, 0.016);
 }
 
-void player_move_assets(struct player *player, sfVector2f pos)
-{
-	sfSprite_move(player->n_idle, pos);
-	for (int i = 0; i < 5; ++i)
-		if (player->normal[i])
-			anim_move(player->normal[i], pos);
-}
-
-static int move_game(struct player *player, int dir)
+int move_game(struct player *player, int dir)
 {
 	switch (dir) {
 	case LEFT:
@@ -38,7 +30,7 @@ static int move_game(struct player *player, int dir)
 	return (0);
 }
 
-static int move_fight(struct player *player, int dir)
+int move_fight(struct player *player, int dir)
 {
 	switch (dir) {
 	case LEFT:
@@ -55,18 +47,6 @@ static int move_fight(struct player *player, int dir)
 		break;
 	default:
 		player->actual = player->normal[F_IDLE];
-	}
-	return (0);
-}
-
-int player_move(game_t *game, struct player *player, int dir)
-{
-	if (game->gamemode == GAME) {
-		player->actual = player->normal[N_IDLE];
-		move_game(player, dir);
-	} else if (game->gamemode == FIGHT) {
-		player->actual = player->fight[F_IDLE];
-		move_fight(player, dir);
 	}
 	return (0);
 }

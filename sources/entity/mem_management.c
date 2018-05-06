@@ -31,11 +31,11 @@ struct entity *ent_create(vec_t pos, uint32_t max_hp, uint32_t level)
 void load_animation(struct player *player)
 {
 	player->normal[N_IDLE] = create_anim_path_rect(
-	"assets/anim/n_player_idle.png", 4, 0.1, (sfIntRect){0, 0, 100, 200});
+	"assets/anim/n_player_idle.png", 5, 0.1, (sfIntRect){0, 0, 100, 200});
 	player->normal[N_LEFT] = create_anim_path_rect(
-	"assets/anim/n_player_left.png", 4, 0.1, (sfIntRect){0, 0, 100, 200});
+	"assets/anim/n_player_left.png", 4, 0.05, (sfIntRect){0, 0, 100, 200});
 	player->normal[N_RIGHT] = create_anim_path_rect(
-	"assets/anim/n_player_right.png", 4, 0.1, (sfIntRect){0, 0, 100, 200});
+	"assets/anim/n_player_right.png", 4, 0.05, (sfIntRect){0, 0, 100, 200});
 	player->normal[N_JUMP] = create_anim_path_rect(
 	"assets/anim/n_player_jump.png", 4, 0.1, (sfIntRect){0, 0, 100, 200});
 	player->fight[F_IDLE] = create_anim_path_rect(
@@ -43,6 +43,8 @@ void load_animation(struct player *player)
 	player->fight[F_SHOOT] = create_anim_path_rect(
 	"assets/anim/f_player_shoot.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
 	player->actual = player->normal[N_IDLE];
+	player_scale(player, (sfVector2f){0.5, 0.5});
+	player_set_position(player, (sfVector2f){100, 1080 - (200 + 200 * 0.5)});
 }
 
 void load_assets(struct player *player)

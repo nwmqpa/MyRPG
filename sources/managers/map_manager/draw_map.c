@@ -14,7 +14,7 @@ int draw_map(game_t *game)
 {
 	hash_elem_t *temp = game->actual_map->layers;
 	struct layer *temp_layer = NULL;
-	sfRenderStates st = 
+	__attribute__ ((unused)) sfRenderStates st = 
 	{sfBlendAlpha, sfTransform_Identity, NULL, get_shader(get_assets(NULL), LIGHT)};
 
 	while(temp) {
