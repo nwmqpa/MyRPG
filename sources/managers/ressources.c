@@ -46,7 +46,7 @@ struct ressources *create_ressources(void)
 	struct ressources *ress = my_calloc(sizeof(struct ressources));
 
 	create_quests(ress);
-	ress->player = create_player((vec_t){10, 10}, 100, 1);
+	ress->player = create_player((vec_t){100, 1080 - (200 + 200 * 0.5)}, 100, 1);
 	create_npcs(ress);
 	create_cin(ress);
 	return (ress);

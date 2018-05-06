@@ -11,21 +11,23 @@
 
 int game_key(game_t *game)
 {
+	struct player *play = get_ressources(NULL)->player;
+
 	switch  (game->event.key.code) {
 	case sfKeyLeft:
-		player_move(game, get_ressources(NULL)->player, LEFT);
+		player_move(game, play, LEFT);
 		break;
 	case sfKeyRight:
-		player_move(game, get_ressources(NULL)->player, RIGHT);
+		player_move(game, play, RIGHT);
 		break;
 	case sfKeyUp:
 		//action
 		break;
 	case sfKeySpace:
-		//jump
+		player_jump(play);
 		break;
 	default:
-		//r
+		play->actual = play->normal[N_IDLE];
 		break;
 	}
 	return (0);

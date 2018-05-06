@@ -24,7 +24,7 @@
 #define RIGHT	0b00000100
 #define DOWN	0b00001000
 
-#define SPEED	10
+#define SPEED	500
 
 // Normal game animations
 enum ANIM_NORMAL {
@@ -58,6 +58,7 @@ struct player {
 	unsigned int level;
 	unsigned int nb_stats;
 	unsigned int nb_skills;
+	sfVector2f vec;
 	anim_t *actual;
 	sfTexture *texture[2];
 	sfSprite *n_idle;
@@ -84,5 +85,6 @@ int move_game(struct player *player, int dir);
 void player_move_assets(struct player *player, sfVector2f pos);
 int player_set_position(struct player *player, sfVector2f pos);
 int player_scale(struct player *player, sfVector2f scale);
+int player_jump(struct player *player);
 
 #endif /* ENTITIES_H_ */

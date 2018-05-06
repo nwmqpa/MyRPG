@@ -9,6 +9,8 @@
 
 void player_move_assets(struct player *player, sfVector2f pos)
 {
+	player->entity->pos.x += pos.x;
+	player->entity->pos.y += pos.y;
 	sfSprite_move(player->n_idle, pos);
 	for (int i = 0; i < NB_ANIM_N; ++i)
 		anim_move(player->normal[i], pos);
@@ -16,9 +18,19 @@ void player_move_assets(struct player *player, sfVector2f pos)
 
 int player_set_position(struct player *player, sfVector2f pos)
 {
+	player->entity->pos.x = pos.x;
+	player->entity->pos.y = pos.y;
 	sfSprite_setPosition(player->n_idle, pos);
 	for (int i = 0; i < NB_ANIM_N; ++i)
 		anim_set_position(player->normal[i], pos);
+	return (0);
+}
+
+int player_jump(struct player *player)
+{
+	if (player->vec.y == 0) {
+		player->vec.y = -15;
+	}
 	return (0);
 }
 
