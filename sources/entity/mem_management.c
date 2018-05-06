@@ -40,14 +40,9 @@ void load_animation(struct player *player)
 	"assets/anim/n_player_jump.png", 4, 0.1, (sfIntRect){0, 0, 100, 200});
 	player->fight[F_IDLE] = create_anim_path_rect(
 	"assets/anim/f_player_idle.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
-	player->fight[F_LEFT] = create_anim_path_rect(
-	"assets/anim/f_player_left.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
-	player->fight[F_RIGHT] = create_anim_path_rect(
-	"assets/anim/f_player_right.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
-	player->fight[F_DOWN] = create_anim_path_rect(
-	"assets/anim/f_player_down.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
 	player->fight[F_SHOOT] = create_anim_path_rect(
 	"assets/anim/f_player_shoot.png", 4, 0.1, (sfIntRect){0, 0, 50, 50});
+	player->actual = player->normal[N_IDLE];
 }
 
 void load_assets(struct player *player)

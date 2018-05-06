@@ -6,15 +6,17 @@
 */
 
 #include "event.h"
+#include "entities.h"
+#include "ress_manager.h"
 
 int game_key(game_t *game)
 {
 	switch  (game->event.key.code) {
 	case sfKeyLeft:
-		//player move_left
+		player_move(game,get_ressources(NULL)->player ,LEFT);
 		break;
 	case sfKeyRight:
-		//player move_left
+		player_move(game,get_ressources(NULL)->player ,RIGHT);
 		break;
 	case sfKeyUp:
 		//action
@@ -23,6 +25,7 @@ int game_key(game_t *game)
 		//jump
 		break;
 	default:
+		//r
 		break;
 	}
 	return (0);

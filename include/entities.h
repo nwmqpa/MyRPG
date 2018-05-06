@@ -13,7 +13,15 @@
 #include <SFML/Graphics.h>
 #include "anim.h"
 #include "structs.h"
+#include "cybend2200.h"
 #include "objects.h"
+
+#define LEFT	0b00000001
+#define TOP	0b00000010
+#define RIGHT	0b00000100
+#define DOWN	0b00001000
+
+#define SPEED	10
 
 // Normal game animations
 enum ANIM_NORMAL {
@@ -26,9 +34,6 @@ enum ANIM_NORMAL {
 // Fight top view animation
 enum ANIM_FIGHT {
 	F_IDLE,
-	F_LEFT,
-	F_RIGHT,
-	F_DOWN,
 	F_SHOOT
 };
 
@@ -50,11 +55,12 @@ struct player {
 	unsigned int level;
 	unsigned int nb_stats;
 	unsigned int nb_skills;
+	anim_t *actual;
 	sfTexture *texture[2];
 	sfSprite *n_idle;
 	sfSprite *f_idle;
 	anim_t *normal[5];
-	anim_t *fight[5];
+	anim_t *fight[2];
 };
 
 // Entity
@@ -68,5 +74,7 @@ struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level);
 uint32_t compute_player_power(struct player *player);
 uint32_t compute_entity_power(struct entity *entity);
 int compute_xp(uint32_t player_power, uint32_t entity_power);
+int player_move(game_t *game, struct player *player, int dir);
+void draw_player(sfRenderWindow *win, struct player *player);
 
 #endif /* ENTITIES_H_ */

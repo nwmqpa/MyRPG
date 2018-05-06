@@ -30,7 +30,7 @@ typedef struct anim_s {
 ** Animate animation
 ** use it in a boucle when you want to draw
 */
-sfSprite *anim(sfRenderWindow *window, anim_t *anim, float delta_time);
+sfSprite *animate(sfRenderWindow *window, anim_t *anim, float delta_time);
 
 //Create anim from texture
 anim_t *create_anim(sfTexture *tex, int count, float speed, int size);

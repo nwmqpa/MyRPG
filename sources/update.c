@@ -6,9 +6,10 @@
 */
 
 #include "cybend2200.h"
-#include "map.h"
 #include "utils.h"
 #include "map_parser.h"
+#include "ress_manager.h"
+#include "entities.h"
 
 int draw_menu(UNUSED game_t *game)
 {
@@ -19,6 +20,7 @@ int draw_menu(UNUSED game_t *game)
 int draw_game(UNUSED game_t *game)
 {
     draw_map(game);
+    draw_player(game->win, get_ressources(NULL)->player);
     //draw_player();
     return (0);
 }

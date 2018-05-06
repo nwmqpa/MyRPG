@@ -21,7 +21,7 @@
 enum gamemode {
 	MENU,
 	GAME,
-	COMBAT,
+	FIGHT,
 	DIALOG
 };
 

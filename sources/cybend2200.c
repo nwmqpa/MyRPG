@@ -20,7 +20,7 @@ int update_game(game_t *game)
 		game_event(game);
 		draw_game(game);
 		break;
-	case COMBAT:
+	case FIGHT:
 		fight_event(game);
 		draw_combat(game);
 		break;
