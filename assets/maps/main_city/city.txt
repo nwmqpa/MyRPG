@@ -2,8 +2,8 @@ layers
 layer0:layer0.png
 layer1:layer1.png
 layer2:layer2.png
+light:light.png
 layer3:layer3.png
-light:layer4.png
 doors
 door0:tutorial:door0:172:758:265:880
 door1:tutorial:door0:542:752:626:880

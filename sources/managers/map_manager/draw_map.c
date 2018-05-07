@@ -13,10 +13,9 @@
 int draw_map(game_t *game)
 {
 	static float time = 0;
-	int i = 0;
-	sfShader *light_shader = get_shader(get_assets(NULL), LIGHT);
 	hash_elem_t *temp = game->actual_map->layers;
 	struct layer *temp_layer = NULL;
+	sfShader *light_shader = get_shader(get_assets(NULL), LIGHT);
 	sfRenderStates st = {
 		sfBlendAlpha, sfTransform_Identity, NULL, light_shader};
 
@@ -27,9 +26,9 @@ int draw_map(game_t *game)
 		sfRenderWindow_drawSprite(
 			game->win,
 			temp_layer->sprite,
-			(i == 3) ? &st : NULL);
+			(hash("light") == temp->hash) ? &st : NULL
+		);
 		temp = temp->next;
-		i++;
 	}
 	time += 0.016;
 	return (0);
