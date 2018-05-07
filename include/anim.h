@@ -20,6 +20,7 @@ typedef struct anim_s {
 	sfTexture *tex;
 	sfSprite **sprite;
 	int count;
+	int once;
 	int size;
 	int frame;
 	float time;

@@ -8,11 +8,12 @@
 #include <stdlib.h>
 #include <SFML/Graphics.h>
 #include "anim.h"
+#include "utils.h"
 
 anim_t
 *create_anim_rect(sfTexture *tex, int count , float speed, sfIntRect size)
 {
-	anim_t *anim = malloc(sizeof(anim_t));
+	anim_t *anim = my_calloc(sizeof(anim_t));
 	sfIntRect rect = {.top = 0};
 
 	anim->tex = tex;
@@ -35,7 +36,7 @@ anim_t
 
 anim_t *create_anim(sfTexture *tex, int count , float speed, int size)
 {
-	anim_t *anim = malloc(sizeof(anim_t));
+	anim_t *anim = my_calloc(sizeof(anim_t));
 	sfIntRect rect = {.top = 0};
 
 	anim->tex = tex;
@@ -65,8 +66,9 @@ sfSprite
 		anim->time = 0.f;
 		if (anim->frame < anim->count - 1) {
 			(anim->frame)++;
-		} else
+		} else if (!anim->once){
 			(anim->frame) = 0;
+		}
 	}
 	sfRenderWindow_drawSprite(window, (anim->sprite)[anim->frame], NULL);
 	return ((anim->sprite)[anim->frame]);

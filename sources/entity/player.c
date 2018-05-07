@@ -19,12 +19,18 @@ static void do_player_movement(struct player *player, game_t *game)
 
 static void player_change_anim(struct player *player)
 {
-	if (player->vec.x > 0)
+	if (player->vec.y != 0) {
+		player->actual = player->normal[N_JUMP];
+	} else if (player->vec.x > 0) {
 		player->actual = player->normal[N_RIGHT];
-	else if (player->vec.x < 0)
+		player->normal[N_JUMP]->frame = 0;
+	} else if (player->vec.x < 0) {
 		player->actual = player->normal[N_LEFT];
-	else
+		player->normal[N_JUMP]->frame = 0;
+	} else {
 		player->actual = player->normal[N_IDLE];
+		player->normal[N_JUMP]->frame = 0;
+	}
 }
 
 static void player_move_pos(struct player *player)
@@ -59,19 +65,14 @@ int move_game(struct player *player, int dir)
 {
 	switch (dir) {
 	case LEFT:
-		//player->actual = player->normal[N_LEFT];
 		player->vec.x = -SPEED * 0.016;
-		//player->entity->pos = (struct vector) {
-		//player->entity->pos.x * -SPEED * 0.016, player->entity->pos.y};
 		break;
 	case RIGHT:
-		//player->actual = player->normal[N_RIGHT];
 		player->vec.x = SPEED * 0.016;
-		//player->entity->pos = (struct vector) {
-		//player->entity->pos.x * SPEED * 0.016, player->entity->pos.y};
 		break;
 	default:
-		player->actual = player->normal[N_IDLE];
+		//player->actual = player->normal[N_IDLE];
+		break;
 	}
 	return (0);
 }
@@ -94,7 +95,8 @@ int move_fight(struct player *player, int dir)
 		anim_move(player->actual, (sfVector2f){0, SPEED});
 		break;
 	default:
-		player->actual = player->normal[F_IDLE];
+		//player->actual = player->normal[F_IDLE];
+		break;
 	}
 	return (0);
 }
