@@ -17,6 +17,7 @@ int fight_event(game_t *game)
 		case sfEvtKeyPressed:
 			fight_key(game);
 			break;
+
 		case sfEvtMouseMoved:
 			//TODO: Make that
 			break;
@@ -56,6 +57,9 @@ int game_event(game_t *game)
 			break;
 		case sfEvtKeyPressed:
 			game_key(game);
+			break;
+		case sfEvtKeyReleased:
+			game_key_released(game);
 			break;
 		case sfEvtMouseMoved:
 			//TODO: Make that

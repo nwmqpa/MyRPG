@@ -8,18 +8,43 @@
 #include "entities.h"
 #include "particle.h"
 
-void draw_player(sfRenderWindow *win, struct player *player)
+static void do_player_movement(struct player *player, game_t *game)
 {
-	player_move_assets(player, player->vec);
+	for (int i = 0; i < 4; ++i) {
+		if (player->action[i]) {
+			player_move(game, player, movement[i]);
+		}
+	}
+}
+
+static void player_change_anim(struct player *player)
+{
 	if (player->vec.x > 0)
 		player->actual = player->normal[N_RIGHT];
 	else if (player->vec.x < 0)
 		player->actual = player->normal[N_LEFT];
 	else
 		player->actual = player->normal[N_IDLE];
+}
+
+static void player_move_pos(struct player *player)
+{
+	if (player->vec.x < 0.5 && player->vec.x > -0.5) {
+		player->vec.x = 0;
+	} if (player->vec.x > 0) {
+		player->vec.x -= 40 * 0.016;
+	} if (player->vec.x < 0) {
+		player->vec.x += 40 * 0.016;
+	}
+}
+
+void draw_player(game_t *game, sfRenderWindow *win, struct player *player)
+{
+	do_player_movement(player, game);
+	player_move_assets(player, player->vec);
+	player_change_anim(player);
 	if (player->actual)
 		animate(win, player->actual, 0.016);
-	
 	if (player->entity->pos.y < 1080 - (200 + 200 * 0.5)) {
 		player->vec.y += GRAVITY * 0.016 * 10;
 	} else if (player->entity->pos.y > 1080 - (200 * 200 * 0.5)){
@@ -27,13 +52,7 @@ void draw_player(sfRenderWindow *win, struct player *player)
 		player->entity->pos.x, 1080 - (200 + 200 * 0.5)});
 		player->vec.y = 0;
 	}
-	if (player->vec.x < 0.5 && player->vec.x > -0.5) {
-		player->vec.x = 0;
-	} if (player->vec.x > 0) {
-		player->vec.x -= 20 * 0.016;
-	} if (player->vec.x < 0) {
-		player->vec.x += 20 * 0.016;
-	}
+	player_move_pos(player);
 }
 
 int move_game(struct player *player, int dir)

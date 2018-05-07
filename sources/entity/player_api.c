@@ -45,10 +45,8 @@ int player_scale(struct player *player, sfVector2f scale)
 int player_move(game_t *game, struct player *player, int dir)
 {
 	if (game->gamemode == GAME) {
-		//player->actual = player->normal[N_IDLE];
 		move_game(player, dir);
 	} else if (game->gamemode == FIGHT) {
-		//player->actual = player->fight[F_IDLE];
 		move_fight(player, dir);
 	}
 	return (0);

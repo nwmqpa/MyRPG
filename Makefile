@@ -7,29 +7,30 @@
 
 DEB 	?=	0
 
-NAME	=	my_rpg
+NAME	=	./release/my_rpg
+RPG	=	./my_rpg
 
 all:	$(NAME)
 
 $(NAME):
-	@make --no-print-directory -C sources/ all
+		@make --no-print-directory -C sources/ all
 
 re:
-	@make --no-print-directory -C sources/ re
+		@make --no-print-directory -C sources/ re
 
 debug:
-	@make --no-print-directory -C sources/ re DEB=1
+		@make --no-print-directory -C sources/ re DEB=1
 
 clean:
-	@make --no-print-directory -C sources/ clean
+		@make --no-print-directory -C sources/ clean
 
 fclean:
-	@make --no-print-directory -C sources/ fclean
+		@make --no-print-directory -C sources/ fclean
 
 test_run:
-	@make --no-print-directory -C bonus/unittest re
+		@make --no-print-directory -C bonus/unittest re
 
 test_clear:
-	@make --no-print-directory -C bonus/unittest fclean
+		@make --no-print-directory -C bonus/unittest fclean
 
 .PHONY:	re	clean	fclean	test_run test_clear all

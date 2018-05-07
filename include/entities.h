@@ -11,6 +11,7 @@
 #define ENTITIES_H_
 
 #include <SFML/Graphics.h>
+#include <stdbool.h>
 #include "anim.h"
 #include "structs.h"
 #include "cybend2200.h"
@@ -25,6 +26,8 @@
 #define DOWN	0b00001000
 
 #define SPEED	500
+
+static const int movement[4] = {TOP, LEFT, RIGHT, DOWN};
 
 // Normal game animations
 enum ANIM_NORMAL {
@@ -58,6 +61,7 @@ struct player {
 	unsigned int level;
 	unsigned int nb_stats;
 	unsigned int nb_skills;
+	bool action[4];
 	sfVector2f vec;
 	anim_t *actual;
 	sfTexture *texture[2];
@@ -79,7 +83,7 @@ uint32_t compute_player_power(struct player *player);
 uint32_t compute_entity_power(struct entity *entity);
 int compute_xp(uint32_t player_power, uint32_t entity_power);
 int player_move(game_t *game, struct player *player, int dir);
-void draw_player(sfRenderWindow *win, struct player *player);
+void draw_player(game_t *game, sfRenderWindow *win, struct player *player);
 int move_fight(struct player *player, int dir);
 int move_game(struct player *player, int dir);
 void player_move_assets(struct player *player, sfVector2f pos);

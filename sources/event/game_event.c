@@ -15,10 +15,10 @@ int game_key(game_t *game)
 
 	switch  (game->event.key.code) {
 	case sfKeyLeft:
-		player_move(game, play, LEFT);
+		play->action[N_LEFT] = true;
 		break;
 	case sfKeyRight:
-		player_move(game, play, RIGHT);
+		play->action[N_RIGHT] = true;
 		break;
 	case sfKeyUp:
 		//action
@@ -27,7 +27,23 @@ int game_key(game_t *game)
 		player_jump(play);
 		break;
 	default:
-		play->actual = play->normal[N_IDLE];
+		break;
+	}
+	return (0);
+}
+
+int game_key_released(game_t *game)
+{
+	struct player *play = get_ressources(NULL)->player;
+
+	switch  (game->event.key.code) {
+	case sfKeyLeft:
+		play->action[N_LEFT] = false;
+		break;
+	case sfKeyRight:
+		play->action[N_RIGHT] = false;
+		break;
+	default:
 		break;
 	}
 	return (0);
