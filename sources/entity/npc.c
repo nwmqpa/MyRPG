@@ -25,10 +25,12 @@ char **load_dialogs(char *path)
 	return (dialogs);
 }
 
-struct npc *npc_create(char *name, sfSprite *sprite, sfVector2f pos)
+struct npc *npc_create(char *name, char *path, sfVector2f pos)
 {
 	struct npc *this = my_calloc(sizeof(struct npc));
 
+	this->texture = sfTexture_createFromFile(
+		path, NULL);
 	this->name = my_strdup(name);
 	this->pos  = pos;
 	this->anim = NULL;
@@ -43,8 +45,7 @@ void draw_dialog(game_t *game)
 	//sfRenderWindow_drawText(win, );
 }
 
-int
-npc_launch_dialog(game_t *game, struct npc *npc, int id)
+int npc_launch_dialog(game_t *game, struct npc *npc, int id)
 {
 	game->gamemode = DIALOG;
 	return (0);

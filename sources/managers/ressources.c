@@ -9,6 +9,7 @@
 #include "ress_manager.h"
 #include "cin_mng.h"
 #include "entities.h"
+#include "npc.h"
 #include "utils.h"
 
 void create_quests(UNUSED struct ressources *ress)
@@ -16,9 +17,18 @@ void create_quests(UNUSED struct ressources *ress)
 	//TODO
 }
 
-void create_npcs(UNUSED struct ressources *ress)
+void create_npcs(struct ressources *ress)
 {
-	//TODO
+	ress->npcs[ENEMIE] = npc_create(
+		"enemie_1",
+		"assets/textures/NPC/EnemieIdle.png",
+		(sfVector2f){100, 100}
+	);
+	ress->npcs[FEMAL] = npc_create(
+		"female_1",
+		"assets/textures/NPC/Femal.png",
+		(sfVector2f){100, 100}
+	);
 }
 
 void create_cin(struct ressources *ress)
@@ -46,7 +56,8 @@ struct ressources *create_ressources(void)
 	struct ressources *ress = my_calloc(sizeof(struct ressources));
 
 	create_quests(ress);
-	ress->player = create_player((vec_t){100, 1080 - (200 + 200 * 0.5)}, 100, 1);
+	ress->player = create_player(
+		(vec_t){100, 1080 - (200 + 200 * 0.5)}, 100, 1);
 	create_npcs(ress);
 	create_cin(ress);
 	return (ress);

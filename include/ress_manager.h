@@ -16,8 +16,13 @@
 #include <stdlib.h>
 #include "cin_mng.h"
 
+enum NPC {
+	ENEMIE,
+	FEMAL
+};
+
 /*
-** Assets Manager:
+** Ressource Manager:
 **	Represent one instance of all the ressources
 **	of the game currently load.
 */

@@ -22,12 +22,10 @@ int draw_map(game_t *game)
 	sfShader_setFloatParameter(light_shader, "u_time", time);
 	while(temp) {
 		temp_layer = (struct layer *) temp->data;
-		
 		sfRenderWindow_drawSprite(
 			game->win,
 			temp_layer->sprite,
-			(hash("light") == temp->hash) ? &st : NULL
-		);
+			(hash("light") == temp->hash) ? &st : NULL);
 		temp = temp->next;
 	}
 	time += 0.016;

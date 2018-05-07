@@ -15,6 +15,7 @@
 #include "cybend2200.h"
 
 struct npc {
+	sfTexture *texture;
 	sfSprite *sprite;
 	sfVector2f pos;
 	anim_t *anim;
@@ -25,7 +26,7 @@ struct npc {
 typedef struct npc npc_t;
 
 //Create a npc in ressources manager
-struct npc *npc_create(char *name, sfSprite *sprite, sfVector2f pos);
+struct npc *npc_create(char *name, char *path, sfVector2f pos);
 
 //launch a dialog with the npc
 int npc_launch_dialog(game_t *game, struct npc *npc, int id);
