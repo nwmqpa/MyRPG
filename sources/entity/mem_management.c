@@ -33,7 +33,7 @@ void load_animation(struct player *player)
 	player->normal[N_IDLE] = create_anim_path_rect(
 	"assets/anim/n_player_idle.png", 5, 0.1, (sfIntRect){0, 0, 100, 200});
 	player->normal[N_LEFT] = create_anim_path_rect(
-	"assets/anim/n_player_left.png", 4, 0.05, (sfIntRect){0, 0, 100, 200});
+	"assets/anim/n_player_left.png", 3, 0.05, (sfIntRect){0, 0, 100, 200});
 	player->normal[N_RIGHT] = create_anim_path_rect(
 	"assets/anim/n_player_right.png", 4, 0.05, (sfIntRect){0, 0, 100, 200});
 	player->normal[N_JUMP] = create_anim_path_rect(
