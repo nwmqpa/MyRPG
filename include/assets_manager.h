@@ -30,7 +30,12 @@ enum FONT {
 
 enum SPRITE {
 	POPUP,
-	DIALOG_BOX
+	DIALOG_BOX,
+	INVENTORY
+};
+
+enum ANIM {
+	LIFES
 };
 
 enum SHADER {
@@ -45,11 +50,13 @@ enum SHADER {
 */
 struct assets {
 	sfShader	*shaders[2];
-	sfSprite	*sprites[2];
+	sfSprite	*sprites[4];
+	sfTexture	*textures[4];
 	sfSound		*sounds[3];
 	sfSoundBuffer	*sound_buffer[3];
 	sfMusic		*musics[2];
 	sfFont		*fonts[2];
+	anim_t		*anims[1];
 };
 
 typedef struct assets assets_t;

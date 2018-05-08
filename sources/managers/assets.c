@@ -32,6 +32,23 @@ static void set_shader(struct assets *assets)
 	(NULL, "./assets/shaders/blur.frag");
 }
 
+static void set_ui(struct assets *assets)
+{
+	assets->textures[POPUP] = sfTexture_createFromFile(
+	"assets/UI/Popup.png", NULL);
+	assets->textures[DIALOG_BOX] = sfTexture_createFromFile(
+	"assets/UI/Popup.png", NULL);
+	assets->textures[INVENTORY] = sfTexture_createFromFile(
+	"assets/UI/Inventory.png", NULL);
+	for (int i = 0; i < 3; ++i) {
+		assets->sprites[i] = sfSprite_create();
+		sfSprite_setTexture(
+		assets->sprites[i], assets->textures[i], sfTrue);
+	}
+	assets->anims[LIFES] = create_anim_path_rect(
+	"assets/UI/LifesAnimation.png", 2, 0.1, (sfIntRect){0, 0, 100, 100});
+}
+
 // Set all assets from ./assets
 struct assets *create_assets(void)
 {
@@ -47,6 +64,7 @@ struct assets *create_assets(void)
 	sfMusic_setVolume(assets->musics[CITY], 5);
 	set_sound(assets);
 	set_shader(assets);
+	set_ui(assets);
 	return (assets);
 }
 
