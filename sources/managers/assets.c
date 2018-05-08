@@ -37,12 +37,14 @@ struct assets *create_assets(void)
 {
 	struct assets *assets = my_calloc(sizeof(struct assets));
 
-	assets->fonts[0] = sfFont_createFromFile("assets/fonts/Flighter.ttf");
-	assets->fonts[1] = sfFont_createFromFile("assets/fonts/Thorne-n.ttf");
+	assets->fonts[FLIGHTER] =
+	sfFont_createFromFile("assets/fonts/Flighter.ttf");
+	assets->fonts[THORN] =
+	 sfFont_createFromFile("assets/fonts/Thorne-n.ttf");
 	assets->musics[CAVE] = sfMusic_createFromFile("assets/music/cave.ogg");
 	assets->musics[CITY] = sfMusic_createFromFile("assets/music/city.ogg");
-	sfMusic_setVolume(assets->musics[CAVE], 3);
-	sfMusic_setVolume(assets->musics[CITY], 3);
+	sfMusic_setVolume(assets->musics[CAVE], 5);
+	sfMusic_setVolume(assets->musics[CITY], 5);
 	set_sound(assets);
 	set_shader(assets);
 	return (assets);
