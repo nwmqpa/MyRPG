@@ -18,9 +18,12 @@ int getline_w_n(char **line, long unsigned int *size, FILE *file)
 	ret = getline(line, size, file);
 	if (ret == -1)
 		return (-1);
-	ret_line = my_calloc(my_strlen(*line));
-	my_memcpy(ret_line, *line, my_strlen(*line) - 1);
-	free(*line);
-	*line = ret_line;
-	return (ret - 1);
+	if ((*line)[my_strlen(*line) - 1] == '\n') {
+		ret_line = my_calloc(my_strlen(*line));
+		my_memcpy(ret_line, *line, my_strlen(*line) - 1);
+		free(*line);
+		*line = ret_line;
+		ret -= 1;
+	}
+	return (ret);
 }

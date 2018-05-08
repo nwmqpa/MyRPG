@@ -32,6 +32,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/my_strlen.c				\
 		$(SRC_DIR)/utils/my_itoa.c				\
 		$(SRC_DIR)/utils/my_revstr.c				\
+		$(SRC_DIR)/entity/interaction.c				\
 		$(SRC_DIR)/utils/getline_without_n.c 			\
 		$(SRC_DIR)/entity/management.c				\
 		$(SRC_DIR)/entity/player_api.c				\

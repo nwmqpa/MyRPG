@@ -19,7 +19,6 @@ static void map_graph_init(struct map *map, char const *base_path)
 		file = my_strcat(file, my_strdup(map->name));
 		file = my_strcat(file, "/assets/");
 		file = my_strcat(file, layer_tmp->image);
-		printf("%s\n", file);
 		layer_tmp->texture = sfTexture_createFromFile(file, NULL);
 		layer_tmp->sprite = sfSprite_create();
 		sfSprite_setTexture(layer_tmp->sprite, layer_tmp->texture, 1);
