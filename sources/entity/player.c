@@ -42,13 +42,14 @@ static void player_change_anim(struct player *player)
 
 static void player_move_pos(struct player *player)
 {
-	if (player->vec.x < 1 && player->vec.x > -1) {
+	if (player->vec.x < 1 && player->vec.x > -1)
 		player->vec.x = 0;
-	} if (player->vec.x > 0) {
+	if (player->vec.x > 0)
 		player->vec.x -= 50 * 0.016;
-	} if (player->vec.x < 0) {
+	if (player->vec.x < 0)
 		player->vec.x += 50 * 0.016;
-	}
+	player->hitbox.left += player->vec.y;
+	player->hitbox.top += player->vec.x;
 }
 
 void draw_player(game_t *game, sfRenderWindow *win, struct player *player)

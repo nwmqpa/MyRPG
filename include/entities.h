@@ -53,22 +53,23 @@ struct entity {
 };
 
 struct player {
+	bool action[4];
 	struct entity *entity;
 	struct inventory *inv;
-	struct stat *stats;
 	struct skill *skills;
+	struct stat *stats;
 	struct vector xp;
-	unsigned int level;
-	unsigned int nb_stats;
 	unsigned int nb_skills;
-	bool action[4];
+	unsigned int nb_stats;
+	unsigned int level;
+	sfFloatRect hitbox;
 	sfVector2f vec;
-	anim_t *actual;
 	sfTexture *texture[2];
 	sfSprite *n_idle;
 	sfSprite *f_idle;
 	anim_t *normal[5];
 	anim_t *fight[2];
+	anim_t *actual;
 };
 
 // Entity
