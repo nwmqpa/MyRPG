@@ -7,6 +7,7 @@
 
 #include "entities.h"
 #include "particle.h"
+#include "assets_manager.h"
 
 static void do_player_movement(struct player *player, game_t *game)
 {
@@ -24,9 +25,15 @@ static void player_change_anim(struct player *player)
 	} else if (player->vec.x > 0) {
 		player->actual = player->normal[N_RIGHT];
 		player->normal[N_JUMP]->frame = 0;
+		if (sfSound_getStatus(get_assets(NULL)->sounds[FOOTSTEP]) 
+		== sfStopped)
+			sfSound_play(get_assets(NULL)->sounds[FOOTSTEP]);
 	} else if (player->vec.x < 0) {
 		player->actual = player->normal[N_LEFT];
 		player->normal[N_JUMP]->frame = 0;
+		if (sfSound_getStatus(get_assets(NULL)->sounds[FOOTSTEP]) 
+		== sfStopped)
+			sfSound_play(get_assets(NULL)->sounds[FOOTSTEP]);
 	} else {
 		player->actual = player->normal[N_IDLE];
 		player->normal[N_JUMP]->frame = 0;
@@ -35,12 +42,12 @@ static void player_change_anim(struct player *player)
 
 static void player_move_pos(struct player *player)
 {
-	if (player->vec.x < 0.5 && player->vec.x > -0.5) {
+	if (player->vec.x < 1 && player->vec.x > -1) {
 		player->vec.x = 0;
 	} if (player->vec.x > 0) {
-		player->vec.x -= 40 * 0.016;
+		player->vec.x -= 50 * 0.016;
 	} if (player->vec.x < 0) {
-		player->vec.x += 40 * 0.016;
+		player->vec.x += 50 * 0.016;
 	}
 }
 

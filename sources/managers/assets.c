@@ -11,18 +11,17 @@
 // Set sounds
 static void set_sound(struct assets *assets)
 {
-	assets->sound_buffer[0] =
+	assets->sound_buffer[PISTOL] =
 	sfSoundBuffer_createFromFile("assets/sound/light.ogg");
-	assets->sound_buffer[1] =
+	assets->sound_buffer[RIFLE] =
 	sfSoundBuffer_createFromFile("assets/sound/heavy.ogg");
-	assets->sound_buffer[2] =
+	assets->sound_buffer[FOOTSTEP] =
 	sfSoundBuffer_createFromFile("assets/sound/footstep.ogg");
-	assets->sounds[0] = sfSound_create();
-	assets->sounds[1] = sfSound_create();
-	assets->sounds[2] = sfSound_create();
-	sfSound_setBuffer(assets->sounds[0], assets->sound_buffer[0]);
-	sfSound_setBuffer(assets->sounds[1], assets->sound_buffer[1]);
-	sfSound_setBuffer(assets->sounds[2], assets->sound_buffer[2]);
+	for (int i = 0; i < 3; ++i) {
+		assets->sounds[i] = sfSound_create();
+		sfSound_setBuffer(
+		assets->sounds[i], assets->sound_buffer[i]);
+	}
 }
 
 static void set_shader(struct assets *assets)
@@ -40,8 +39,10 @@ struct assets *create_assets(void)
 
 	assets->fonts[0] = sfFont_createFromFile("assets/fonts/Flighter.ttf");
 	assets->fonts[1] = sfFont_createFromFile("assets/fonts/Thorne-n.ttf");
-	assets->musics[0] = sfMusic_createFromFile("assets/music/cave.ogg");
-	assets->musics[1] = sfMusic_createFromFile("assets/music/city.ogg");
+	assets->musics[CAVE] = sfMusic_createFromFile("assets/music/cave.ogg");
+	assets->musics[CITY] = sfMusic_createFromFile("assets/music/city.ogg");
+	sfMusic_setVolume(assets->musics[CAVE], 3);
+	sfMusic_setVolume(assets->musics[CITY], 3);
 	set_sound(assets);
 	set_shader(assets);
 	return (assets);

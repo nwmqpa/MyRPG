@@ -28,9 +28,8 @@ int player_set_position(struct player *player, sfVector2f pos)
 
 int player_jump(struct player *player)
 {
-	if (player->vec.y == 0) {
+	if (player->vec.y == 0)
 		player->vec.y = -15;
-	}
 	return (0);
 }
 

@@ -47,8 +47,7 @@ void create_cin(struct ressources *ress)
 					30,
 					str,
 					get_font(get_assets(NULL), THORN),
-					(sfColor){255, 255, 255, 255}
-					);
+					(sfColor){255, 255, 255, 255});
 }
 
 struct ressources *create_ressources(void)
