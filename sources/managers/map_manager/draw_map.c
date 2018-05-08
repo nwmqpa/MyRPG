@@ -13,11 +13,14 @@
 
 int play_map_music(struct map *map)
 {
+	printf("%s\n", map->name);
 	if (hash(map->name) == hash("main_city") &&
 	sfMusic_getStatus(get_assets(NULL)->musics[CITY]) != sfPlaying) {
+		sfMusic_stop(get_assets(NULL)->musics[CAVE]);
 		sfMusic_play(get_assets(NULL)->musics[CITY]);
 	} else if (hash(map->name) == hash("tutorial") &&
-	sfMusic_getStatus(get_assets(NULL)->musics[CITY]) != sfPlaying) {
+	sfMusic_getStatus(get_assets(NULL)->musics[CAVE]) != sfPlaying) {
+		sfMusic_stop(get_assets(NULL)->musics[CITY]);
 		sfMusic_play(get_assets(NULL)->musics[CAVE]);
 	}
 	return (0);
