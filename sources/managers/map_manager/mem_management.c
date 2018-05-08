@@ -49,6 +49,7 @@ void parse_maps(struct map_manager *map_mgr)
 		}
 		insert_hash_elem(map_mgr->maps, line, parse_map(file, line));
 		free(map_path);
+		bytes = 0;
 	}
 }
 

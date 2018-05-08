@@ -72,8 +72,11 @@ struct map *parse_map(FILE *file, char *map_name)
 	int phase = 0;
 
 	while (getline_w_n(&line, &bytes, file) != -1) {
-		if (parse_phase(&phase, line) != -1)
+		if (parse_phase(&phase, line) != -1) {
+			free(line);
+			bytes = 0;
 			continue;
+		}
 		switch (phase) {
 		case 0:
 			parse_layer(line, map);
