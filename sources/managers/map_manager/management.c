@@ -23,8 +23,8 @@ static void parse_door(char *door_line, struct map *map)
 	door_sct->door_ref = door[2];
 	door_sct->bounds = (sfIntRect) {my_atoi(door[3]),
 					my_atoi(door[4]),
-					my_atoi(door[5]),
-					my_atoi(door[6])};
+					my_atoi(door[5]) - my_atoi(door[3]),
+					my_atoi(door[6]) - my_atoi(door[4])};
 	insert_hash_elem(map->doors, door[0], door_sct);
 }
 
@@ -37,8 +37,8 @@ static void parse_container(char *container_line, struct map *map)
 		map->containers = my_calloc(sizeof(hashmap_t));
 	cont_sct->bounds = (sfIntRect) {my_atoi(cont[1]),
 					my_atoi(cont[2]),
-					my_atoi(cont[3]),
-					my_atoi(cont[4])};
+					my_atoi(cont[3]) - my_atoi(cont[1]),
+					my_atoi(cont[4]) - my_atoi(cont[4])};
 	insert_hash_elem(map->containers, cont[0], cont_sct);
 }
 

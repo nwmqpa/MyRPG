@@ -21,7 +21,7 @@ int game_key(game_t *game)
 		play->action[N_RIGHT] = true;
 		break;
 	case sfKeyUp:
-		//action
+		check_interactions(game);
 		break;
 	case sfKeySpace:
 		player_jump(play);
