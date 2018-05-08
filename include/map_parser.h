@@ -14,6 +14,11 @@
 #include "cybend2200.h"
 #include "objects.h"
 
+#define TOP_L	0x01
+#define TOP_R	0x02
+#define DOWN_L	0x04
+#define DOWN_R	0x08
+
 static __attribute__ ((unused)) const char *MAPS[3] = {"tutorial", "main_city", 0};
 
 struct map_manager {
@@ -24,6 +29,7 @@ struct map_manager {
 
 struct map {
 	char *name;
+	sfImage *collide;
 	hashmap_t *doors;
 	hashmap_t *containers;
 	hashmap_t *layers;

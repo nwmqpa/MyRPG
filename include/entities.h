@@ -91,5 +91,6 @@ void player_move_assets(struct player *player, sfVector2f pos);
 int player_set_position(struct player *player, sfVector2f pos);
 int player_scale(struct player *player, sfVector2f scale);
 int player_jump(struct player *player);
+int player_colliding(struct player *player, game_t *game);
 
 #endif /* ENTITIES_H_ */

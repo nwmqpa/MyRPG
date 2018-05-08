@@ -92,5 +92,6 @@ struct map *parse_map(FILE *file, char *map_name)
 		bytes = 0;
 	}
 	map->name = my_strdup(map_name);
+	map->collide = sfImage_createFromFile("assets/maps/main_city/assets/collide.png");
 	return (map);
 }

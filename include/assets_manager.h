@@ -12,7 +12,7 @@
 #include <SFML/Audio.h>
 #include "anim.h"
 
-enum MUSIC {
+enum MAP {
 	CAVE,
 	CITY
 };
@@ -50,6 +50,7 @@ enum SHADER {
 **	of the game currently load.
 */
 struct assets {
+	sfImage		*images[2];
 	sfShader	*shaders[2];
 	sfSprite	*sprites[4];
 	sfTexture	*textures[4];
