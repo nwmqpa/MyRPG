@@ -44,7 +44,7 @@ static int check_chest_collisions(game_t *game, sfIntRect pl, hashmap_t *cont)
 	for (hashmap_t *temp = cont; temp; temp = temp->next) {
 		container = temp->data;
 		if (sfIntRect_intersects(&(container->bounds), &pl, 0x0)) {
-			printf("Collision with chest, DO INVENTORY NWMQPA\n");
+			printf("Collision with chest, DO INVENTORY FDP\n");
 		}
 	}
 }

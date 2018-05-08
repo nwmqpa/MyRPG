@@ -12,7 +12,7 @@
 #include "assets_manager.h"
 #include "map_parser.h"
 
-static game_t *init_game(UNUSED char *assets_path, UNUSED char *ressources_path)
+static game_t *init_game(void)
 {
 	game_t *game = my_calloc(sizeof(game_t));
 	sfVideoMode mode = {WIDTH, HEIGHT, 32};
@@ -34,7 +34,7 @@ static game_t *init_game(UNUSED char *assets_path, UNUSED char *ressources_path)
 
 int main(void)
 {
-	game_t *game = init_game("assets/", "ressources/");
+	game_t *game = init_game();
 
 	if (!game) {
 		write(2, "Error while loading the game try to reclone\n", 44);

@@ -31,7 +31,8 @@ enum FONT {
 enum SPRITE {
 	POPUP,
 	DIALOG_BOX,
-	INVENTORY
+	INVENTORY,
+	CHEST
 };
 
 enum ANIM {
