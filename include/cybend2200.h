@@ -26,6 +26,13 @@ enum gamemode {
 	DIALOG
 };
 
+enum menus {
+	NOTHING,
+	INVENTORY_PLAYER,
+	CONTAINER,
+	ESCAPE
+};
+
 /*
 ** Game: 
 ** 	Main game structure that represent game state and
@@ -34,6 +41,8 @@ enum gamemode {
 typedef struct game_s {
 	sfRenderWindow *win;
 	int gamemode;
+	int menu_type;
+	struct inventory *container;
 	struct map *actual_map;
 	sfEvent event;
 	float delta_time;

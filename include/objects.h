@@ -8,6 +8,7 @@
 #ifndef OBJECTS_H_
 #define OBJECTS_H_
 
+typedef struct object item_t;
 typedef struct object weapon_t;
 typedef struct object ammo_t;
 typedef struct object cons_t;

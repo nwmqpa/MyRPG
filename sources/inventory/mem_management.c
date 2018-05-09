@@ -17,6 +17,8 @@ struct inventory *inv_create(int nb_slots)
 		if (!(nb_slots % i)) {
 			inv = my_calloc(sizeof(struct inventory));
 			inv->objects = my_calloc(sizeof(struct object) * nb_slots);
+			inv->size = nb_slots;
+			return (inv);
 		}
 	}
 	return (inv);
@@ -38,7 +40,7 @@ struct inventory *create_random_loots(unsigned int level)
 	struct inventory *inv = my_calloc(sizeof(struct inventory));
 
 	inv->objects = my_calloc(sizeof(struct object) * size);
-	inv->size = size;
+	inv->size = 9;
 	for (unsigned int i = 0; i < size; i++) {
 		inv->objects[i] = obj_create(level);
 	}

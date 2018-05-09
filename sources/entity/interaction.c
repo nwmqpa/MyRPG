@@ -43,8 +43,12 @@ static int check_chest_collisions(game_t *game, sfIntRect pl, hashmap_t *cont)
 
 	for (hashmap_t *temp = cont; temp; temp = temp->next) {
 		container = temp->data;
+		printf("%d, %d, %d, %d => %d, %d, %d, %d\n", pl.left, pl.top, pl.width, pl.height, container->bounds.left, container->bounds.top, container->bounds.width, container->bounds.height);
 		if (sfIntRect_intersects(&(container->bounds), &pl, 0x0)) {
-			printf("Collision with chest, DO INVENTORY FDP\n");
+			game->gamemode = MENU;
+			game->menu_type = CONTAINER;
+			game->container = container->inv;
+			return (1);
 		}
 	}
 }
@@ -58,7 +62,6 @@ void check_interactions(game_t *game)
 
 	if (check_door_collisions(game, p_trans, map->doors))
 		return;
-	if (check_chest_collisions(game, p_trans, map->doors))
+	if (check_chest_collisions(game, p_trans, map->containers))
 		return;
-
 }

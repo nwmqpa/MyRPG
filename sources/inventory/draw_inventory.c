@@ -1,0 +1,83 @@
+/*
+** EPITECH PROJECT, 2017
+** sources/inventory/draw_inventory.c
+** File description:
+** draw_inventories.
+*/
+
+#include <SFML/Graphics.h>
+#include "cybend2200.h"
+#include "assets_manager.h"
+#include "ress_manager.h"
+#include "objects.h"
+#include "entities.h"
+
+static int draw_inv_object(item_t item, int nb, sfVector2f off, game_t *game)
+{
+	sfSprite *weapon = get_assets(0x0)->sprites[GUN_1];
+	sfIntRect size = sfSprite_getTextureRect(weapon);
+
+	off = (sfVector2f) {off.x + 62, off.y + 60};
+	off = (sfVector2f) {off.x, off.y + ((nb % 4) * 141)};
+	off = (sfVector2f) {off.x + ((nb / 4) * 280), off.y};
+	if (nb / 4 == 2)
+		off = (sfVector2f) {off.x + 8, off.y};
+	off = (sfVector2f) {off.x + ((103 - size.width) / 2), off.y};
+	off = (sfVector2f) {off.x, off.y + ((103 - size.height) / 2)};
+	sfSprite_setPosition(weapon, off);
+	sfRenderWindow_drawSprite(game->win, weapon, 0x0);
+}
+
+static int draw_cont_object(item_t item, int nb, sfVector2f off, game_t *game)
+{
+	sfSprite *weapon = get_assets(0x0)->sprites[GUN_1];
+	sfIntRect size = sfSprite_getTextureRect(weapon);
+
+	off = (sfVector2f) {off.x + 62, off.y + 60};
+	off = (sfVector2f) {off.x, off.y + ((nb % 3) * 141)};
+	off = (sfVector2f) {off.x + ((nb / 3) * 140), off.y};
+	off = (sfVector2f) {off.x + ((103 - size.width) / 2), off.y};
+	off = (sfVector2f) {off.x, off.y + ((103 - size.height) / 2)};
+	sfSprite_setPosition(weapon, off);
+	sfRenderWindow_drawSprite(game->win, weapon, 0x0);
+}
+
+int draw_inventory(game_t *game)
+{
+	sfVector2u sz_w = sfRenderWindow_getSize(game->win);
+	sfSprite *inv_sprite = get_assets(0x0)->sprites[INVENTORY];
+	sfIntRect s_sz = sfSprite_getTextureRect(inv_sprite);
+	sfVector2f off = {(sz_w.x - s_sz.width), (sz_w.y - s_sz.height)};
+	struct inventory *inv = get_ressources(0x0)->player->inv;
+
+	off = (sfVector2f) {off.x / 2, off.y / 2};
+	sfSprite_setPosition(inv_sprite, off);
+	sfRenderWindow_drawSprite(game->win, inv_sprite, 0x0);
+	for (int i = 0; i < inv->size; i++) {
+		draw_inv_object(inv->objects[i], i, off, game);
+	}
+}
+
+int draw_containers(game_t *game)
+{
+	sfVector2u sz_w = sfRenderWindow_getSize(game->win);
+	sfSprite *cont_spr = get_assets(0x0)->sprites[CHEST];
+	sfSprite *inv_spr = get_assets(0x0)->sprites[INVENTORY];
+	sfIntRect inv_sz = sfSprite_getTextureRect(inv_spr);
+	sfIntRect cont_sz = sfSprite_getTextureRect(cont_spr);
+	sfVector2f off_c = {0, (sz_w.y - cont_sz.height) / 2};
+	sfVector2f off_i = {0, (sz_w.y - inv_sz.height) / 2};
+	struct inventory *inv = get_ressources(0x0)->player->inv;
+
+	off_i = (sfVector2f) {sz_w.x - inv_sz.width - cont_sz.width, off_i.y};
+	off_i = (sfVector2f) {(off_i.x - 200) / 2, off_i.y};
+	off_c = (sfVector2f) {off_i.x + 200 + inv_sz.width, off_c.y};
+	sfSprite_setPosition(cont_spr, off_c);
+	sfSprite_setPosition(inv_spr, off_i);
+	sfRenderWindow_drawSprite(game->win, cont_spr, 0x0);
+	sfRenderWindow_drawSprite(game->win, inv_spr, 0x0);
+	for (int i = 0; i < inv->size; i++)
+		draw_inv_object(inv->objects[i], i, off_i, game);
+	for (int i = 0; i < game->container->size; i++)
+		draw_cont_object(game->container->objects[i], i, off_c, game);
+}

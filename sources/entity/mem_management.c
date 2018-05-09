@@ -64,7 +64,7 @@ struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level)
 	player->entity = ent_create(pos, max_hp, level);
 	skills_init(player);
 	stats_init(player);
-	player->inv = inv_create(18);
+	player->inv = inv_create(12);
 	player->level = 1;
 	player->xp = (struct vector) {0, 0};
 	load_assets(player);

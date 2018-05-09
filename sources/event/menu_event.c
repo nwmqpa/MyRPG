@@ -21,6 +21,7 @@ int menu_key(game_t *game)
 		break;
 	case sfKeyEscape:
 		game->gamemode = GAME;
+		game->menu_type = NOTHING;
 		break;
 	default:
 		break;
