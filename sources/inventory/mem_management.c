@@ -30,16 +30,19 @@ struct object obj_create(UNUSED unsigned int level)
 	union to_data returned_object;
 
 	returned_object.data = 0;
+	returned_object.object.qty = rand() % 64;
+	printf("\t%d\n", returned_object.object.qty);
 	return (returned_object.object);
 }
 
 // TODO: Create random loots using level
 struct inventory *create_random_loots(unsigned int level)
 {
-	unsigned int size = random() % 9;
+	unsigned int size = rand() % 9;
 	struct inventory *inv = my_calloc(sizeof(struct inventory));
 
-	inv->objects = my_calloc(sizeof(struct object) * size);
+	printf("%d =>\n", size);
+	inv->objects = my_calloc(sizeof(struct object) * 9);
 	inv->size = 9;
 	for (unsigned int i = 0; i < size; i++) {
 		inv->objects[i] = obj_create(level);

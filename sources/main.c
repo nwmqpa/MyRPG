@@ -6,6 +6,7 @@
 */
 
 #include <unistd.h>
+#include "time.h"
 #include "cybend2200.h"
 #include "utils.h"
 #include "ress_manager.h"
