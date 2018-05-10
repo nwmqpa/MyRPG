@@ -42,6 +42,7 @@ typedef struct game_s {
 	sfRenderWindow *win;
 	int gamemode;
 	int menu_type;
+	struct object *handed;
 	struct inventory *container;
 	struct map *actual_map;
 	sfEvent event;

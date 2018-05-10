@@ -58,7 +58,6 @@ struct assets *create_assets(void)
 {
 	struct assets *assets = my_calloc(sizeof(struct assets));
 	char *temp = 0x0;
-	char *temp_char = my_strdup("0\0");
 
 	assets->fonts[FLIGHTER] =
 	sfFont_createFromFile("assets/fonts/Flighter.ttf");
@@ -72,15 +71,13 @@ struct assets *create_assets(void)
 	set_shader(assets);
 	set_ui(assets);
 	for (int i = GUN_1; i <= GUN_4; i++) {
-		temp_char[0] = i + 45;
-		temp = my_strcat(my_strdup("assets/textures/Stuff/Gun"), temp_char);
+		temp = str_append("assets/textures/Stuff/Gun", i + 45);
 		temp = my_strcat(temp, ".png");
 		assets->textures[i] = sfTexture_createFromFile(temp, NULL);
 		assets->sprites[i] = sfSprite_create();
 		sfSprite_setTexture(assets->sprites[i], assets->textures[i], sfTrue);
 		free(temp);
 	}
-	free(temp_char);
 	return (assets);
 }
 

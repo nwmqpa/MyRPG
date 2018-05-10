@@ -23,10 +23,10 @@ char *my_strcat(char *str1, char const *str2)
 
 char *str_append(char *str1, char const c)
 {
-	int len = my_strlen(str1);
+	int len = str1 ? my_strlen(str1) : 0;
 	char *new = my_calloc(len + 3);
 
-	my_memcpy(new, str1, len);
+	my_memcpy(new, len ? str1 : "", len);
 	new[len] = c;
 	return (new);
 }
