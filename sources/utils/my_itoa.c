@@ -7,28 +7,9 @@
 
 #include <stdlib.h>
 #include "utils.h"
+#include "str_utils.h"
 
 static const unsigned long long MAX_POWER = 10000000000000000000U;
-
-static char *put_in_str(char c, char *str)
-{
-	int counter = 0;
-	char *to_return;
-
-	while (str && str[counter])
-		counter++;
-	to_return = my_calloc(sizeof(char) * (counter + 2));
-	counter = 0;
-	while (str && str[counter]) {
-		to_return[counter] = str[counter];
-		counter++;
-	}
-	to_return[counter] = c;
-	to_return[counter + 1] = 0;
-	if (str)
-		free(str);
-	return (to_return[0] == 0 ? NULL : to_return);
-}
 
 static unsigned long long get_max_power(unsigned long long nb)
 {
@@ -49,7 +30,7 @@ char *my_itoa(int nb)
 	while (power > 0) {
 		digit = nb / power;
 		nb = nb - (digit * power);
-		to_return = put_in_str(digit + 48, to_return);
+		to_return = str_append(to_return, digit + 48);
 		power = power / 10;
 	}
 	if (to_return == NULL)
