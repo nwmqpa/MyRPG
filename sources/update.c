@@ -37,4 +37,3 @@ int draw_combat(UNUSED game_t *game)
 	//Draw combat phase
     	return (0);
 }
-

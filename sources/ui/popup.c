@@ -71,9 +71,13 @@ void popup_reset(struct popup *pop)
 	pop->value = -249;
 }
 
-void popup_set_text(struct popup *pop, char *string)
+void popup_launch(game_t *game, char *string)
 {
-	free(pop->string);
-	pop->string = my_strdup(string);
-	sfText_setString(pop->text, pop->string);
+	int size = my_strlen(string) / 10;
+
+	game->ui[POPUP_UI] = 1;
+	free(game->popup->string);
+	game->popup->string = my_strdup(string);
+	sfText_setString(game->popup->text, game->popup->string);
+	popup_reset(game->popup);
 }
