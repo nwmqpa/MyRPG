@@ -12,5 +12,5 @@ door3:tutorial:door0:2362:744:2464:880
 door4:tutorial:door0:3199:746:3286:880
 door5:main_city:door2:645:221:685:320
 chests
-chest0:400:850:440:880
+chest0:384:828:456:880
 chest1:11:12:13:880

@@ -32,7 +32,11 @@ enum SPRITE {
 	POPUP,
 	DIALOG_BOX,
 	INVENTORY,
-	CHEST
+	CHEST,
+	GUN_1,
+	GUN_2,
+	GUN_3,
+	GUN_4
 };
 
 enum ANIM {

@@ -55,6 +55,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/particle/particles_2.c	 		\
 		$(SRC_DIR)/entity/player.c				\
 		$(SRC_DIR)/inventory/management.c			\
+		$(SRC_DIR)/inventory/draw_inventory.c			\
 		$(SRC_DIR)/inventory/mem_management.c			\
 		$(SRC_DIR)/projectiles/management.c 			\
 		$(SRC_DIR)/managers/cinematique_mng.c 			\

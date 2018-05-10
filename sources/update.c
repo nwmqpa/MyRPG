@@ -13,8 +13,14 @@
 
 int draw_menu(UNUSED game_t *game)
 {
-    //Draw game menu
-    return (0);
+	draw_map(game);
+	if (game->menu_type == INVENTORY_PLAYER)
+		draw_inventory(game);
+	if (game->menu_type == CONTAINER)
+		draw_containers(game);
+	/*if (game->menu_type == ESCAPE)
+		draw_escape_menu(game);*/
+	return (0);
 }
 
 int draw_game(UNUSED game_t *game)
@@ -26,7 +32,7 @@ int draw_game(UNUSED game_t *game)
 
 int draw_combat(UNUSED game_t *game)
 {
-    //Draw combat phase
-    return (0);
+	//Draw combat phase
+    	return (0);
 }
 
