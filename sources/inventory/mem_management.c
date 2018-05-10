@@ -25,12 +25,15 @@ struct inventory *inv_create(int nb_slots)
 }
 
 // TODO: Create random object using level
-struct object obj_create(UNUSED unsigned int level)
+struct object obj_create(unsigned int level)
 {
 	union to_data returned_object;
 
 	returned_object.data = 0;
 	returned_object.object.qty = rand() % 64;
+	returned_object.object.dmg_lvl = rand() % level;
+	returned_object.object.spd_lvl = rand() % level;
+	returned_object.object.split_proj = rand() % level;
 	return (returned_object.object);
 }
 

@@ -18,7 +18,6 @@ static int draw_item_number(item_t item, game_t *game, sfVector2f off)
 	sfText *text = sfText_create();
 
 	sfText_setColor(text, sfWhite);
-	printf("\t%d\n", item.qty);
 	sfText_setString(text, my_itoa(item.qty));
 	sfText_setFont(text, get_assets(0x0)->fonts[FLIGHTER]);
 	sfText_setCharacterSize(text, 24);
@@ -31,10 +30,11 @@ static int draw_item_number(item_t item, game_t *game, sfVector2f off)
 
 static int draw_inv_object(item_t item, int nb, sfVector2f off, game_t *game)
 {
-	sfSprite *weapon = get_assets(0x0)->sprites[GUN_1];
+	sfSprite *weapon = get_assets(0x0)->sprites[GUN];
 	sfIntRect size;
 	union to_data object;
 
+	transform_shader(get_assets(0x0)->shaders[WEAPONS], item);
 	object.object = item;
 	if (object.data == 0 || item.qty == 0)
 		return (0);
@@ -54,10 +54,13 @@ static int draw_inv_object(item_t item, int nb, sfVector2f off, game_t *game)
 
 static int draw_cont_object(item_t item, int nb, sfVector2f off, game_t *game)
 {
-	sfSprite *weapon = get_assets(0x0)->sprites[GUN_1];
+	sfSprite *weapon = get_assets(0x0)->sprites[GUN];
 	sfIntRect size;
+	sfRenderStates st = {sfBlendAlpha, sfTransform_Identity,
+	NULL, get_assets(0x0)->shaders[WEAPONS]};
 	union to_data object;
 
+	transform_shader(get_assets(0x0)->shaders[WEAPONS], item);
 	object.object = item;
 	if (object.data == 0 || item.qty == 0)
 		return (0);
@@ -68,7 +71,7 @@ static int draw_cont_object(item_t item, int nb, sfVector2f off, game_t *game)
 	off = (sfVector2f) {off.x + ((103 - size.width) / 2), off.y};
 	off = (sfVector2f) {off.x, off.y + ((103 - size.height) / 2)};
 	sfSprite_setPosition(weapon, off);
-	sfRenderWindow_drawSprite(game->win, weapon, 0x0);
+	sfRenderWindow_drawSprite(game->win, weapon, &st);
 	draw_item_number(item, game, off);
 	return (1);
 }
@@ -110,8 +113,6 @@ int draw_containers(game_t *game)
 	sfRenderWindow_drawSprite(game->win, inv_spr, 0x0);
 	for (unsigned int i = 0; i < inv->size; i++)
 		draw_inv_object(inv->objects[i], i, off_i, game);
-
-	printf("%d =>\n", game->container->size);
 	for (unsigned int i = 0; i < game->container->size; i++)
 		draw_cont_object(game->container->objects[i], i, off_c, game);
 	return (0);

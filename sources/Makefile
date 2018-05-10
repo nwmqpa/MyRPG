@@ -47,6 +47,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/particle/particles.c 			\
 		$(SRC_DIR)/utils/hashmap_utils.c			\
 		$(SRC_DIR)/managers/assets.c				\
+		$(SRC_DIR)/managers/assets_color.c			\
 		$(SRC_DIR)/managers/ressources.c			\
 		$(SRC_DIR)/managers/assets_getter.c			\
 		$(SRC_DIR)/managers/map_manager/draw_map.c		\
@@ -58,6 +59,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/particle/particles_2.c	 		\
 		$(SRC_DIR)/entity/player.c				\
 		$(SRC_DIR)/inventory/management.c			\
+		$(SRC_DIR)/inventory/shader.c				\
 		$(SRC_DIR)/inventory/draw_inventory.c			\
 		$(SRC_DIR)/inventory/mem_management.c			\
 		$(SRC_DIR)/projectiles/management.c 			\
