@@ -19,6 +19,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/ui/ui.c					\
 		$(SRC_DIR)/update.c					\
 		$(SRC_DIR)/ui/popup.c					\
+		$(SRC_DIR)/ui/dialog.c					\
 		$(SRC_DIR)/cybend2200.c					\
 		$(SRC_DIR)/entity/npc.c					\
 		$(SRC_DIR)/utils/utils.c				\

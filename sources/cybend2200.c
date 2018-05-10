@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.h>
 #include "cybend2200.h"
+#include "ui.h"
 #include "event.h"
 
 int update_game(game_t *game)
@@ -17,15 +18,12 @@ int update_game(game_t *game)
 		draw_menu(game);
 		break;
 	case GAME:
-		game_event(game);
+		(!game->ui[DIALOG_UI]) ? game_event(game) : dialog_event(game);
 		draw_game(game);
 		break;
 	case FIGHT:
 		fight_event(game);
 		draw_combat(game);
-		break;
-	case DIALOG:
-		draw_dialog(game);
 		break;
 	}
 	return (0);

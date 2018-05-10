@@ -41,6 +41,9 @@ int game_key(game_t *game)
 		game->gamemode = MENU;
 		game->menu_type = INVENTORY_PLAYER;
 		break;
+	case sfKeyA:
+		dialog_launch(game, game->dialog, "SLALSADLLASFLDFS:adsfjoidsjfoia:ASDFASFD");
+		break;
 	default:
 		game_key_extended(game);
 	}

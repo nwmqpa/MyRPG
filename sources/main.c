@@ -32,6 +32,7 @@ static game_t *init_game(void)
 	game->delta_time = 1.0 / MAX_FPS;
 	game->gamemode = GAME;
 	game->popup = popup_create("Basic", 2);
+	game->dialog = dialog_create("salut:salam:putain:allo");
 	return (game);
 }
 

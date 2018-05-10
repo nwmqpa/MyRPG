@@ -44,17 +44,18 @@ enum menus {
 ** 	game datas inside all the game.
 */
 typedef struct game_s {
-	sfRenderWindow *win;
+	int ui[2];
+	int size[2];
 	int gamemode;
 	int menu_type;
-	struct object *handed;
-	struct inventory *container;
-	struct map *actual_map;
-	sfEvent event;
 	float delta_time;
-	int size[2];
-	int ui[2];
 	struct popup *popup;
+	struct dialog *dialog;
+	struct object *handed;
+	struct map *actual_map;
+	struct inventory *container;
+	sfRenderWindow *win;
+	sfEvent event;
 } game_t;
 
 int my_rpg(game_t *game);

@@ -6,6 +6,7 @@
 */
 
 #include "event.h"
+#include "ui.h"
 
 int fight_event(game_t *game)
 {
@@ -17,15 +18,27 @@ int fight_event(game_t *game)
 		case sfEvtKeyPressed:
 			fight_key(game);
 			break;
-
-		case sfEvtMouseMoved:
-			//TODO: Make that
-			break;
 		default:
 			break;
 		}
 	}
 	return (0);
+}
+
+int dialog_event(game_t *game)
+{
+	while (sfRenderWindow_pollEvent(game->win, &game->event)) {
+		switch (game->event.type) {
+		case sfEvtClosed:
+			sfRenderWindow_close(game->win);
+			break;
+		case sfEvtKeyPressed:
+			next_dialog(game, game->dialog);
+			break;
+		default: 
+			break;
+		}
+	}
 }
 
 int menu_event(game_t *game)

@@ -37,16 +37,3 @@ struct npc *npc_create(char *name, char *path, sfVector2f pos)
 	this->dialogs = load_dialogs(name);
 	return (this);
 }
-
-void draw_dialog(game_t *game)
-{
-	sfRenderWindow_drawSprite(game->win,
-		get_sprite(get_assets(NULL), DIALOG_BOX), NULL);
-	//sfRenderWindow_drawText(win, );
-}
-
-int npc_launch_dialog(game_t *game, struct npc *npc, int id)
-{
-	game->gamemode = DIALOG;
-	return (0);
-}
