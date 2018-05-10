@@ -15,7 +15,6 @@
 static int check_door_collisions(game_t *game, sfIntRect pl, hashmap_t *doors)
 {
 	hashmap_t *maps = get_map_mgr(0x0)->maps;
-	struct map *map = game->actual_map;
 	struct map *next_map = 0x0;
 	struct door *temp_door = 0x0;
 	sfIntRect rect;
@@ -50,6 +49,7 @@ static int check_chest_collisions(game_t *game, sfIntRect pl, hashmap_t *cont)
 			return (1);
 		}
 	}
+	return (0);
 }
 
 void check_interactions(game_t *game)

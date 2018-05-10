@@ -19,5 +19,6 @@ int game_key(game_t *game);
 int menu_key(game_t *game);
 int fight_key(game_t *game);
 int game_key_released(game_t *game);
+void check_interactions(game_t *game);
 
 #endif /* EVENT_H_ */
