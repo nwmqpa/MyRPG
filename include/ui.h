@@ -33,6 +33,7 @@ int popup_animate(sfRenderWindow *win, struct popup *pop);
 //If pause == NULL keep old pause
 void popup_reset(struct popup *pop);
 void popup_set_text(struct popup *pop, char *str);
+void popup_launch(game_t *game, char *str);
 int draw_ui(game_t *game);
 void draw_popup(game_t *game);
 int draw_dialog(game_t *game);

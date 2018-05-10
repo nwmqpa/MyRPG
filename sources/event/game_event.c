@@ -36,16 +36,10 @@ int game_key(game_t *game)
 		check_interactions(game);
 		break;
 	case sfKeySpace:
-		player_jump(get_ressources(NULL)->player);
-		break;
+		return (player_jump(get_ressources(NULL)->player));
 	case sfKeyI:
 		game->gamemode = MENU;
 		game->menu_type = INVENTORY_PLAYER;
-		break;
-	case sfKeyA:
-		game->ui[POPUP_UI] = 1;
-		popup_reset(game->popup);
-		popup_set_text(game->popup, "Test");
 		break;
 	default:
 		game_key_extended(game);
