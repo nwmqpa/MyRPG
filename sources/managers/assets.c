@@ -33,6 +33,14 @@ static void set_shader(struct assets *assets)
 	(NULL, "./assets/shaders/glow.frag");
 	assets->shaders[BLUR] = sfShader_createFromFile
 	(NULL, "./assets/shaders/blur.frag");
+	assets->shaders[WEAPONS] = sfShader_createFromFile
+	(NULL, "./assets/shaders/weapons.frag");
+	sfShader_setColorParameter
+	(assets->shaders[WEAPONS], "dmg", (sfColor) {114, 114, 114, 255});
+	sfShader_setColorParameter
+	(assets->shaders[WEAPONS], "spd", (sfColor) {115, 115, 115, 255});
+	sfShader_setColorParameter
+	(assets->shaders[WEAPONS], "split", (sfColor) {113, 113, 113, 255});
 }
 
 static void set_ui(struct assets *assets)
@@ -45,10 +53,12 @@ static void set_ui(struct assets *assets)
 	"assets/UI/Inventory.png", NULL);
 	assets->textures[CHEST] = sfTexture_createFromFile(
 	"assets/UI/Chest.png", NULL);
-	for (int i = 0; i < 4; ++i) {
+	assets->textures[GUN] = sfTexture_createFromFile(
+	"assets/textures/Stuff/Gun.png", NULL);
+	for (int i = 0; i < 5; ++i) {
 		assets->sprites[i] = sfSprite_create();
 		sfSprite_setTexture(
-		assets->sprites[i], assets->textures[i], sfTrue);
+		assets->sprites[i], assets->textures[i], 1);
 	}
 	assets->anims[LIFES] = create_anim_path_rect(
 	"assets/UI/LifesAnimation.png", 2, 0.1, (sfIntRect){0, 0, 100, 100});
@@ -71,14 +81,7 @@ struct assets *create_assets(void)
 	set_sound(assets);
 	set_shader(assets);
 	set_ui(assets);
-	for (int i = GUN_1; i <= GUN_4; i++) {
-		temp = str_append("assets/textures/Stuff/Gun", i + 45);
-		temp = my_strcat(temp, ".png");
-		assets->textures[i] = sfTexture_createFromFile(temp, NULL);
-		assets->sprites[i] = sfSprite_create();
-		sfSprite_setTexture(assets->sprites[i], assets->textures[i], sfTrue);
-		free(temp);
-	}
+	set_colors(assets);
 	return (assets);
 }
 

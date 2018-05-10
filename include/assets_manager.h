@@ -12,6 +12,12 @@
 #include <SFML/Audio.h>
 #include "anim.h"
 
+enum COLORS {
+	DMG_COLOR,
+	SPD_COLOR,
+	SPLIT_COLOR
+};
+
 enum MAP {
 	CAVE,
 	CITY
@@ -33,10 +39,7 @@ enum SPRITE {
 	DIALOG_BOX,
 	INVENTORY,
 	CHEST,
-	GUN_1,
-	GUN_2,
-	GUN_3,
-	GUN_4
+	GUN
 };
 
 enum ANIM {
@@ -45,7 +48,8 @@ enum ANIM {
 
 enum SHADER {
 	LIGHT,
-	BLUR
+	BLUR,
+	WEAPONS
 };
 
 /*
@@ -55,13 +59,14 @@ enum SHADER {
 */
 struct assets {
 	sfImage		*images[2];
-	sfShader	*shaders[2];
-	sfSprite	*sprites[4];
-	sfTexture	*textures[4];
+	sfShader	*shaders[3];
+	sfSprite	*sprites[5];
+	sfTexture	*textures[5];
 	sfSound		*sounds[3];
 	sfSoundBuffer	*sound_buffer[3];
 	sfMusic		*musics[2];
 	sfFont		*fonts[2];
+	sfColor		colors[16];
 	anim_t		*anims[1];
 };
 
@@ -76,6 +81,7 @@ sfSprite *get_sprite(struct assets *ass, int id);
 sfSound	 *get_sound(struct assets *ass, int id);
 sfMusic	 *get_music(struct assets *ass, int id);
 sfFont	 *get_font(struct assets *ass, int id);
+void set_colors(struct assets *assets);
 
 // Constructor
 struct assets *create_assets(void);
