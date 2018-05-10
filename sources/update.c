@@ -25,10 +25,9 @@ int draw_menu(UNUSED game_t *game)
 
 int draw_game(UNUSED game_t *game)
 {
-	draw_map(game);
-	draw_player(game, game->win, get_ressources(NULL)->player);
-	//printf("%d\n", player_colliding(get_ressources(NULL)->player , game));
-	return (0);
+    draw_map(game);
+    draw_player(game, game->win, get_ressources(NULL)->player);
+    return (0);
 }
 
 int draw_combat(UNUSED game_t *game)
