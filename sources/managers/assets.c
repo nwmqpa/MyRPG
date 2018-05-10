@@ -8,6 +8,7 @@
 #include "assets_manager.h"
 #include "utils.h"
 #include "str_utils.h"
+#include <stdlib.h>
 
 // Set sounds
 static void set_sound(struct assets *assets)

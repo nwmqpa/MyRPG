@@ -8,6 +8,7 @@
 #include "event.h"
 #include "entities.h"
 #include "ress_manager.h"
+#include "ui.h"
 
 static int game_key_extended(game_t *game)
 {
@@ -40,6 +41,11 @@ int game_key(game_t *game)
 	case sfKeyI:
 		game->gamemode = MENU;
 		game->menu_type = INVENTORY_PLAYER;
+		break;
+	case sfKeyA:
+		game->ui[POPUP_UI] = 1;
+		popup_reset(game->popup);
+		popup_set_text(game->popup, "Test");
 		break;
 	default:
 		game_key_extended(game);

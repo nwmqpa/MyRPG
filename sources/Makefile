@@ -16,7 +16,9 @@ NAME	=	my_rpg
 REAL	=	$(ROOT)/release
 
 SRC	=	$(SRC_DIR)/main.c 					\
+		$(SRC_DIR)/ui/ui.c					\
 		$(SRC_DIR)/update.c					\
+		$(SRC_DIR)/ui/popup.c					\
 		$(SRC_DIR)/cybend2200.c					\
 		$(SRC_DIR)/entity/npc.c					\
 		$(SRC_DIR)/utils/utils.c				\
@@ -66,7 +68,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/managers/map_manager/graph_management.c
 
 
-WARN	=	-W -Wall
+WARN	=	-W #-Wall
 
 CFLAGS	=	-I $(ROOT)/include $(WARN) -g
 

@@ -26,6 +26,11 @@ enum gamemode {
 	DIALOG
 };
 
+enum ui {
+	DIALOG_UI,
+	POPUP_UI
+};
+
 enum menus {
 	NOTHING,
 	INVENTORY_PLAYER,
@@ -47,9 +52,10 @@ typedef struct game_s {
 	sfEvent event;
 	float delta_time;
 	int size[2];
+	int ui[2];
+	struct popup *popup;
 } game_t;
 
-void draw_dialog(game_t *game);
 int my_rpg(game_t *game);
 int update_game(game_t *game);
 int game_loop(game_t *game);

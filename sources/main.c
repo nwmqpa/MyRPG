@@ -11,6 +11,7 @@
 #include "ress_manager.h"
 #include "assets_manager.h"
 #include "map_parser.h"
+#include "ui.h"
 
 static game_t *init_game(void)
 {
@@ -29,6 +30,7 @@ static game_t *init_game(void)
 	sfRenderWindow_setVerticalSyncEnabled(game->win, sfTrue);
 	game->delta_time = 1.0 / MAX_FPS;
 	game->gamemode = GAME;
+	game->popup = popup_create("Basic", 2);
 	return (game);
 }
 

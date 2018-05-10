@@ -10,6 +10,7 @@
 #include "map_parser.h"
 #include "ress_manager.h"
 #include "entities.h"
+#include "ui.h"
 
 int draw_menu(UNUSED game_t *game)
 {
@@ -27,6 +28,7 @@ int draw_game(UNUSED game_t *game)
 {
     draw_map(game);
     draw_player(game, game->win, get_ressources(NULL)->player);
+    draw_ui(game);
     return (0);
 }
 
