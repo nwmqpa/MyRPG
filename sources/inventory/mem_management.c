@@ -31,7 +31,6 @@ struct object obj_create(UNUSED unsigned int level)
 
 	returned_object.data = 0;
 	returned_object.object.qty = rand() % 64;
-	printf("\t%d\n", returned_object.object.qty);
 	return (returned_object.object);
 }
 

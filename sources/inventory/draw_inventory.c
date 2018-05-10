@@ -26,6 +26,7 @@ static int draw_item_number(item_t item, game_t *game, sfVector2f off)
 	sfText_setPosition(text, off);
 	sfRenderWindow_drawText(game->win, text, 0x0);
 	sfText_destroy(text);
+	return (0);
 }
 
 static int draw_inv_object(item_t item, int nb, sfVector2f off, game_t *game)
@@ -83,7 +84,7 @@ int draw_inventory(game_t *game)
 	off = (sfVector2f) {off.x / 2, off.y / 2};
 	sfSprite_setPosition(inv_sprite, off);
 	sfRenderWindow_drawSprite(game->win, inv_sprite, 0x0);
-	for (int i = 0; i < inv->size; i++) {
+	for (unsigned int i = 0; i < inv->size; i++) {
 		draw_inv_object(inv->objects[i], i, off, game);
 	}
 	return (0);
@@ -107,11 +108,11 @@ int draw_containers(game_t *game)
 	sfSprite_setPosition(inv_spr, off_i);
 	sfRenderWindow_drawSprite(game->win, cont_spr, 0x0);
 	sfRenderWindow_drawSprite(game->win, inv_spr, 0x0);
-	for (int i = 0; i < inv->size; i++)
+	for (unsigned int i = 0; i < inv->size; i++)
 		draw_inv_object(inv->objects[i], i, off_i, game);
 
 	printf("%d =>\n", game->container->size);
-	for (int i = 0; i < game->container->size; i++)
+	for (unsigned int i = 0; i < game->container->size; i++)
 		draw_cont_object(game->container->objects[i], i, off_c, game);
 	return (0);
 }
