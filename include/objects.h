@@ -8,6 +8,8 @@
 #ifndef OBJECTS_H_
 #define OBJECTS_H_
 
+#include "cybend2200.h"
+
 typedef struct object item_t;
 typedef struct object weapon_t;
 typedef struct object ammo_t;
@@ -45,6 +47,7 @@ struct inventory *inv_create(int nb_slots);
 void inv_free(struct inventory **inv);
 struct object obj_create(unsigned int level);
 struct inventory *create_random_loots(unsigned int level);
-
+int draw_inventory(game_t *game);
+int draw_containers(game_t *game);
 
 #endif /* OBJECTS_H_ */

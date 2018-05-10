@@ -15,7 +15,6 @@
 static int check_door_collisions(game_t *game, sfIntRect pl, hashmap_t *doors)
 {
 	hashmap_t *maps = get_map_mgr(0x0)->maps;
-	struct map *map = game->actual_map;
 	struct map *next_map = 0x0;
 	struct door *temp_door = 0x0;
 	sfIntRect rect;
@@ -43,7 +42,6 @@ static int check_chest_collisions(game_t *game, sfIntRect pl, hashmap_t *cont)
 
 	for (hashmap_t *temp = cont; temp; temp = temp->next) {
 		container = temp->data;
-		printf("%d, %d, %d, %d => %d, %d, %d, %d\n", pl.left, pl.top, pl.width, pl.height, container->bounds.left, container->bounds.top, container->bounds.width, container->bounds.height);
 		if (sfIntRect_intersects(&(container->bounds), &pl, 0x0)) {
 			game->gamemode = MENU;
 			game->menu_type = CONTAINER;
@@ -51,6 +49,7 @@ static int check_chest_collisions(game_t *game, sfIntRect pl, hashmap_t *cont)
 			return (1);
 		}
 	}
+	return (0);
 }
 
 void check_interactions(game_t *game)

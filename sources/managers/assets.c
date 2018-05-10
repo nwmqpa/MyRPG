@@ -5,6 +5,7 @@
 ** assets functions
 */
 
+#include <stdlib.h>
 #include "assets_manager.h"
 #include "utils.h"
 #include "str_utils.h"

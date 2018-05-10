@@ -22,5 +22,6 @@ char *my_itoa(int nbr);
 void my_memcpy(char *str1, char const *str2, int len);
 int find_next(char const *mem, char c);
 char *my_revstr(char *str);
+char *str_append(char *str, char c);
 
 #endif /* STR_UTILS_H */

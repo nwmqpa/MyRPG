@@ -13,7 +13,8 @@ char *my_revstr(char *str)
 	int size = my_strlen(str);
 
 	while (i < size / 2) {
-		str[i] = str[size - i];
+		str[i] = str[size - i - 1];
+		i++;
 	}
 	return (str);
 }
