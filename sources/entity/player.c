@@ -15,18 +15,14 @@ static void collision(struct player *player, int touched)
 	if (touched & DOWN_R) {
 		if (touched & TOP_R && player->vec.x > 0) {
 			player->vec.x = -player->vec.x;
-			printf("STOP RIGHT\n");
 		} if (touched & DOWN_L && player->vec.y > 0) {
 			player->vec.y = 0;
-			printf("STOP DOWN\n");
 		}
 	} if (touched & TOP_L) {
 		if (touched & DOWN_L && player->vec.x < 0) {
 			player->vec.x = -player->vec.x;
-			printf("STOP LEFT\n");
 		} if (touched & TOP_R && player->vec.y < 0) {
 			player->vec.y = -player->vec.y;
-			printf("STOP UP\n");
 		}
 	}
 }
