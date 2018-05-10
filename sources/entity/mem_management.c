@@ -69,7 +69,8 @@ struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level)
 	player->xp = (struct vector) {0, 0};
 	load_assets(player);
 	player->vec = (sfVector2f){0, 0};
-	player->hitbox = (sfFloatRect){0, 0, 100, 200}; 
+	player->hitbox = (sfFloatRect){
+	player->entity->pos.x, player->entity->pos.y, 100, 200}; 
 	return (player);
 }
 
