@@ -21,7 +21,7 @@ static int game_key_extended(game_t *game)
 	default:
 		break;
 	}
-	return (0);
+	return 0;
 }
 
 int game_key(game_t *game)
@@ -51,7 +51,7 @@ int game_key(game_t *game)
 	default:
 		game_key_extended(game);
 	}
-	return (0);
+	return 0;
 }
 
 int game_key_released(game_t *game)

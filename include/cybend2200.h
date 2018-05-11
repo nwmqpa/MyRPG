@@ -23,7 +23,8 @@ enum gamemode {
 	MENU,
 	GAME,
 	FIGHT,
-	DIALOG
+	DIALOG,
+	CINEMATIQUE
 };
 
 enum ui {

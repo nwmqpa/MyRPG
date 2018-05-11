@@ -26,7 +26,8 @@ enum MAP {
 enum SOUND {
 	FOOTSTEP,
 	PISTOL,
-	RIFLE
+	RIFLE,
+	DOOR
 };
 
 enum FONT {
@@ -62,8 +63,8 @@ struct assets {
 	sfShader	*shaders[3];
 	sfSprite	*sprites[5];
 	sfTexture	*textures[5];
-	sfSound		*sounds[3];
-	sfSoundBuffer	*sound_buffer[3];
+	sfSound		*sounds[4];
+	sfSoundBuffer	*sound_buffer[4];
 	sfMusic		*musics[2];
 	sfFont		*fonts[2];
 	sfColor		colors[16];

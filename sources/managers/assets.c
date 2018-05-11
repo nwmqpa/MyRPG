@@ -20,7 +20,9 @@ static void set_sound(struct assets *assets)
 	sfSoundBuffer_createFromFile("assets/sound/heavy.ogg");
 	assets->sound_buffer[FOOTSTEP] =
 	sfSoundBuffer_createFromFile("assets/sound/footstep.ogg");
-	for (int i = 0; i < 3; ++i) {
+	assets->sound_buffer[DOOR] = 
+	sfSoundBuffer_createFromFile("assets/sound/door.ogg");
+	for (int i = 0; i < 4; ++i) {
 		assets->sounds[i] = sfSound_create();
 		sfSound_setBuffer(
 		assets->sounds[i], assets->sound_buffer[i]);
