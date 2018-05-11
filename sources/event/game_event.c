@@ -9,6 +9,7 @@
 #include "entities.h"
 #include "ress_manager.h"
 #include "ui.h"
+#include "utils.h"
 
 static int game_key_extended(game_t *game)
 {
@@ -25,6 +26,7 @@ static int game_key_extended(game_t *game)
 
 int game_key(game_t *game)
 {
+	char *test = NULL;
 	switch  (game->event.key.code) {
 	case sfKeyLeft:
 		get_ressources(NULL)->player->action[N_LEFT] = true;
@@ -42,7 +44,9 @@ int game_key(game_t *game)
 		game->menu_type = INVENTORY_PLAYER;
 		break;
 	case sfKeyA:
-		dialog_launch(game, game->dialog, "SLALSADLLASFLDFS:adsfjoidsjfoia:ASDFASFD");
+		test = string_from_file("ressources/dialog/turorial.txt");
+		dialog_launch(game, game->dialog, test);
+		free(test);
 		break;
 	default:
 		game_key_extended(game);

@@ -10,6 +10,25 @@
 #include "str_utils.h"
 #include "utils.h"
 
+char *string_from_file(char *path)
+{
+	char *ret = NULL;
+	size_t size = 0;
+	int i = -1;
+	FILE *fs = fopen(path, "r");
+
+	if (fs == NULL)
+		return (my_strdup("Error"));
+	getline(&ret, &size, fs);
+	while (ret[++i]) {
+		if (ret[i] == '~')
+			ret[i] = '\n';
+		if (ret[i] == '^')
+			ret[i] == '\t';
+	}
+	return (ret);
+}
+
 int getline_w_n(char **line, long unsigned int *size, FILE *file)
 {
 	char *ret_line = 0x0;
