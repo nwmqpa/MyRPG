@@ -43,11 +43,6 @@ int game_key(game_t *game)
 		game->gamemode = MENU;
 		game->menu_type = INVENTORY_PLAYER;
 		break;
-	case sfKeyA:
-		test = string_from_file("ressources/dialog/turorial.txt");
-		dialog_launch(game, game->dialog, test);
-		free(test);
-		break;
 	default:
 		game_key_extended(game);
 	}
