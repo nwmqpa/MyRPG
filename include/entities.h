@@ -87,7 +87,7 @@ int player_move(game_t *game, struct player *player, int dir);
 void draw_player(game_t *game, sfRenderWindow *win, struct player *player);
 int move_fight(struct player *player, int dir);
 int move_game(struct player *player, int dir);
-void player_move_assets(struct player *player, sfVector2f pos);
+void player_move_assets(game_t *game, struct player *player, sfVector2f pos);
 int player_set_position(struct player *player, sfVector2f pos);
 int player_scale(struct player *player, sfVector2f scale);
 int player_jump(struct player *player);

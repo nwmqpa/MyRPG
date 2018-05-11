@@ -7,13 +7,26 @@
 
 #include "entities.h"
 
-void player_move_assets(struct player *player, sfVector2f pos)
+void player_move_assets(game_t *game, struct player *player, sfVector2f pos)
 {
-	player->entity->pos.x += pos.x;
-	player->entity->pos.y += pos.y;
-	sfSprite_move(player->n_idle, pos);
-	for (int i = 0; i < NB_ANIM_N; ++i)
-		anim_move(player->normal[i], pos);
+	sfSprite *spr = player->actual->sprite[0];
+	sfFloatRect rect = sfSprite_getGlobalBounds(spr);
+	sfVector2u sw = sfRenderWindow_getSize(game->win);
+
+	if (!(sw.x - rect.left < sw.x / 2) || game->delta_pos.x > 0) {
+		player->entity->pos.x += pos.x;
+		player->entity->pos.y += pos.y;
+		sfSprite_move(player->n_idle, pos);
+		for (int i = 0; i < NB_ANIM_N; ++i)
+			anim_move(player->normal[i], pos);
+	} else {
+		game->delta_pos.x -= pos.x;
+		player->entity->pos.y += pos.y;
+		pos.x = 0;
+		sfSprite_move(player->n_idle, pos);
+		for (int i = 0; i < NB_ANIM_N; ++i)
+			anim_move(player->normal[i], pos);	
+	}
 }
 
 int player_set_position(struct player *player, sfVector2f pos)

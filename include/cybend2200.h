@@ -57,6 +57,7 @@ typedef struct game_s {
 	struct inventory *container;
 	sfRenderWindow *win;
 	sfEvent event;
+	sfVector2f delta_pos;
 } game_t;
 
 int my_rpg(game_t *game);

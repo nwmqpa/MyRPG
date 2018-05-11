@@ -7,8 +7,10 @@
 
 #include <SFML/Graphics.h>
 #include <stdlib.h>
+#include "entities.h"
 #include "utils.h"
 #include "assets_manager.h"
+#include "ress_manager.h"
 #include "cin_mng.h"
 #include "cybend2200.h"
 #include "ui.h"
@@ -36,7 +38,12 @@ int update_game(game_t *game)
 
 int game_loop(game_t *game)
 {
+	sfSprite *spr = get_ressources(0x0)->player->actual->sprite[0];
+	sfFloatRect rect;
+	sfVector2u sw = sfRenderWindow_getSize(game->win);
+
 	while (sfRenderWindow_isOpen(game->win)) {
+		rect = sfSprite_getGlobalBounds(spr);
 		sfRenderWindow_clear(game->win, sfBlack);
 		update_game(game);
 		sfRenderWindow_display(game->win);

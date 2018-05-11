@@ -39,6 +39,8 @@ int draw_map(game_t *game)
 		sfShader_setFloatParameter(ls, "u_time", time);
 	while(temp) {
 		temp_layer = (struct layer *) temp->data;
+		sfSprite_setPosition
+		(temp_layer->sprite, game->delta_pos);
 		sfRenderWindow_drawSprite(
 			game->win,
 			temp_layer->sprite,

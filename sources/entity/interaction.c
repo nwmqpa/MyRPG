@@ -33,6 +33,7 @@ static int check_door_collisions(game_t *game, sfIntRect pl, hashmap_t *doors)
 					(vec_t) {rect.left,rect.top};
 			game->actual_map = next_map;
 			sfSound_play(get_assets(0x0)->sounds[DOOR]);
+			game->delta_pos = (sfVector2f) {0.0f, 0.0f};
 			return (1);
 		}
 	}
@@ -62,6 +63,7 @@ void check_interactions(game_t *game)
 	sfIntRect p_trans = {rect.left, rect.top, rect.width, rect.height};
 	struct map *map = game->actual_map;
 
+	p_trans.left -= game->delta_pos.x;
 	if (check_door_collisions(game, p_trans, map->doors))
 		return;
 	if (check_chest_collisions(game, p_trans, map->containers))

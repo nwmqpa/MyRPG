@@ -12,7 +12,7 @@
 #include "entities.h"
 #include "ui.h"
 
-int draw_menu(UNUSED game_t *game)
+int draw_menu(game_t *game)
 {
 	draw_map(game);
 	if (game->menu_type == INVENTORY_PLAYER)
@@ -24,7 +24,7 @@ int draw_menu(UNUSED game_t *game)
 	return (0);
 }
 
-int draw_game(UNUSED game_t *game)
+int draw_game(game_t *game)
 {
     draw_map(game);
     draw_player(game, game->win, get_ressources(NULL)->player);

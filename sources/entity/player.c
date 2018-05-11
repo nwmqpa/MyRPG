@@ -70,10 +70,8 @@ static void player_move_pos(struct player *player)
 void draw_player(game_t *game, sfRenderWindow *win, struct player *player)
 {
 	do_player_movement(player, game);
-	player_move_assets(player, player->vec);
+	player_move_assets(game, player, player->vec);
 	player_change_anim(player);
-	player->hitbox.left = player->entity->pos.x;
-	player->hitbox.top = player->entity->pos.y;	
 	if (player->actual)
 		animate(win, player->actual, 0.016);
 	if (player->entity->pos.y < 1080 - (200 + 200 * 0.5)) {
