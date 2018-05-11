@@ -43,7 +43,6 @@ struct inventory *create_random_loots(unsigned int level)
 	unsigned int size = rand() % 9;
 	struct inventory *inv = my_calloc(sizeof(struct inventory));
 
-	printf("%d =>\n", size);
 	inv->objects = my_calloc(sizeof(struct object) * 9);
 	inv->size = 9;
 	for (unsigned int i = 0; i < size; i++) {

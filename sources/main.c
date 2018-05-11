@@ -31,8 +31,8 @@ static game_t *init_game(void)
 	sfRenderWindow_setVerticalSyncEnabled(game->win, sfTrue);
 	game->delta_time = 1.0 / MAX_FPS;
 	game->gamemode = GAME;
-	game->popup = popup_create("Basic", 2);
-	game->dialog = dialog_create("salut:salam:putain:allo");
+	game->popup = popup_create("Error", 2);
+	game->dialog = dialog_create("error");
 	return (game);
 }
 
@@ -44,7 +44,7 @@ int main(void)
 		write(2, "Error while loading the game try to reclone\n", 44);
 		return (84);
 	}
-	game->actual_map = get_hash_elem(get_map_mgr(NULL)->maps, MAPS[1]);
+	game->actual_map = get_hash_elem(get_map_mgr(NULL)->maps, MAPS[CITY]);
 	my_rpg(game);
 	sfRenderWindow_destroy(game->win);
 	return (0);

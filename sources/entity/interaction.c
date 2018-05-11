@@ -6,10 +6,12 @@
 */
 
 #include <SFML/Graphics.h>
+#include <SFML/Audio.h>
 #include "cybend2200.h"
 #include "entities.h"
 #include "ress_manager.h"
 #include "structs.h"
+#include "assets_manager.h"
 #include "map_parser.h"
 
 static int check_door_collisions(game_t *game, sfIntRect pl, hashmap_t *doors)
@@ -30,6 +32,7 @@ static int check_door_collisions(game_t *game, sfIntRect pl, hashmap_t *doors)
 			get_ressources(NULL)->player->entity->pos =
 					(vec_t) {rect.left,rect.top};
 			game->actual_map = next_map;
+			sfSound_play(get_assets(0x0)->sounds[DOOR]);
 			return (1);
 		}
 	}

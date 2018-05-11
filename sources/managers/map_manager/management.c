@@ -68,6 +68,7 @@ static int parse_phase(int *prev_phase, char *line)
 struct map *parse_map(FILE *file, char *map_name)
 {
 	struct map *map = my_calloc(sizeof(struct map));
+	char *shader_folder = my_strcat(my_strdup("assets/maps/"), map_name);
 	char *line = 0x0;
 	long unsigned int bytes = 0;
 	int phase = 0;
@@ -93,6 +94,7 @@ struct map *parse_map(FILE *file, char *map_name)
 		bytes = 0;
 	}
 	map->name = my_strdup(map_name);
-	map->collide = sfImage_createFromFile("assets/maps/tutorial/assets/collide.png");
+	map->light_shader = sfShader_createFromFile
+	(NULL, my_strcat(shader_folder, "/shader.frag"));
 	return (map);
 }

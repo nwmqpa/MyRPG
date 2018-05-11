@@ -29,6 +29,7 @@ struct map_manager {
 
 struct map {
 	char *name;
+	sfShader *light_shader;
 	sfImage *collide;
 	hashmap_t *doors;
 	hashmap_t *containers;
