@@ -5,8 +5,10 @@
 ** main file for all things
 */
 
+#include <SFML/Graphics.h>
 #include <unistd.h>
 #include "time.h"
+#include "cin_mng.h"
 #include "cybend2200.h"
 #include "utils.h"
 #include "ress_manager.h"
@@ -33,6 +35,7 @@ static game_t *init_game(void)
 	game->gamemode = GAME;
 	game->popup = popup_create("Error", 2);
 	game->dialog = dialog_create("error");
+	game->actual_map = get_hash_elem(get_map_mgr(NULL)->maps, MAPS[CAVE]);
 	return (game);
 }
 
@@ -44,7 +47,6 @@ int main(void)
 		write(2, "Error while loading the game try to reclone\n", 44);
 		return (84);
 	}
-	game->actual_map = get_hash_elem(get_map_mgr(NULL)->maps, MAPS[CITY]);
 	my_rpg(game);
 	sfRenderWindow_destroy(game->win);
 	return (0);

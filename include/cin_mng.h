@@ -24,5 +24,6 @@ cin_t *cin_create(float time, char *string, sfFont *font, sfColor color);
 void cin_update(sfRenderWindow *win, cin_t *cin);
 void cin_reset(cin_t *cin);
 int cin_play(sfRenderWindow *win, cin_t *cin);
+void cin_free(cin_t *cin);
 
 #endif /* CIN_MNG_H_ */
