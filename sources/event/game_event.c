@@ -9,6 +9,8 @@
 #include "entities.h"
 #include "ress_manager.h"
 #include "ui.h"
+#include "assets_manager.h"
+#include "cin_mng.h"
 #include "utils.h"
 
 static int game_key_extended(game_t *game)
@@ -27,6 +29,8 @@ static int game_key_extended(game_t *game)
 int game_key(game_t *game)
 {
 	char *test = NULL;
+	cin_t *cin = NULL;
+
 	switch  (game->event.key.code) {
 	case sfKeyLeft:
 		get_ressources(NULL)->player->action[N_LEFT] = true;
@@ -42,6 +46,11 @@ int game_key(game_t *game)
 	case sfKeyI:
 		game->gamemode = MENU;
 		game->menu_type = INVENTORY_PLAYER;
+		break;
+	case sfKeyA:
+		test = string_from_file("ressources/cinematique/intro.txt");
+		cin = cin_create(50, test, get_assets(NULL)->fonts[THORN], (sfColor){255, 255, 255, 255});
+		cin_play(game->win, cin);
 		break;
 	default:
 		game_key_extended(game);

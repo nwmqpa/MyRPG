@@ -32,6 +32,8 @@ cin_t *cin_create(float time, char *string, sfFont *font, sfColor color)
 
 void cin_update(sfRenderWindow *win, cin_t *cin)
 {
+	if (sfKeyboard_isKeyPressed(sfKeyEscape))
+		cin->time = 0;
 	sfRenderWindow_clear(win, sfBlack);
 	sfRenderWindow_drawText(win, cin->text, NULL);
 	sfRenderWindow_display(win);
