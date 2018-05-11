@@ -16,6 +16,8 @@
 #include "ui.h"
 #include "str_utils.h"
 #include "event.h"
+#include "utils.h"
+#include <stdio.h>
 
 int update_game(game_t *game)
 {
@@ -38,12 +40,12 @@ int update_game(game_t *game)
 
 int game_loop(game_t *game)
 {
-	sfSprite *spr = get_ressources(0x0)->player->actual->sprite[0];
-	sfFloatRect rect;
-	sfVector2u sw = sfRenderWindow_getSize(game->win);
+	sfClock *clock = sfClock_create();
 
 	while (sfRenderWindow_isOpen(game->win)) {
-		rect = sfSprite_getGlobalBounds(spr);
+		double a = sfClock_getElapsedTime(clock).microseconds / 100000;
+		sfClock_restart(clock);
+		get_dtime(a);
 		sfRenderWindow_clear(game->win, sfBlack);
 		update_game(game);
 		sfRenderWindow_display(game->win);

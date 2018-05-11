@@ -11,9 +11,11 @@
 #include "ress_manager.h"
 #include "entities.h"
 #include "ui.h"
+#include "utils.h"
 
 int draw_menu(game_t *game)
 {
+	get_ressources(NULL)->player->vec.x = 0;
 	draw_map(game);
 	if (game->menu_type == INVENTORY_PLAYER)
 		draw_inventory(game);

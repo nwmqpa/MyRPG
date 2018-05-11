@@ -1,0 +1,7 @@
+layers
+layer0:layer0.png
+light:light.png
+doors
+door0:main_city:door2:694:757:778:880
+chests
+chest0:622:837:683:880

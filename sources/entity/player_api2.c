@@ -5,6 +5,7 @@
 ** Player api file 2
 */
 
+#include "utils.h"
 #include "map_parser.h"
 #include "assets_manager.h"
 #include "entities.h"

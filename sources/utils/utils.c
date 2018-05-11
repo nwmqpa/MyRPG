@@ -45,9 +45,9 @@ void *my_calloc(size_t size)
 	return (temp);
 }
 
-float get_dtime(float time)
+double get_dtime(double time)
 {
-	static float d_time = 0.016;
+	static double d_time = 0.016;
 
 	if (time != -1)
 		d_time = time;
