@@ -9,6 +9,8 @@
 #include "cybend2200.h"
 #include "ui.h"
 #include "event.h"
+#include "utils.h"
+#include <stdio.h>
 
 int update_game(game_t *game)
 {
@@ -31,7 +33,12 @@ int update_game(game_t *game)
 
 int game_loop(game_t *game)
 {
+	sfClock *clock = sfClock_create();
+
 	while (sfRenderWindow_isOpen(game->win)) {
+		double a = sfClock_getElapsedTime(clock).microseconds / 100000;
+		sfClock_restart(clock);
+		get_dtime(a);
 		sfRenderWindow_clear(game->win, sfBlack);
 		update_game(game);
 		sfRenderWindow_display(game->win);
