@@ -68,5 +68,6 @@ struct npc *npc_load_from_file(char *path)
 	size = 0;
 	sfSprite_setTexture(this->sprite, this->texture, sfTrue);
 	this->dialogs = load_dialogs(fs);
+	fclose(fs);
 	return (this);
 }

@@ -52,6 +52,8 @@ int menu_event(game_t *game)
 			menu_key(game);
 			break;
 		case sfEvtMouseMoved:
+		//	menu_mouse_but(game);
+			menu_mouse_moved(game);
 			break;
 		default:
 			break;

@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "objects.h"
+#include "cybend2200.h"
 #include "entities.h"
 #include "structs.h"
 #include "objects.h"

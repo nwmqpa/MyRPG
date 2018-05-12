@@ -8,6 +8,9 @@
 #ifndef MY_RPG_H_
 #define MY_RPG_H_
 
+#include <SFML/System.h>
+#include <SFML/Graphics.h>
+
 #define NAME "Cybend2200"
 
 #define Y 1
@@ -15,9 +18,6 @@
 #define WIDTH   1920
 #define HEIGHT  1080
 #define MAX_FPS 30
-
-#include <SFML/System.h>
-#include <SFML/Graphics.h>
 
 enum gamemode {
 	MENU,
@@ -39,12 +39,16 @@ enum menus {
 	ESCAPE
 };
 
+typedef struct game game_t;
+
+#include "objects.h"
+
 /*
 ** Game:
 ** 	Main game structure that represent game state and
 ** 	game datas inside all the game.
 */
-typedef struct game_s {
+struct game {
 	int ui[2];
 	int size[2];
 	int gamemode;
@@ -52,13 +56,14 @@ typedef struct game_s {
 	float delta_time;
 	struct popup *popup;
 	struct dialog *dialog;
-	struct object *handed;
+	item_t handed;
 	struct map *actual_map;
 	struct inventory *container;
 	sfRenderWindow *win;
 	sfEvent event;
 	sfVector2f delta_pos;
-} game_t;
+};
+
 
 int my_rpg(game_t *game);
 int update_game(game_t *game);

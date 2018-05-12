@@ -5,6 +5,7 @@
 ** Sorting inventory
 */
 
+#include "cybend2200.h"
 #include "objects.h"
 #include "utils.h"
 
