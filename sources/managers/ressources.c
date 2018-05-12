@@ -11,6 +11,7 @@
 #include "entities.h"
 #include "npc.h"
 #include "utils.h"
+#include "quests.h"
 
 void create_npcs(struct ressources *ress)
 {
@@ -28,11 +29,32 @@ void create_cin(struct ressources *ress)
 					(sfColor){255, 255, 255, 255});
 }
 
+static void create_quests(struct ressources *ress)
+{
+	char *line = NULL;
+	size_t size = 0;
+	struct quest *q;
+	FILE *fs = fopen("ressources/quests/quests", "r");
+
+	getline_w_n(&line, &size, fs);
+	q = add_quest(NULL, line);
+	size = 0;
+	while(getline_w_n(&line, &size, fs) != -1) {
+		if (line[0] == 0)
+			break;
+		add_quest(&q, line);
+		free(line);
+		size = 0;
+	}
+	ress->quest = q;
+	fclose(fs);
+}
+
 struct ressources *create_ressources(void)
 {
 	struct ressources *ress = my_calloc(sizeof(struct ressources));
 
-	//create_quests(ress);
+	create_quests(ress);
 	ress->player = create_player(
 		(vec_t){100, 1080 - (200 + 200 * 0.5)}, 100, 1);
 	create_cin(ress);

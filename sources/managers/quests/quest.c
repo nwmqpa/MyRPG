@@ -16,26 +16,24 @@ int alloc_str(struct quest *this, char *str)
 	size_t j = 0;
 
 	while (str[++i] != ':' && str[i] != 0)
-		this->name[j++] = str[size++];
+		this->name[j++] = str[i];
 	j = 0;
-	i++;
 	while (str[++i] != ':' && str[i] != 0)
-		this->name[j++] = str[size++];
+		this->desc[j++] = str[i];
 }
 
-char *cut_string(struct quest *this, char *path)
+char *cut_string(struct quest *this, char *str)
 {
-	char *str = string_from_file(path);
 	int i = -1;
 	size_t size = 0;
 
 	while (str[++i] != ':' && str[i] != 0)
 		size++;
-	this->name = my_calloc(size);
+	this->name = my_calloc(size + 1);
 	size = 0;
 	while (str[++i] != ':' && str[i] != 0)
 		size++;
-	this->desc = my_calloc(size);
+	this->desc = my_calloc(size + 1);
 	this->xp = my_atoi(str + i + 1);
 	alloc_str(this, str);
 }
@@ -45,9 +43,15 @@ struct quest *add_quest(struct quest **head, char *string)
 	static int salam = 0;
 	struct quest *elem = my_calloc(sizeof(struct quest));
 
-	elem->next = *head;
-	cut_string(elem, "ressources/quests/quests");
-	head = &elem;
+	if (head == NULL) {
+		elem->next = NULL;
+	} else {
+		elem->next = *head;
+	}
+	cut_string(elem, string);
+	if (head != NULL)
+		*head = elem;
+	return (elem);
 }
 
 void valid_quest(struct quest *head, int id)
