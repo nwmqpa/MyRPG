@@ -26,13 +26,8 @@ struct npc {
 
 typedef struct npc npc_t;
 
-//Draw npc
-void draw_npc(sfRenderWindow *win, struct npc *this);
-
-//Load npc
+void draw_npc(game_t *game, struct npc *this);
 struct npc *npc_load_from_file(char *path);
-
-//free npc
 int npc_destroy(struct npc);
 
 #endif /* NPC_H_ */

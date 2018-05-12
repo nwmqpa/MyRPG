@@ -11,10 +11,16 @@
 #include "assets_manager.h"
 #include "utils.h"
 #include "str_utils.h"
+#include "cybend2200.h"
 
-void draw_npc(sfRenderWindow *win, struct npc *this)
+void draw_npc(game_t *game, struct npc *this)
 {
-	sfRenderWindow_drawSprite(win, this->sprite, NULL);
+	sfVector2f temp = this->pos;
+
+	temp.x += game->delta_pos.x;
+	temp.y += game->delta_pos.y;
+	sfSprite_setPosition(this->sprite, temp);
+	sfRenderWindow_drawSprite(game->win, this->sprite, NULL);
 }
 
 char **load_dialogs(FILE *fs)

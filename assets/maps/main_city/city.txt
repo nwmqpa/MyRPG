@@ -14,3 +14,5 @@ door5:main_city:door2:645:221:685:320
 chests
 chest0:384:828:456:880
 chest1:11:12:13:880
+npcs
+jill:250:780

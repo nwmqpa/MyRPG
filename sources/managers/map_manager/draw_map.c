@@ -10,6 +10,7 @@
 #include "structs.h"
 #include "assets_manager.h"
 #include "utils.h"
+#include "npc.h"
 
 int play_map_music(struct map *map)
 {
@@ -23,6 +24,13 @@ int play_map_music(struct map *map)
 		sfMusic_play(get_assets(NULL)->musics[CAVE]);
 	}
 	return (0);
+}
+
+int draw_npcs(game_t *game, hashmap_t *npcs)
+{
+	for (hash_elem_t *temp = npcs; temp; temp = temp->next) {
+		draw_npc(game, temp->data);
+	}
 }
 
 int draw_map(game_t *game)
@@ -47,6 +55,7 @@ int draw_map(game_t *game)
 			(hash("light") == temp->hash) && ls ? &st : NULL);
 		temp = temp->next;
 	}
+	draw_npcs(game, game->actual_map->npcs);
 	time += get_dtime(-1);
 	return (0);
 }

@@ -11,6 +11,7 @@
 #include "map_parser.h"
 #include "utils.h"
 #include "str_utils.h"
+#include "npc.h"
 
 static void parse_door(char *door_line, struct map *map)
 {
@@ -54,12 +55,28 @@ static void parse_layer(char *layer_line, struct map *map)
 	insert_hash_elem(map->layers, layer[0], layer_struct);
 }
 
+static void parse_npcs(char *npc_line, struct map *map)
+{
+	char **layer = split_string(npc_line, ':');
+	char *path = my_strcat(my_strdup("assets/npc/"), layer[0]);
+	struct npc *npc = 0x0;
+	
+	path = my_strcat(path, ".npc");
+	npc = npc_load_from_file(path);
+	npc->pos.x = my_atoi(layer[1]);
+	npc->pos.y = my_atoi(layer[2]);
+	if (!map->npcs)
+		map->npcs = my_calloc(sizeof(hashmap_t));
+	insert_hash_elem(map->npcs, layer[0], npc);
+	free(path);
+}
+
 static int parse_phase(int *prev_phase, char *line)
 {
 	if (my_memcmp(line, "layers") || my_memcmp(line, "doors"))
 		*prev_phase = my_memcmp(line, "doors");
-	else if (my_memcmp(line, "chests"))
-		*prev_phase = 2;
+	else if (my_memcmp(line, "chests") || my_memcmp(line, "npcs"))
+		*prev_phase = my_memcmp(line, "chests") ? 2 : 3;
 	else
 		return (-1);
 	return (0);
@@ -88,6 +105,9 @@ struct map *parse_map(FILE *file, char *map_name)
 			break;
 		case 2:
 			parse_container(line, map);
+			break;
+		case 3:
+			parse_npcs(line, map);
 			break;
 		}
 		free(line);

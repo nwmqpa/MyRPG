@@ -31,7 +31,6 @@ int draw_game(game_t *game)
 {
     draw_map(game);
     draw_player(game, game->win, get_ressources(NULL)->player);
-    draw_npc(game->win, get_ressources(NULL)->npcs[FEMAL]);
     draw_ui(game);
     return (0);
 }

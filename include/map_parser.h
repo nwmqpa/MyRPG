@@ -34,6 +34,7 @@ struct map {
 	hashmap_t *doors;
 	hashmap_t *containers;
 	hashmap_t *layers;
+	hashmap_t *npcs;
 };
 
 struct door {
