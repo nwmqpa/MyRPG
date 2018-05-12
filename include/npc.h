@@ -29,8 +29,8 @@ typedef struct npc npc_t;
 void draw_npc(game_t *game, struct npc *this);
 struct npc *npc_load_from_file(char *path);
 int npc_destroy(struct npc);
-int npc_get_dialog(struct npc *this);
-int next_dialog(struct npc *this);
+char *npc_get_dialog(struct npc *this);
+int next_phase(game_t *game, struct npc *this);
 
 #endif /* NPC_H_ */
 

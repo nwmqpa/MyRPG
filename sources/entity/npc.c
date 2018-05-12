@@ -39,7 +39,7 @@ char **load_dialogs(FILE *fs)
 	return (dialogs);
 }
 
-int npc_get_dialog(struct npc *this)
+char *npc_get_dialog(struct npc *this)
 {
 	return this->dialogs[this->phase];
 }

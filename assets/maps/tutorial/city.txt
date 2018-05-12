@@ -1,7 +1,7 @@
 layers
 layer0:layer0.png
-layer1:layer1.png
 light:light.png
+layer1:layer1.png
 doors
 door0:main_city:door0:172:758:265:880
 door1:tutorial:door0:542:752:626:880
