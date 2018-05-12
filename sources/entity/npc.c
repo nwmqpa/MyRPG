@@ -39,6 +39,16 @@ char **load_dialogs(FILE *fs)
 	return (dialogs);
 }
 
+int npc_get_dialog(struct *npc this)
+{
+	return this->dialog[this->phase];
+}
+
+int next_dialog(struct *npc this)
+{
+	this->phase++;
+}
+
 struct npc *npc_load_from_file(char *path)
 {
 	struct npc *this = my_calloc(sizeof(struct npc));
