@@ -26,11 +26,11 @@ struct npc {
 
 typedef struct npc npc_t;
 
+//Draw npc
+void draw_npc(sfRenderWindow *win, struct npc *this);
+
 //Load npc
 struct npc *npc_load_from_file(char *path);
-
-//launch a dialog with the npc
-int npc_launch_dialog(game_t *game, struct npc *npc, int id);
 
 //free npc
 int npc_destroy(struct npc);
