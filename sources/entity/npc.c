@@ -5,35 +5,41 @@
 ** npc source file
 */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "npc.h"
 #include "assets_manager.h"
 #include "utils.h"
 #include "str_utils.h"
 
-char **load_dialogs(char *path)
+char **load_dialogs(FILE *fs)
 {
-	FILE *file = fopen(path, "r");
 	char *str = NULL;
 	char **dialogs = my_calloc(sizeof(char *) * 10);
-	int i = 0;
+	size_t i = 0;
+	size_t size = 0;
+	size_t ret = 0;
 
-	do {
-		str = NULL;
-		getline(&str, 0, file);
+	while (getline_w_n(&str, &size, fs) != -1) {
 		dialogs[i++] = str;
-	} while (str != NULL);
+		size = 0;
+	}
 	return (dialogs);
 }
 
-struct npc *npc_create(char *name, char *path, sfVector2f pos)
+struct npc *npc_load_from_file(char *path)
 {
 	struct npc *this = my_calloc(sizeof(struct npc));
+	FILE *fs = fopen(path, "r");
+	char *line = NULL;
+	size_t size = 0;
 
-	this->texture = sfTexture_createFromFile(
-		path, NULL);
-	this->name = my_strdup(name);
-	this->pos  = pos;
-	this->anim = NULL;
-	this->dialogs = load_dialogs(name);
+	getline_w_n(&line, &size, fs);
+	this->name = line;
+	getline_w_n(&line, &size, fs);
+	this->sprite = sfSprite_create();
+	this->texture = sfTexture_createFromFile(line, NULL);
+	sfSprite_setTexture(this->sprite, this->texture, sfTrue);
+	this->dialogs = load_dialogs(fs);
 	return (this);
 }

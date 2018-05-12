@@ -19,20 +19,17 @@ void create_quests(UNUSED struct ressources *ress)
 
 void create_npcs(struct ressources *ress)
 {
-	ress->npcs[ENEMIE] = npc_create(
-		"enemie_1",
+	/*
+	ress->npcs[ENEMIE] = npc_create_from_file(
 		"assets/textures/NPC/EnemieIdle.png",
-		(sfVector2f){100, 100}
 	);
-	ress->npcs[FEMAL] = npc_create(
-		"female_1",
-		"assets/textures/NPC/Femal.png",
-		(sfVector2f){100, 100}
-	);
+	*/
+	ress->npcs[FEMAL] = npc_load_from_file("assets/npc/Jill.npc");
 }
 
 void create_cin(struct ressources *ress)
 {
+	/*
 	FILE *file = fopen("ressources/cinematique/intro.txt", "r");
 	char *str = NULL;
 	long unsigned int bytes = 0;
@@ -43,6 +40,8 @@ void create_cin(struct ressources *ress)
 			str[i] = '\n';
 		}
 	}
+	*/
+	char *str = string_from_file("ressources/cinematique/intro.txt");
 	ress->cinematiques[0] = cin_create(
 					30,
 					str,

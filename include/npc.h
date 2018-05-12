@@ -21,12 +21,13 @@ struct npc {
 	anim_t *anim;
 	char *name;
 	char **dialogs;
+	unsigned int phase;
 };
 
 typedef struct npc npc_t;
 
-//Create a npc in ressources manager
-struct npc *npc_create(char *name, char *path, sfVector2f pos);
+//Load npc
+struct npc *npc_load_from_file(char *path);
 
 //launch a dialog with the npc
 int npc_launch_dialog(game_t *game, struct npc *npc, int id);
