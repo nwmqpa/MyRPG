@@ -32,6 +32,8 @@ static int draw_inv_object(item_t item, int nb, sfVector2f off, game_t *game)
 {
 	sfSprite *weapon = get_assets(0x0)->sprites[GUN];
 	sfIntRect size;
+	sfRenderStates st = {sfBlendAlpha, sfTransform_Identity,
+	NULL, get_assets(0x0)->shaders[WEAPONS]};
 	union to_data object;
 
 	transform_shader(get_assets(0x0)->shaders[WEAPONS], item);
@@ -47,7 +49,7 @@ static int draw_inv_object(item_t item, int nb, sfVector2f off, game_t *game)
 	off = (sfVector2f) {off.x + ((103 - size.width) / 2), off.y};
 	off = (sfVector2f) {off.x, off.y + ((103 - size.height) / 2)};
 	sfSprite_setPosition(weapon, off);
-	sfRenderWindow_drawSprite(game->win, weapon, 0x0);
+	sfRenderWindow_drawSprite(game->win, weapon, &st);
 	draw_item_number(item, game, off);
 	return (1);
 }

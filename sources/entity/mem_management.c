@@ -46,10 +46,10 @@ void load_animation(struct player *player)
 
 void load_assets(struct player *player)
 {
-	player->texture[0] = sfTexture_createFromFile(
-		"./assets/textures/Player/PlayerIdle.png", NULL);
-	player->texture[1] = sfTexture_createFromFile(
-		"assets/textures/Player/PlayerTopView.png", NULL);
+	player->texture[0] = sfTexture_createFromFile
+	("./assets/textures/Player/PlayerIdle.png", NULL);
+	player->texture[1] = sfTexture_createFromFile
+	("assets/textures/Player/PlayerTopView.png", NULL);
 	player->n_idle = sfSprite_create();
 	player->f_idle = sfSprite_create();
 	sfSprite_setTexture(player->n_idle, player->texture[0], sfTrue);
@@ -69,8 +69,8 @@ struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level)
 	player->xp = (struct vector) {0, 0};
 	load_assets(player);
 	player->vec = (sfVector2f){0, 0};
-	player->hitbox = (sfFloatRect){
-	player->entity->pos.x, player->entity->pos.y, 100, 200}; 
+	player->hitbox = (sfFloatRect)
+	{player->entity->pos.x, player->entity->pos.y, 100, 200};
 	return (player);
 }
 

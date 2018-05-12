@@ -18,6 +18,7 @@
 #define WIDTH   1920
 #define HEIGHT  1080
 #define MAX_FPS 30
+#define FLAGS (sfClose)
 
 enum gamemode {
 	MENU,
