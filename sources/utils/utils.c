@@ -51,7 +51,7 @@ double get_dtime(double time)
 
 	if (time != -1)
 		d_time = time;
-	return (d_time);
+	return (d_time / 2);
 }
 
 int my_nblen(int nb)

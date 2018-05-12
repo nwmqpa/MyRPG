@@ -43,7 +43,7 @@ int game_loop(game_t *game)
 	sfClock *clock = sfClock_create();
 
 	while (sfRenderWindow_isOpen(game->win)) {
-		double a = sfClock_getElapsedTime(clock).microseconds / 100000;
+		double a = sfClock_getElapsedTime(clock).microseconds / 1000000.0;
 		sfClock_restart(clock);
 		get_dtime(a);
 		sfRenderWindow_clear(game->win, sfBlack);

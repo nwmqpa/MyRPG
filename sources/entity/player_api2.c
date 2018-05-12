@@ -37,12 +37,14 @@ int player_colliding(struct player *player, game_t *game)
 
 int move_game(struct player *player, int dir)
 {
+	double dtime = get_dtime(-1);
+
 	switch (dir) {
 	case LEFT:
-		player->vec.x = -SPEED * 0.016;
+		player->vec.x = -SPEED * dtime;
 		break;
 	case RIGHT:
-		player->vec.x = SPEED * 0.016;
+		player->vec.x = SPEED * dtime;
 		break;
 	default:
 		//player->actual = player->normal[N_IDLE];
@@ -53,14 +55,16 @@ int move_game(struct player *player, int dir)
 
 int move_fight(struct player *player, int dir)
 {
+	double dtime = get_dtime(-1);
+
 	switch (dir) {
 	case LEFT:
 		anim_move(player->actual, 
-		(sfVector2f){player->vec.x * SPEED * 0.016, player->vec.y});
+		(sfVector2f){player->vec.x * SPEED * dtime, player->vec.y});
 		break;
 	case TOP:
 		anim_move(player->actual, 
-		(sfVector2f){player->vec.x * -SPEED * 0.016, player->vec.y});
+		(sfVector2f){player->vec.x * -SPEED * dtime, player->vec.y});
 		break;
 	case RIGHT:
 		anim_move(player->actual, (sfVector2f){SPEED, 0});

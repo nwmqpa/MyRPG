@@ -44,31 +44,33 @@ struct popup *popup_create(char *string, int pause)
 
 int popup_animate(sfRenderWindow *win, struct popup *pop)
 {
+	double dtime = get_dtime(-1);
+
 	if (sfSprite_getPosition(pop->sprite).y < 50 &&
 	pop->time < pop->pause) {
-		sfSprite_move(pop->sprite, (sfVector2f){0, 400 * 0.016});
-		sfText_move(pop->text, (sfVector2f){0, 400 * 0.016});
+		sfSprite_move(pop->sprite, (sfVector2f){0, 400 * dtime});
+		sfText_move(pop->text, (sfVector2f){0, 400 * dtime});
 	} else if (sfSprite_getPosition(pop->sprite).y >= 50 &&
 	pop->time < pop->pause) {
-		sfSprite_setPosition(pop->sprite, (sfVector2f){WIDTH - 600, 50});
-		pop->time += 0.016;
+		sfSprite_setPosition(pop->sprite, (sfVector2f){
+			WIDTH - 600, 50});
+		pop->time += dtime;
 	} else if (sfSprite_getPosition(pop->sprite).y > -250 &&
 	pop->time >= pop->pause){
-		sfSprite_move(pop->sprite, (sfVector2f){0, -400 * 0.016});
-		sfText_move(pop->text, (sfVector2f){0, -400 * 0.016});
-	} else {
-		popup_reset(pop);
-		return -1;
-	}
+		sfSprite_move(pop->sprite, (sfVector2f){0, -400 * dtime});
+		sfText_move(pop->text, (sfVector2f){0, -400 * dtime});
+	} else
+		return popup_reset(pop);
 	sfRenderWindow_drawSprite(win, pop->sprite, NULL);
 	sfRenderWindow_drawText(win, pop->text, NULL);
 	return 0;
 }
 
-void popup_reset(struct popup *pop)
+int popup_reset(struct popup *pop)
 {
 	pop->time = 0;
 	pop->value = -249;
+	return -1;
 }
 
 void popup_launch(game_t *game, char *string)

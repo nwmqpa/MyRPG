@@ -9,6 +9,7 @@
 #include "particle.h"
 #include "assets_manager.h"
 #include "map_parser.h"
+#include "utils.h"
 
 static void collision(struct player *player, int touched)
 {
@@ -58,24 +59,28 @@ static void player_change_anim(struct player *player)
 
 static void player_move_pos(struct player *player)
 {
+	double dtime = get_dtime(-1);
+
 	if (player->vec.x < 10 && player->vec.x > -10)
 		player->vec.x = 0;
 	if (player->vec.x > 0)
-		player->vec.x -= 50 * 0.016;
+		player->vec.x -= 50 * dtime;
 	if (player->vec.x < 0)
-		player->vec.x += 50 * 0.016;
+		player->vec.x += 50 * dtime;
 }
 
 // Add collision(player, player_colliding(player, game));
 void draw_player(game_t *game, sfRenderWindow *win, struct player *player)
 {
+	double dtime = get_dtime(-1);
+
 	do_player_movement(player, game);
 	player_move_assets(game, player, player->vec);
 	player_change_anim(player);
-	if (player->actual)
-		animate(win, player->actual, 0.016);
-	if (player->entity->pos.y < 1080 - (200 + 200 * 0.5)) {
-		player->vec.y += GRAVITY * 0.016 * 10;
+	if (player->actual) {
+		animate(win, player->actual, get_dtime(-1));
+	} if (player->entity->pos.y < 1080 - (200 + 200 * 0.5)) {
+		player->vec.y += GRAVITY * dtime * 10;
 	} else if (player->entity->pos.y > 1080 - (200 * 200 * 0.5)){
 		player_set_position(player, (sfVector2f){
 		player->entity->pos.x, 1080 - (200 + 200 * 0.5)});

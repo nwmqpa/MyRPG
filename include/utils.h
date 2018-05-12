@@ -17,7 +17,7 @@ void *my_malloc(size_t size);
 char **split_string(char const *str, char c);
 void *my_calloc(size_t size);
 int my_memcmp(char const *str1, char const *str2);
-float get_dtime(float time);
+double get_dtime(double time);
 int getline_w_n(char **line, long unsigned int *size, FILE *file);
 char *string_from_file(char *path);
 

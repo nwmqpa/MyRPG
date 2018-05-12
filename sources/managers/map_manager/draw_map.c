@@ -47,6 +47,6 @@ int draw_map(game_t *game)
 			(hash("light") == temp->hash) && ls ? &st : NULL);
 		temp = temp->next;
 	}
-	time += 0.016;
+	time += get_dtime(-1);
 	return (0);
 }

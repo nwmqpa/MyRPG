@@ -44,7 +44,7 @@ int dialog_event(game_t *game);
 struct popup *popup_create(char *string, int pause);
 
 int popup_animate(sfRenderWindow *win, struct popup *pop);
-void popup_reset(struct popup *pop);
+int popup_reset(struct popup *pop);
 void popup_set_text(struct popup *pop, char *str);
 void popup_launch(game_t *game, char *str);
 int draw_ui(game_t *game);
