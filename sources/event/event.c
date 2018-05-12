@@ -35,7 +35,7 @@ int dialog_event(game_t *game)
 		case sfEvtKeyPressed:
 			next_dialog(game, game->dialog);
 			break;
-		default: 
+		default:
 			break;
 		}
 	}
@@ -52,9 +52,8 @@ int menu_event(game_t *game)
 			menu_key(game);
 			break;
 		case sfEvtMouseMoved:
-			//TODO: Make that
 			break;
-		default: 
+		default:
 			break;
 		}
 	}
@@ -75,7 +74,6 @@ int game_event(game_t *game)
 			game_key_released(game);
 			break;
 		case sfEvtMouseMoved:
-			//TODO: Make that
 			break;
 		default:
 			break;

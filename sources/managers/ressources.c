@@ -12,18 +12,8 @@
 #include "npc.h"
 #include "utils.h"
 
-void create_quests(UNUSED struct ressources *ress)
-{
-	//TODO
-}
-
 void create_npcs(struct ressources *ress)
 {
-	/*
-	ress->npcs[ENEMIE] = npc_create_from_file(
-		"assets/textures/NPC/EnemieIdle.png",
-	);
-	*/
 	ress->npcs[FEMAL] = npc_load_from_file("assets/npc/Jill.npc");
 }
 
@@ -42,7 +32,7 @@ struct ressources *create_ressources(void)
 {
 	struct ressources *ress = my_calloc(sizeof(struct ressources));
 
-	create_quests(ress);
+	//create_quests(ress);
 	ress->player = create_player(
 		(vec_t){100, 1080 - (200 + 200 * 0.5)}, 100, 1);
 	create_cin(ress);

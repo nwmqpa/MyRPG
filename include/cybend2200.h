@@ -40,7 +40,7 @@ enum menus {
 };
 
 /*
-** Game: 
+** Game:
 ** 	Main game structure that represent game state and
 ** 	game datas inside all the game.
 */

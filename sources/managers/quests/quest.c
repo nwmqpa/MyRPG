@@ -28,7 +28,7 @@ char *cut_string(struct quest *this, char *path)
 	char *str = string_from_file(path);
 	int i = -1;
 	size_t size = 0;
-	
+
 	while (str[++i] != ':' && str[i] != 0)
 		size++;
 	this->name = my_calloc(size);
@@ -52,6 +52,6 @@ struct quest *add_quest(struct quest **head, char *string)
 
 void valid_quest(struct quest *head, int id)
 {
-	
+
 }
 

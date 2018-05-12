@@ -17,8 +17,7 @@ int player_colliding(struct player *player, game_t *game)
 	int ret = 0;
 
 	for (int x = 10; x < hit.width - 10; ++x) {
-		if (sfImage_getPixel(
-		collide, hit.left + x, hit.top).a > 0) 
+		if (sfImage_getPixel(collide, hit.left + x, hit.top).a > 0)
 			ret |= DOWN_L;
 		if (sfImage_getPixel(
 		collide, hit.left + x, hit.top + hit.height).a > 0)
@@ -28,8 +27,7 @@ int player_colliding(struct player *player, game_t *game)
 		if (sfImage_getPixel(
 		collide, hit.left + hit.width, hit.top + y).a > 0)
 			ret |= TOP_R;
-		if (sfImage_getPixel(
-		collide, hit.left, hit.top + y).a > 0)
+		if (sfImage_getPixel(collide, hit.left, hit.top + y).a > 0)
 			ret |= TOP_L;
 	}
 	return (ret);
@@ -47,7 +45,6 @@ int move_game(struct player *player, int dir)
 		player->vec.x = SPEED * dtime;
 		break;
 	default:
-		//player->actual = player->normal[N_IDLE];
 		break;
 	}
 	return (0);
@@ -55,16 +52,14 @@ int move_game(struct player *player, int dir)
 
 int move_fight(struct player *player, int dir)
 {
-	double dtime = get_dtime(-1);
-
 	switch (dir) {
 	case LEFT:
-		anim_move(player->actual, 
-		(sfVector2f){player->vec.x * SPEED * dtime, player->vec.y});
+		anim_move(player->actual, (sfVector2f){
+		player->vec.x * SPEED * get_dtime(-1), player->vec.y});
 		break;
 	case TOP:
-		anim_move(player->actual, 
-		(sfVector2f){player->vec.x * -SPEED * dtime, player->vec.y});
+		anim_move(player->actual, (sfVector2f){
+		player->vec.x * -SPEED * get_dtime(-1), player->vec.y});
 		break;
 	case RIGHT:
 		anim_move(player->actual, (sfVector2f){SPEED, 0});
@@ -73,7 +68,6 @@ int move_fight(struct player *player, int dir)
 		anim_move(player->actual, (sfVector2f){0, SPEED});
 		break;
 	default:
-		//player->actual = player->normal[F_IDLE];
 		break;
 	}
 	return (0);

@@ -43,7 +43,8 @@ int game_loop(game_t *game)
 	sfClock *clock = sfClock_create();
 
 	while (sfRenderWindow_isOpen(game->win)) {
-		double a = sfClock_getElapsedTime(clock).microseconds / 1000000.0;
+		double a =
+		sfClock_getElapsedTime(clock).microseconds / 1000000.0;
 		sfClock_restart(clock);
 		get_dtime(a);
 		sfRenderWindow_clear(game->win, sfBlack);
@@ -57,7 +58,8 @@ int my_rpg(game_t *game)
 {
 	char *cine = string_from_file("ressources/cinematique/intro.txt");
 	char *dial = string_from_file("ressources/dialog/wake.txt");
-	cin_t *cin = cin_create(20, cine, get_assets(0x0)->fonts[THORN], sfWhite);
+	cin_t *cin = cin_create(
+	20, cine, get_assets(0x0)->fonts[THORN], sfWhite);
 
 	free(cine);
 	cin_play(game->win, cin);

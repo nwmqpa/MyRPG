@@ -19,7 +19,8 @@
 #define DOWN_L	0x04
 #define DOWN_R	0x08
 
-static __attribute__ ((unused)) const char *MAPS[3] = {"tutorial", "main_city", 0};
+static __attribute__ ((unused))
+const char *MAPS[3] = {"tutorial", "main_city", 0};
 
 struct map_manager {
 	hashmap_t *maps;
@@ -49,8 +50,8 @@ struct container {
 };
 
 struct layer {
-    	sfSprite *sprite;
-    	sfTexture *texture;
+	sfSprite *sprite;
+	sfTexture *texture;
 	char *image;
 };
 

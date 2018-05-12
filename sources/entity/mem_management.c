@@ -41,7 +41,8 @@ void load_animation(struct player *player)
 	player->normal[N_JUMP]->once = 1;
 	player->actual = player->normal[N_IDLE];
 	player_scale(player, (sfVector2f){0.5, 0.5});
-	player_set_position(player, (sfVector2f){100, 1080 - (200 + 200 * 0.5)});
+	player_set_position(player, (sfVector2f){
+	100, 1080 - (200 + 200 * 0.5)});
 }
 
 void load_assets(struct player *player)
@@ -70,7 +71,7 @@ struct player *create_player(vec_t pos, uint32_t max_hp, uint32_t level)
 	load_assets(player);
 	player->vec = (sfVector2f){0, 0};
 	player->hitbox = (sfFloatRect){
-	player->entity->pos.x, player->entity->pos.y, 100, 200}; 
+	player->entity->pos.x, player->entity->pos.y, 100, 200};
 	return (player);
 }
 

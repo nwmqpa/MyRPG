@@ -24,7 +24,7 @@ sfSound *get_sound(struct assets *ass, int id)
 
 sfSprite *get_sprite(struct assets *ass, int id)
 {
-	return(ass->sprites[id]);
+	return ass->sprites[id];
 }
 
 struct assets *get_assets(struct assets *ass)

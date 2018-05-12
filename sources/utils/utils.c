@@ -8,9 +8,6 @@
 #include <stdlib.h>
 #include "structs.h"
 
-/*
-** djb2.
-*/
 hash_t hash(const char *str)
 {
 	unsigned long hash = 5381;

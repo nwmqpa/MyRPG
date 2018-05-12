@@ -20,7 +20,7 @@ static void set_sound(struct assets *assets)
 	sfSoundBuffer_createFromFile("assets/sound/heavy.ogg");
 	assets->sound_buffer[FOOTSTEP] =
 	sfSoundBuffer_createFromFile("assets/sound/footstep.ogg");
-	assets->sound_buffer[DOOR] = 
+	assets->sound_buffer[DOOR] =
 	sfSoundBuffer_createFromFile("assets/sound/door.ogg");
 	for (int i = 0; i < 4; ++i) {
 		assets->sounds[i] = sfSound_create();
@@ -75,7 +75,7 @@ struct assets *create_assets(void)
 	assets->fonts[FLIGHTER] =
 	sfFont_createFromFile("assets/fonts/Flighter.ttf");
 	assets->fonts[THORN] =
-	 sfFont_createFromFile("assets/fonts/Thorne-n.ttf");
+	sfFont_createFromFile("assets/fonts/Thorne-n.ttf");
 	assets->musics[CAVE] = sfMusic_createFromFile("assets/music/cave.ogg");
 	assets->musics[CITY] = sfMusic_createFromFile("assets/music/city.ogg");
 	sfMusic_setVolume(assets->musics[CAVE], 5);
