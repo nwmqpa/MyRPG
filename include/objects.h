@@ -19,6 +19,12 @@ typedef union to_data object_union;
 
 #define INSTANCEOF(object) (object & 0xf03fffff)
 
+enum OBJECTS {
+	GUN_I,
+	AMMO_I,
+	FOOD_I
+};
+
 struct object {
 	unsigned int type: 4;
 	unsigned int qty: 6;
@@ -51,5 +57,6 @@ struct inventory *create_random_loots(unsigned int level);
 int draw_inventory(game_t *game);
 int draw_containers(game_t *game);
 int transform_shader(sfShader *shader, struct object item);
+sfSprite *get_spr_item(item_t object);
 
 #endif /* OBJECTS_H_ */

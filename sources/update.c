@@ -13,9 +13,16 @@
 #include "ui.h"
 #include "npc.h"
 #include "utils.h"
+#include "assets_manager.h"
 
 int draw_menu(game_t *game)
 {
+	union to_data i;
+	sfRenderStates st = {sfBlendAlpha, sfTransform_Identity,
+	NULL, get_assets(0x0)->shaders[WEAPONS]};
+	sfSprite *spr = 0x0;
+
+	i.object = game->handed;
 	get_ressources(NULL)->player->vec.x = 0;
 	draw_map(game);
 	if (game->menu_type == INVENTORY_PLAYER)
@@ -24,6 +31,12 @@ int draw_menu(game_t *game)
 		draw_containers(game);
 	/*if (game->menu_type == ESCAPE)
 		draw_escape_menu(game);*/
+	if (i.data && game->menu_type != ESCAPE) {
+		transform_shader(get_assets(0x0)->shaders[WEAPONS], i.object);
+		spr = get_spr_item(game->handed);
+		sfSprite_setPosition(spr, game->handed_pos);
+		sfRenderWindow_drawSprite(game->win, spr, &st);
+	}
 	return (0);
 }
 

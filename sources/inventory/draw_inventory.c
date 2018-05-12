@@ -30,7 +30,7 @@ static int draw_item_number(item_t item, game_t *game, sfVector2f off)
 
 static int draw_inv_object(item_t item, int nb, sfVector2f off, game_t *game)
 {
-	sfSprite *weapon = get_assets(0x0)->sprites[GUN];
+	sfSprite *weapon = get_spr_item(item);
 	sfIntRect size;
 	sfRenderStates st = {sfBlendAlpha, sfTransform_Identity,
 	NULL, get_assets(0x0)->shaders[WEAPONS]};
@@ -56,7 +56,7 @@ static int draw_inv_object(item_t item, int nb, sfVector2f off, game_t *game)
 
 static int draw_cont_object(item_t item, int nb, sfVector2f off, game_t *game)
 {
-	sfSprite *weapon = get_assets(0x0)->sprites[GUN];
+	sfSprite *weapon = get_spr_item(item);
 	sfIntRect size;
 	sfRenderStates st = {sfBlendAlpha, sfTransform_Identity,
 	NULL, get_assets(0x0)->shaders[WEAPONS]};
@@ -67,7 +67,7 @@ static int draw_cont_object(item_t item, int nb, sfVector2f off, game_t *game)
 	if (object.data == 0 || item.qty == 0)
 		return (0);
 	size = sfSprite_getTextureRect(weapon);
-	off = (sfVector2f) {off.x + 62, off.y + 60};
+	off = (sfVector2f) {off.x + 58, off.y + 56};
 	off = (sfVector2f) {off.x, off.y + ((nb % 3) * 141)};
 	off = (sfVector2f) {off.x + ((nb / 3) * 140), off.y};
 	off = (sfVector2f) {off.x + ((103 - size.width) / 2), off.y};

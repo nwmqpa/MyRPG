@@ -54,15 +54,16 @@ struct game {
 	int size[2];
 	int gamemode;
 	int menu_type;
+	item_t handed;
 	float delta_time;
 	struct popup *popup;
 	struct dialog *dialog;
-	item_t handed;
 	struct map *actual_map;
 	struct inventory *container;
 	sfRenderWindow *win;
 	sfEvent event;
 	sfVector2f delta_pos;
+	sfVector2f handed_pos;
 };
 
 
