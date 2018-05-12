@@ -6,7 +6,7 @@
 */
 
 #include <SFML/Graphics.h>
-#include "objects.h"
+#include "cybend2200.h"
 #include "assets_manager.h"
 
 int transform_shader(sfShader *shader, struct object item)

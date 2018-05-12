@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "objects.h"
+#include "cybend2200.h"
 #include "utils.h"
 
 struct inventory *inv_create(int nb_slots)

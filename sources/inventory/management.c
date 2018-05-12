@@ -5,7 +5,7 @@
 ** Inventory management.
 */
 
-#include "objects.h"
+#include "cybend2200.h"
 
 int inv_is_full(struct inventory *inv)
 {

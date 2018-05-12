@@ -8,13 +8,14 @@
 #ifndef OBJECTS_H_
 #define OBJECTS_H_
 
-#include "cybend2200.h"
-
 typedef struct object item_t;
 typedef struct object weapon_t;
 typedef struct object ammo_t;
 typedef struct object cons_t;
 typedef struct inventory inv_t;
+typedef union to_data object_union;
+
+#include "cybend2200.h"
 
 #define INSTANCEOF(object) (object & 0xf03fffff)
 
