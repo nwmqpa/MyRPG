@@ -67,7 +67,7 @@ struct dialog *dialog_create(char *string)
 	struct dialog *this = malloc(sizeof(struct dialog));
 
 	this->texture = sfTexture_createFromFile(
-	"assets/UI/Dialog.png", NULL);
+	"assets/ui/dialog.png", NULL);
 	this->sprite = sfSprite_create();
 	this->text = sfText_create();
 	sfText_setFont(this->text, get_assets(NULL)->fonts[THORN]);

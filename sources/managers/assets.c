@@ -48,24 +48,24 @@ static void set_shader(struct assets *assets)
 static void set_ui(struct assets *assets)
 {
 	assets->textures[POPUP] = sfTexture_createFromFile(
-	"assets/UI/Popup.png", NULL);
+	"assets/ui/popup.png", NULL);
 	assets->textures[DIALOG_BOX] = sfTexture_createFromFile(
-	"assets/UI/Popup.png", NULL);
+	"assets/ui/popup.png", NULL);
 	assets->textures[BUTTON] = sfTexture_createFromFile(
-	"assets/UI/button.png", NULL);
+	"assets/ui/button.png", NULL);
 	assets->textures[INVENTORY] = sfTexture_createFromFile(
-	"assets/UI/Inventory.png", NULL);
+	"assets/ui/inventory.png", NULL);
 	assets->textures[CHEST] = sfTexture_createFromFile(
-	"assets/UI/Chest.png", NULL);
+	"assets/ui/chest.png", NULL);
 	assets->textures[GUN] = sfTexture_createFromFile(
-	"assets/textures/Stuff/Gun.png", NULL);
+	"assets/textures/stuff/gun.png", NULL);
 	for (int i = 0; i < 6; ++i) {
 		assets->sprites[i] = sfSprite_create();
 		sfSprite_setTexture(
 		assets->sprites[i], assets->textures[i], 1);
 	}
 	assets->anims[LIFES] = create_anim_path_rect(
-	"assets/UI/LifesAnimation.png", 2, 0.1, (sfIntRect){0, 0, 100, 100});
+	"assets/ui/lifes_animation.png", 2, 0.1, (sfIntRect){0, 0, 100, 100});
 }
 
 // Set all assets from ./assets
@@ -74,9 +74,9 @@ struct assets *create_assets(void)
 	struct assets *assets = my_calloc(sizeof(struct assets));
 
 	assets->fonts[FLIGHTER] =
-	sfFont_createFromFile("assets/fonts/Flighter.ttf");
+	sfFont_createFromFile("assets/fonts/flighter.ttf");
 	assets->fonts[THORN] =
-	sfFont_createFromFile("assets/fonts/Thorne-n.ttf");
+	sfFont_createFromFile("assets/fonts/thorne_n.ttf");
 	assets->musics[CAVE] = sfMusic_createFromFile("assets/music/cave.ogg");
 	assets->musics[CITY] = sfMusic_createFromFile("assets/music/city.ogg");
 	sfMusic_setVolume(assets->musics[CAVE], 5);

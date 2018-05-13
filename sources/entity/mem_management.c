@@ -48,9 +48,9 @@ void load_animation(struct player *player)
 void load_assets(struct player *player)
 {
 	player->texture[0] = sfTexture_createFromFile
-	("./assets/textures/Player/PlayerIdle.png", NULL);
+	("./assets/textures/player/player_idle.png", NULL);
 	player->texture[1] = sfTexture_createFromFile
-	("assets/textures/Player/PlayerTopView.png", NULL);
+	("assets/textures/player/player_top_view.png", NULL);
 	player->n_idle = sfSprite_create();
 	player->f_idle = sfSprite_create();
 	sfSprite_setTexture(player->n_idle, player->texture[0], sfTrue);
