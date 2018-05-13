@@ -7,6 +7,8 @@
 
 #include <SFML/Graphics.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "event.h"
 #include "entities.h"
 #include "utils.h"
 #include "assets_manager.h"
@@ -15,9 +17,7 @@
 #include "cybend2200.h"
 #include "ui.h"
 #include "str_utils.h"
-#include "event.h"
 #include "utils.h"
-#include <stdio.h>
 
 int update_game(game_t *game)
 {

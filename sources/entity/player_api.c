@@ -15,7 +15,10 @@ void player_move_assets(game_t *game, struct player *player, sfVector2f pos)
 	sfFloatRect rect = sfSprite_getGlobalBounds(spr);
 	sfIntRect map_rect = sfSprite_getTextureRect(map->sprite);
 	float act_pos = rect.left - game->delta_pos.x;
+	int *bounds = game->actual_map->bounds;
 
+	if (check_bounds(player, act_pos, bounds, game))
+		return;
 	if (act_pos < map_rect.width * 0.25 ||
 	act_pos > map_rect.width * 0.75) {
 		player->entity->pos.x += pos.x;

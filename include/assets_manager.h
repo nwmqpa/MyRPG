@@ -62,8 +62,8 @@ enum SHADER {
 struct assets {
 	sfImage		*images[2];
 	sfShader	*shaders[3];
-	sfSprite	*sprites[5];
-	sfTexture	*textures[5];
+	sfSprite	*sprites[6];
+	sfTexture	*textures[6];
 	sfSound		*sounds[4];
 	sfSoundBuffer	*sound_buffer[4];
 	sfMusic		*musics[2];
