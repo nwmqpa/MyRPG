@@ -32,7 +32,8 @@ static game_t *init_game(void)
 	sfRenderWindow_setFramerateLimit(game->win, MAX_FPS);
 	sfRenderWindow_setVerticalSyncEnabled(game->win, sfTrue);
 	game->delta_time = 1.0 / MAX_FPS;
-	game->gamemode = GAME;
+	game->gamemode = MENU;
+	game->menu_type = START;
 	game->popup = popup_create("Error", 2);
 	game->dialog = dialog_create("Error");
 	game->actual_map = get_hash_elem(get_map_mgr(NULL)->maps, MAPS[CAVE]);

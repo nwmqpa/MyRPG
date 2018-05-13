@@ -35,6 +35,7 @@ enum ui {
 
 enum menus {
 	NOTHING,
+	START,
 	INVENTORY_PLAYER,
 	CONTAINER,
 	ESCAPE

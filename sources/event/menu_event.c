@@ -12,6 +12,30 @@
 #include "entities.h"
 #include "event.h"
 
+int interact_with_menu(game_t *game, sfVector2u click, sfVector2u win_size)
+{
+	sfSprite *spr = get_assets(0x0)->sprites[BUTTON];
+	sfIntRect rect = sfSprite_getTextureRect(spr);
+	sfVector2f pos = 
+	{(win_size.x - rect.width) / 2, (win_size.y - (rect.height * 6)) / 2};
+	int value = rect.height * 2;
+
+	pos = (sfVector2f) {click.x - pos.x, click.y - pos.y};
+	if (pos.x < 0 && pos.x > rect.width)
+		return (0);
+	if (game->menu_type == ESCAPE) {
+		if (pos.y > 0 && pos.y < rect.height)
+			game->gamemode = GAME;
+		if (pos.y > 4 * rect.height && pos.y < 5 * rect.height)
+			sfRenderWindow_close(game->win);
+	} else if (game->menu_type == START) {
+		if (pos.y > 0 && pos.y < rect.height)
+			game->gamemode = GAME;
+		if (pos.y > 4 * rect.height && pos.y < 5 * rect.height)
+			sfRenderWindow_close(game->win);
+	}
+}
+
 int menu_key(game_t *game)
 {
 	switch  (game->event.key.code) {
@@ -22,6 +46,8 @@ int menu_key(game_t *game)
 	case sfKeyReturn:
 		break;
 	case sfKeyEscape:
+		if (game->menu_type == START)
+			break;
 		game->gamemode = GAME;
 		game->menu_type = NOTHING;
 		break;
@@ -41,6 +67,8 @@ int menu_mouse_but(game_t *game)
 		interact_with_inv(game, click, win_size);
 	} else if (game->menu_type == CONTAINER) {
 		interact_with_cont(game, click, win_size);
+	} else if (game->menu_type == START || game->menu_type == ESCAPE) {
+		interact_with_menu(game, click, win_size);
 	}
 	return (0);
 }

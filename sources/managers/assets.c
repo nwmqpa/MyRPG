@@ -51,6 +51,8 @@ static void set_ui(struct assets *assets)
 	"assets/UI/Popup.png", NULL);
 	assets->textures[DIALOG_BOX] = sfTexture_createFromFile(
 	"assets/UI/Popup.png", NULL);
+	assets->textures[BUTTON] = sfTexture_createFromFile(
+	"assets/UI/button.png", NULL);
 	assets->textures[INVENTORY] = sfTexture_createFromFile(
 	"assets/UI/Inventory.png", NULL);
 	assets->textures[CHEST] = sfTexture_createFromFile(

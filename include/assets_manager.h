@@ -38,6 +38,7 @@ enum FONT {
 enum SPRITE {
 	POPUP,
 	DIALOG_BOX,
+	BUTTON,
 	INVENTORY,
 	CHEST,
 	GUN
