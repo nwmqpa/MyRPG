@@ -83,7 +83,7 @@ static int check_npc_collisions(game_t *game, sfIntRect pl, hashmap_t *npcs)
 
 	for (hashmap_t *temp = npcs; temp; temp = temp->next) {
 		npc = (struct npc *) temp->data;
-		x = sfSprite_getPosition(npc->sprite).x;
+		x = sfSprite_getPosition(npc->sprite).x - game->delta_pos.x;
 		y = sfSprite_getPosition(npc->sprite).y;
 		if (sfIntRect_contains(&pl, x + 25, y + 50)) {
 			dialog_launch(game, game->dialog, npc_get_dialog(npc));
