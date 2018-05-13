@@ -11,23 +11,6 @@
 #include "map_parser.h"
 #include "utils.h"
 
-static void collision(struct player *player, int touched)
-{
-	if (touched & DOWN_R) {
-		if (touched & TOP_R && player->vec.x > 0) {
-			player->vec.x = -player->vec.x;
-		} if (touched & DOWN_L && player->vec.y > 0) {
-			player->vec.y = 0;
-		}
-	} if (touched & TOP_L) {
-		if (touched & DOWN_L && player->vec.x < 0) {
-			player->vec.x = -player->vec.x;
-		} if (touched & TOP_R && player->vec.y < 0) {
-			player->vec.y = -player->vec.y;
-		}
-	}
-}
-
 static void do_player_movement(struct player *player, game_t *game)
 {
 	for (int i = 0; i < 4; ++i)

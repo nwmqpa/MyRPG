@@ -22,11 +22,8 @@ void create_cin(struct ressources *ress)
 {
 	char *str = string_from_file("ressources/cinematique/intro.txt");
 
-	ress->cinematiques[0] = cin_create(
-					30,
-					str,
-					get_font(get_assets(NULL), THORN),
-					(sfColor){255, 255, 255, 255});
+	ress->cinematiques[0] = 
+	cin_create(str, get_font(get_assets(NULL), THORN), sfWhite);
 }
 
 static void create_quests(struct ressources *ress)

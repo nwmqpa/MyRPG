@@ -20,7 +20,7 @@ struct cinematique {
 
 typedef struct cinematique cin_t;
 
-cin_t *cin_create(float time, char *string, sfFont *font, sfColor color);
+cin_t *cin_create(char *string, sfFont *font, sfColor color);
 void cin_update(sfRenderWindow *win, cin_t *cin);
 void cin_reset(cin_t *cin);
 int cin_play(sfRenderWindow *win, cin_t *cin);

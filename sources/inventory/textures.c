@@ -29,4 +29,5 @@ int transform_shader(sfShader *shader, struct object item)
 	(shader, "spd_repl", get_assets(0x0)->colors[item.spd_lvl]);
 	sfShader_setColorParameter
 	(shader, "split_repl", get_assets(0x0)->colors[item.split_proj]);
+	return (0);
 }

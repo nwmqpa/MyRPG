@@ -74,7 +74,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/managers/quests/quest.c
 
 
-WARN	=	-W -Wall
+WARN	=	-W -Wall -Wextra
 
 CFLAGS	=	-I $(ROOT)/include $(WARN) -g
 

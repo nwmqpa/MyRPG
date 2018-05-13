@@ -11,7 +11,7 @@
 #include "cin_mng.h"
 #include "str_utils.h"
 
-cin_t *cin_create(float time, char *string, sfFont *font, sfColor color)
+cin_t *cin_create(char *string, sfFont *font, sfColor color)
 {
 	cin_t *cin = malloc(sizeof(cin_t));
 

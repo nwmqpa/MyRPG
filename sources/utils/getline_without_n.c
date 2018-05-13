@@ -24,7 +24,7 @@ char *string_from_file(char *path)
 		if (ret[i] == '~')
 			ret[i] = '\n';
 		if (ret[i] == '^')
-			ret[i] == '\t';
+			ret[i] = '\t';
 	}
 	fclose(fs);
 	return (ret);

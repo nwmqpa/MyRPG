@@ -39,6 +39,7 @@ int dialog_event(game_t *game)
 			break;
 		}
 	}
+	return (0);
 }
 
 int menu_event(game_t *game)

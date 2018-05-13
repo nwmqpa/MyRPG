@@ -31,6 +31,7 @@ int draw_npcs(game_t *game, hashmap_t *npcs)
 	for (hash_elem_t *temp = npcs; temp; temp = temp->next) {
 		draw_npc(game, temp->data);
 	}
+	return (0);
 }
 
 int draw_map(game_t *game)

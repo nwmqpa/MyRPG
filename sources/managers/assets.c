@@ -70,7 +70,6 @@ static void set_ui(struct assets *assets)
 struct assets *create_assets(void)
 {
 	struct assets *assets = my_calloc(sizeof(struct assets));
-	char *temp = 0x0;
 
 	assets->fonts[FLIGHTER] =
 	sfFont_createFromFile("assets/fonts/Flighter.ttf");

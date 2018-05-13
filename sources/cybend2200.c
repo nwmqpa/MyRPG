@@ -56,14 +56,9 @@ int game_loop(game_t *game)
 
 int my_rpg(game_t *game)
 {
-	char *cine = string_from_file("ressources/cinematique/intro.txt");
 	char *dial = string_from_file("ressources/dialog/wake.txt");
-	cin_t *cin = cin_create(
-	20, cine, get_assets(0x0)->fonts[THORN], sfWhite);
-
-	free(cine);
-	cin_play(game->win, cin);
-	cin_free(cin);
+	
+	cin_play(game->win, get_ressources(0x0)->cinematiques[0]);
 	dialog_launch(game, game->dialog, dial);
 	free(dial);
 	game_loop(game);
