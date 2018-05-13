@@ -12,6 +12,7 @@ chests
 chest0:1:384:828:456:880
 chest1:1:11:12:13:880
 npcs
+guard:600:220
 guard:2390:780
-guard:1300:780
+guard:1280:780
 guard:1400:780
