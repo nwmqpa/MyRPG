@@ -41,8 +41,7 @@ static int draw_inv_object(item_t item, int nb, sfVector2f off, game_t *game)
 	if (object.data == 0 || item.qty == 0)
 		return (0);
 	size = sfSprite_getTextureRect(weapon);
-	off = (sfVector2f) {off.x + 62, off.y + 60};
-	off = (sfVector2f) {off.x, off.y + ((nb % 4) * 141)};
+	off = (sfVector2f) {off.x + 62, off.y + 60 + ((nb % 4) * 141)};
 	off = (sfVector2f) {off.x + ((nb / 4) * 280), off.y};
 	if (nb / 4 == 2)
 		off = (sfVector2f) {off.x + 8, off.y};
