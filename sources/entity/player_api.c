@@ -5,15 +5,18 @@
 ** Memory management for entities.
 */
 
+#include "map_parser.h"
 #include "entities.h"
 
 void player_move_assets(game_t *game, struct player *player, sfVector2f pos)
 {
 	sfSprite *spr = player->actual->sprite[0];
+	struct layer *map = game->actual_map->layers->data;
 	sfFloatRect rect = sfSprite_getGlobalBounds(spr);
-	sfVector2u sw = sfRenderWindow_getSize(game->win);
+	sfIntRect map_rect = sfSprite_getTextureRect(map->sprite);
+	float act_pos = rect.left - game->delta_pos.x;
 
-	if (!(sw.x - rect.left < sw.x / 2) || game->delta_pos.x > 0) {
+	if (act_pos < map_rect.width * 0.25 || act_pos > map_rect.width * 0.75) {
 		player->entity->pos.x += pos.x;
 		player->entity->pos.y += pos.y;
 		sfSprite_move(player->n_idle, pos);
