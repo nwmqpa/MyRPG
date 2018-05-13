@@ -28,4 +28,5 @@ int draw_ui(game_t *game)
 	if (game->ui[DIALOG_UI]) {
 		draw_dialog(game->win, game->dialog);
 	}
+	return (0);
 }

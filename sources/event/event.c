@@ -55,6 +55,9 @@ int menu_event(game_t *game)
 			game->handed_pos = (sfVector2f)
 			{game->event.mouseMove.x, game->event.mouseMove.y};
 			break;
+		case sfEvtMouseButtonPressed:
+			menu_mouse_but(game);
+			break;
 		default:
 			break;
 		}

@@ -12,7 +12,6 @@
 int alloc_str(struct quest *this, char *str)
 {
 	int i = -1;
-	size_t size = 0;
 	size_t j = 0;
 
 	while (str[++i] != ':' && str[i] != 0)
@@ -20,6 +19,7 @@ int alloc_str(struct quest *this, char *str)
 	j = 0;
 	while (str[++i] != ':' && str[i] != 0)
 		this->desc[j++] = str[i];
+	return (0);
 }
 
 char *cut_string(struct quest *this, char *str)
@@ -36,6 +36,7 @@ char *cut_string(struct quest *this, char *str)
 	this->desc = my_calloc(size + 1);
 	this->xp = my_atoi(str + i + 1);
 	alloc_str(this, str);
+	return (0x0);
 }
 
 struct quest *add_quest(struct quest **head, char *string)

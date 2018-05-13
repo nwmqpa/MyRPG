@@ -29,7 +29,6 @@ char **load_dialogs(FILE *fs)
 	char **dialogs = my_calloc(sizeof(char *) * 10);
 	size_t i = 0;
 	size_t size = 0;
-	size_t ret = 0;
 
 	while (getline_w_n(&str, &size, fs) != -1) {
 		dialogs[i++] = my_strdup(str);
@@ -41,12 +40,12 @@ char **load_dialogs(FILE *fs)
 
 char *npc_get_dialog(struct npc *this)
 {
-	return this->dialogs[this->phase];
+	return (this->dialogs[this->phase]);
 }
 
 int npc_next_dialog(struct npc *this)
 {
-	this->phase++;
+	return (this->phase++);
 }
 
 struct npc *npc_load_from_file(char *path)

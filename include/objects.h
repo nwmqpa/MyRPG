@@ -58,5 +58,7 @@ int draw_inventory(game_t *game);
 void draw_containers(game_t *game);
 int transform_shader(sfShader *shader, struct object item);
 sfSprite *get_spr_item(item_t object);
+void interact_with_cont(game_t *game, sfVector2u m_pos, sfVector2u ws);
+void interact_with_inv(game_t *game, sfVector2u m_pos, sfVector2u ws);
 
 #endif /* OBJECTS_H_ */

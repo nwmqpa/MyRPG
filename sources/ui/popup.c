@@ -76,8 +76,6 @@ int popup_reset(struct popup *pop)
 
 void popup_launch(game_t *game, char *string)
 {
-	int size = my_strlen(string) / 10;
-
 	game->ui[POPUP_UI] = 1;
 	free(game->popup->string);
 	game->popup->string = my_strdup(string);
