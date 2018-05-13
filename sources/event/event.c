@@ -43,7 +43,7 @@ int dialog_event(game_t *game)
 	return (0);
 }
 
-int menu_event(game_t *game)
+void menu_event(game_t *game)
 {
 	while (sfRenderWindow_pollEvent(game->win, &game->event)) {
 		switch (game->event.type) {
@@ -65,7 +65,6 @@ int menu_event(game_t *game)
 			break;
 		}
 	}
-	return (0);
 }
 
 int game_event(game_t *game)
