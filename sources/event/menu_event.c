@@ -16,7 +16,7 @@ int interact_with_menu(game_t *game, sfVector2u click, sfVector2u win_size)
 {
 	sfSprite *spr = get_assets(0x0)->sprites[BUTTON];
 	sfIntRect rect = sfSprite_getTextureRect(spr);
-	sfVector2f pos = 
+	sfVector2f pos =
 	{(win_size.x - rect.width) / 2, (win_size.y - (rect.height * 6)) / 2};
 
 	pos = (sfVector2f) {click.x - pos.x, click.y - pos.y};
