@@ -19,12 +19,23 @@
 void do_boundary(
 struct map *next_map, struct door *temp_door, sfIntRect *rect, game_t *game)
 {
+	struct layer *map = game->actual_map->layers->data;
+	sfIntRect map_rect = sfSprite_getTextureRect(map->sprite);
+	sfVector2f pos;
+
 	*rect = temp_door->bounds;
-	get_ressources(NULL)->player->entity->pos =
-	(vec_t) {rect->left, rect->top};
+	if (rect->left > map_rect.width * 0.75) {
+		game->delta_pos.x = -1920;
+		rect->left = rect->left - (map_rect.width / 2);
+	} else if (rect->left <= map_rect.width * 0.25) {
+		game->delta_pos.x = 0;
+	}
+	pos.x = rect->left;
+	pos.y = 780,
+	player_set_position(get_ressources(NULL)->player, pos);
 	game->actual_map = next_map;
 	sfSound_play(get_assets(0x0)->sounds[DOOR]);
-	game->delta_pos = (sfVector2f) {0.0f, 0.0f};
+	draw_player(game, game->win, get_ressources(0x0)->player);
 }
 
 static int check_door_collisions(game_t *game, sfIntRect pl, hashmap_t *doors)
