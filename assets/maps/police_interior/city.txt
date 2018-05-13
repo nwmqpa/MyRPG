@@ -3,7 +3,5 @@ layer0:layer0.png
 light:light.png
 doors
 door0:main_city:door4:3183:747:3262:880
-chests
-chest0:3185:747:3262:880
 npcs
-jill:8300:780
+jill:3300:780
