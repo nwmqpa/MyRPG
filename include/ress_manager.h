@@ -18,6 +18,7 @@ typedef struct ressources ressources_t;
 #include <stdlib.h>
 #include "cin_mng.h"
 #include "quests.h"
+#include "particle.h"
 
 enum NPC {
 	ENEMIE,
@@ -34,6 +35,7 @@ struct ressources {
 	struct player *player;
 	struct npc *npcs[NB_NPCS];
 	cin_t *cinematiques[NB_CIN];
+	particles *particles;
 };
 
 struct ressources *get_ressources(struct ressources *ress);

@@ -23,7 +23,7 @@ void reset_particles(particles *this, size_t i)
 	this->vertex[i * 4 + 3].position =
 	(sfVector2f){this->pos.x, this->pos.y + this->size_part};
 	for (int x = 0; x < 4; ++x)
-		this->speed[i] = rand_angle(360);
+		this->speed[i] = rand_vector(10);
 	this->lifes[i] = 0.0;
 }
 
