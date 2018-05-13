@@ -5,3 +5,5 @@ doors
 door0:main_city:door4:3183:747:3262:880
 npcs
 jill:3300:780
+bounds
+3050:3422

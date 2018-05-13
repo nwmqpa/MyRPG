@@ -7,3 +7,5 @@ door0:main_city:door0:172:758:265:880
 door1:main_city:door0:3617:750:3693:880
 chests
 chest0:1:1995:757:2057:80000
+bounds
+100:3740
