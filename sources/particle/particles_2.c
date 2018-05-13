@@ -23,7 +23,7 @@ particles *create_particles(size_t size, sfColor color, bool inf, bool grav)
 	system->size_part = 5;
 	for (unsigned int i = 0; i < system->size; ++i) {
 		set_particles(system, rand_angle(30), 8, i);
-		system->speed[i] = rand_angle(30);
+		system->speed[i] = rand_vector(10);
 		system->lifes[i] = (float)rand() /
 			(float)(RAND_MAX/system->life_time);
 	}

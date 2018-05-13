@@ -11,6 +11,7 @@
 #include "entities.h"
 #include "npc.h"
 #include "utils.h"
+#include "particle.h"
 #include "quests.h"
 
 void create_npcs(struct ressources *ress)
@@ -55,6 +56,7 @@ struct ressources *create_ressources(void)
 	ress->player = create_player(
 		(vec_t){100, 1080 - (200 + 200 * 0.5)}, 100, 1);
 	create_cin(ress);
+	ress->particles = create_particles(2000, sfBlue, true, true);
 	return (ress);
 }
 

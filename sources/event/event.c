@@ -7,6 +7,7 @@
 
 #include "event.h"
 #include "ui.h"
+#include "ress_manager.h"
 
 int fight_event(game_t *game)
 {
@@ -55,6 +56,7 @@ int menu_event(game_t *game)
 		case sfEvtMouseMoved:
 			game->handed_pos = (sfVector2f)
 			{game->event.mouseMove.x, game->event.mouseMove.y};
+			get_ressources(NULL)->particles->pos = game->handed_pos;
 			break;
 		case sfEvtMouseButtonPressed:
 			menu_mouse_but(game);

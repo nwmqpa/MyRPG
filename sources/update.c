@@ -11,6 +11,7 @@
 #include "ress_manager.h"
 #include "entities.h"
 #include "ui.h"
+#include "particle.h"
 #include "npc.h"
 #include "utils.h"
 #include "assets_manager.h"
@@ -57,6 +58,8 @@ int draw_escape_menu(game_t *game)
 	sfRenderWindow_drawSprite(game->win, spr, 0x0);
 	pos = (sfVector2f) {pos.x + (rect.width / 2) - 50,
 	pos.y + (rect.height / 2) - 24};
+	update_particles(get_ressources(NULL)->particles, get_dtime(-1));
+	draw_particles(get_ressources(NULL)->particles, game->win, NULL);
 	return (draw_menu_str(game, pos, value));
 }
 
