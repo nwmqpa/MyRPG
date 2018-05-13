@@ -8,6 +8,7 @@
 #include "quests.h"
 #include "utils.h"
 #include "str_utils.h"
+#include "ui.h"
 
 int alloc_str(struct quest *this, char *str)
 {
@@ -57,7 +58,7 @@ struct quest *add_quest(struct quest **head, char *string)
 }
 
 void
-valid_quest(game_t *game, struct quest **head, struct player *player, int id)
+valid_quest(game_t *game, struct quest **head, struct player *player)
 {
 	(*head)->trigger = 1;
 	player->xp.x += (*head)->xp;

@@ -13,73 +13,39 @@
 #include "str_utils.h"
 #include "npc.h"
 
-static void parse_door(char *door_line, struct map *map)
-{
-	char **door = split_string(door_line, ':');
-	struct door *door_sct = my_calloc(sizeof(struct door));
-
-	if (!map->doors)
-		map->doors = my_calloc(sizeof(hashmap_t));
-	door_sct->scene_ref = door[1];
-	door_sct->door_ref = door[2];
-	door_sct->bounds = (sfIntRect) {my_atoi(door[3]),
-					my_atoi(door[4]),
-					my_atoi(door[5]) - my_atoi(door[3]),
-					my_atoi(door[6]) - my_atoi(door[4])};
-	insert_hash_elem(map->doors, door[0], door_sct);
-}
-
-static void parse_container(char *container_line, struct map *map)
-{
-	char **cont = split_string(container_line, ':');
-	struct container *cont_sct = my_calloc(sizeof(struct container));
-
-	if (!map->containers)
-		map->containers = my_calloc(sizeof(hashmap_t));
-	cont_sct->bounds = (sfIntRect) {my_atoi(cont[2]),
-					my_atoi(cont[3]),
-					my_atoi(cont[4]) - my_atoi(cont[2]),
-					my_atoi(cont[5]) - my_atoi(cont[3])};
-	cont_sct->inv = create_random_loots((rand() % my_atoi(cont[1]))+ 1);
-	insert_hash_elem(map->containers, cont[0], cont_sct);
-}
-
-static void parse_layer(char *layer_line, struct map *map)
-{
-	char **layer = split_string(layer_line, ':');
-	struct layer *layer_struct = my_calloc(sizeof(struct layer));
-
-	if (!map->layers)
-		map->layers = my_calloc(sizeof(hashmap_t));
-	layer_struct->image = layer[1];
-	insert_hash_elem(map->layers, layer[0], layer_struct);
-}
-
-static void parse_npcs(char *npc_line, struct map *map)
-{
-	char **layer = split_string(npc_line, ':');
-	char *path = my_strcat(my_strdup("assets/npc/"), layer[0]);
-	struct npc *npc = 0x0;
-	
-	path = my_strcat(path, ".npc");
-	npc = npc_load_from_file(path);
-	npc->pos.x = my_atoi(layer[1]);
-	npc->pos.y = my_atoi(layer[2]);
-	if (!map->npcs)
-		map->npcs = my_calloc(sizeof(hashmap_t));
-	insert_hash_elem(map->npcs, layer[0], npc);
-	free(path);
-}
-
 static int parse_phase(int *prev_phase, char *line)
 {
 	if (my_memcmp(line, "layers") || my_memcmp(line, "doors"))
 		*prev_phase = my_memcmp(line, "doors");
 	else if (my_memcmp(line, "chests") || my_memcmp(line, "npcs"))
 		*prev_phase = my_memcmp(line, "chests") ? 2 : 3;
-	else
-		return (-1);
+	else {
+		if (my_memcmp(line, "bounds"))
+			*prev_phase = 4;
+		else
+			return -1;
+	}
 	return (0);
+}
+
+void do_parse(char *line, struct map *map, int phase)
+{
+	switch (phase) {
+	case 0:
+		parse_layer(line, map);
+		break;
+	case 1:
+		parse_door(line, map);
+		break;
+	case 2:
+		parse_container(line, map);
+		break;
+	case 3:
+		parse_npcs(line, map);
+		break;
+	case 4:
+		parse_bound(line, map);
+	}
 }
 
 struct map *parse_map(FILE *file, char *map_name)
@@ -96,20 +62,7 @@ struct map *parse_map(FILE *file, char *map_name)
 			bytes = 0;
 			continue;
 		}
-		switch (phase) {
-		case 0:
-			parse_layer(line, map);
-			break;
-		case 1:
-			parse_door(line, map);
-			break;
-		case 2:
-			parse_container(line, map);
-			break;
-		case 3:
-			parse_npcs(line, map);
-			break;
-		}
+		do_parse(line, map, phase);
 		free(line);
 		bytes = 0;
 	}

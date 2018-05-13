@@ -36,6 +36,7 @@ struct map {
 	hashmap_t *containers;
 	hashmap_t *layers;
 	hashmap_t *npcs;
+	int bounds[2];
 };
 
 struct door {
@@ -63,5 +64,10 @@ struct map_manager *map_create_manager(char *map_path);
 void parse_maps(struct map_manager *map_mgr);
 struct map_manager *get_map_mgr(struct map_manager *map_mgr);
 int draw_map(game_t *game);
+void parse_bound(char *line, struct map *map);
+void parse_door(char *line, struct map *map);
+void parse_container(char *line, struct map *map);
+void parse_layer(char *line, struct map *map);
+void parse_npcs(char *line, struct map *map);
 
 #endif /* MAP_PARSER_H_ */

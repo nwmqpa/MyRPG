@@ -22,7 +22,7 @@ void create_cin(struct ressources *ress)
 {
 	char *str = string_from_file("ressources/cinematique/intro.txt");
 
-	ress->cinematiques[0] = 
+	ress->cinematiques[0] =
 	cin_create(str, get_font(get_assets(NULL), THORN), sfWhite);
 }
 
@@ -36,7 +36,7 @@ static void create_quests(struct ressources *ress)
 	getline_w_n(&line, &size, fs);
 	q = add_quest(NULL, line);
 	size = 0;
-	while(getline_w_n(&line, &size, fs) != -1) {
+	while (getline_w_n(&line, &size, fs) != -1) {
 		if (line[0] == 0)
 			break;
 		add_quest(&q, line);

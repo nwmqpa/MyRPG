@@ -13,6 +13,7 @@
 #include "structs.h"
 #include "assets_manager.h"
 #include "map_parser.h"
+#include "str_utils.h"
 #include "npc.h"
 #include "ui.h"
 
@@ -106,8 +107,8 @@ void check_interactions(game_t *game)
 		return;
 	if (check_door_collisions(game, p_trans, map->doors)) {
 		if ((*q)->id == 3 &&
-		!strcmp(game->actual_map->name, "main_city"))
-			valid_quest(game, q, get_ressources(NULL)->player, 3);
+		my_strcmp(game->actual_map->name, "main_city"))
+			valid_quest(game, q, get_ressources(NULL)->player);
 		return;
 	} if (check_chest_collisions(game, p_trans, map->containers))
 		return;

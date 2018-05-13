@@ -71,10 +71,11 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/projectiles/mem_management.c			\
 		$(SRC_DIR)/managers/map_manager/management.c 		\
 		$(SRC_DIR)/managers/map_manager/mem_management.c	\
+		$(SRC_DIR)/managers/map_manager/management_2.c		\
 		$(SRC_DIR)/managers/map_manager/graph_management.c	\
 		$(SRC_DIR)/managers/quests/quest.c
 
-WARN	=	-W -Wall -Wextra
+WARN	=	-W -Wall
 
 CFLAGS	=	-I $(ROOT)/include $(WARN) -g
 

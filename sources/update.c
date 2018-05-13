@@ -29,8 +29,6 @@ int draw_menu(game_t *game)
 		draw_inventory(game);
 	if (game->menu_type == CONTAINER)
 		draw_containers(game);
-	/*if (game->menu_type == ESCAPE)
-		draw_escape_menu(game);*/
 	if (i.data && game->menu_type != ESCAPE) {
 		transform_shader(get_assets(0x0)->shaders[WEAPONS], i.object);
 		spr = get_spr_item(game->handed);

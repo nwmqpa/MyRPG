@@ -23,8 +23,7 @@ struct quest {
 };
 
 struct quest *add_quest(struct quest **head, char *string);
-void
-valid_quest(game_t *game, struct quest **head, struct player *player, int id);
+void valid_quest(game_t *game, struct quest **head, struct player *player);
 struct quest *get_quest(struct quest *head, int id);
 void valid_quest_name(struct quest *head, struct player *player, char *name);
 

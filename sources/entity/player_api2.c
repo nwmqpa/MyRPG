@@ -10,6 +10,14 @@
 #include "assets_manager.h"
 #include "entities.h"
 
+int pp_move(struct player *player, sfVector2f pos)
+{
+	sfSprite_move(player->n_idle, pos);
+	for (int i = 0; i < NB_ANIM_N; ++i)
+		anim_move(player->normal[i], pos);
+	return 1;
+}
+
 int player_colliding(struct player *player, game_t *game)
 {
 	sfImage *collide = game->actual_map->collide;

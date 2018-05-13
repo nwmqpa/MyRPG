@@ -27,10 +27,10 @@ static int do_jill_interaction(game_t *game, struct npc *npc)
 
 	if ((*q)->id == 2) {
 		dialog_launch(game, game->dialog, npc_get_dialog(npc));
-		valid_quest(game, q, p, 2);
+		valid_quest(game, q, p);
 		npc->phase++;
 	} else if ((*q)->id == 1 && inv_nb_of(p->inv, i.object) != 0) {
-		valid_quest(game, q, p, 1);
+		valid_quest(game, q, p);
 		npc->phase++;
 	}
 	return 0;
