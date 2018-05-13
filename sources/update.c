@@ -21,7 +21,7 @@ int draw_menu_str(game_t *game, sfVector2f pos, int off)
 	sfText *first = sfText_create();
 	sfText *second = sfText_create();
 	sfText *third = sfText_create();
-	
+
 	sfText_setString(first, game->menu_type == 1 ? "START" : "RESUME");
 	sfText_setString(second, "CREDITS");
 	sfText_setString(third, "QUIT");
@@ -45,7 +45,7 @@ int draw_escape_menu(game_t *game)
 	sfVector2u size = sfRenderWindow_getSize(game->win);
 	sfSprite *spr = get_assets(0x0)->sprites[BUTTON];
 	sfIntRect rect = sfSprite_getTextureRect(spr);
-	sfVector2f pos = 
+	sfVector2f pos =
 	{(size.x - rect.width) / 2, (size.y - (rect.height * 6)) / 2};
 	int value = rect.height * 2;
 
@@ -63,7 +63,7 @@ int draw_escape_menu(game_t *game)
 	return (draw_menu_str(game, pos, value));
 }
 
-int draw_menu(game_t *game)
+void draw_menu(game_t *game)
 {
 	union to_data i;
 	sfRenderStates st = {sfBlendAlpha, sfTransform_Identity,
@@ -85,7 +85,6 @@ int draw_menu(game_t *game)
 		sfSprite_setPosition(spr, game->handed_pos);
 		sfRenderWindow_drawSprite(game->win, spr, &st);
 	}
-	return (0);
 }
 
 int draw_game(game_t *game)

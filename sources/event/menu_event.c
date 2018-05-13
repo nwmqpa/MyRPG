@@ -16,9 +16,8 @@ int interact_with_menu(game_t *game, sfVector2u click, sfVector2u win_size)
 {
 	sfSprite *spr = get_assets(0x0)->sprites[BUTTON];
 	sfIntRect rect = sfSprite_getTextureRect(spr);
-	sfVector2f pos = 
+	sfVector2f pos =
 	{(win_size.x - rect.width) / 2, (win_size.y - (rect.height * 6)) / 2};
-	int value = rect.height * 2;
 
 	pos = (sfVector2f) {click.x - pos.x, click.y - pos.y};
 	if (pos.x < 0 && pos.x > rect.width)
@@ -34,6 +33,7 @@ int interact_with_menu(game_t *game, sfVector2u click, sfVector2u win_size)
 		if (pos.y > 4 * rect.height && pos.y < 5 * rect.height)
 			sfRenderWindow_close(game->win);
 	}
+	return (0);
 }
 
 int menu_key(game_t *game)

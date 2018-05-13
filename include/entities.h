@@ -93,5 +93,6 @@ int player_scale(struct player *player, sfVector2f scale);
 int player_jump(struct player *player);
 int player_colliding(struct player *player, game_t *game);
 int pp_move(struct player *player, sfVector2f pos);
+int check_bounds(struct player *pl, float act_pos, int *bounds, game_t *game);
 
 #endif /* ENTITIES_H_ */

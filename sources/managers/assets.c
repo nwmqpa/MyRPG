@@ -59,7 +59,7 @@ static void set_ui(struct assets *assets)
 	"assets/UI/Chest.png", NULL);
 	assets->textures[GUN] = sfTexture_createFromFile(
 	"assets/textures/Stuff/Gun.png", NULL);
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < 6; ++i) {
 		assets->sprites[i] = sfSprite_create();
 		sfSprite_setTexture(
 		assets->sprites[i], assets->textures[i], 1);

@@ -40,6 +40,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/entity/interaction2.c			\
 		$(SRC_DIR)/utils/getline_without_n.c 			\
 		$(SRC_DIR)/entity/management.c				\
+		$(SRC_DIR)/entity/bounds.c				\
 		$(SRC_DIR)/entity/player_api.c				\
 		$(SRC_DIR)/entity/player_api2.c				\
 		$(SRC_DIR)/entity/mem_management.c			\
