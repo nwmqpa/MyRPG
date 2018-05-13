@@ -5,6 +5,8 @@
 ** main file for all things
 */
 
+typedef struct quest quest_t;
+
 #ifndef EVENT_H_
 #define EVENT_H_
 
@@ -20,10 +22,8 @@ struct quest {
 	struct quest *next;
 };
 
-typedef struct quest quest_t;
-
 struct quest *add_quest(struct quest **head, char *string);
-void valid_quest(struct quest *head, struct player *player, int id);
+void valid_quest(game_t *game, struct quest **head, struct player *player);
 struct quest *get_quest(struct quest *head, int id);
 void valid_quest_name(struct quest *head, struct player *player, char *name);
 

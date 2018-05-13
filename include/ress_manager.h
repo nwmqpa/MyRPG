@@ -5,6 +5,8 @@
 ** ressource manager file
 */
 
+typedef struct ressources ressources_t;
+
 #ifndef RESS_MANAGER_H_
 #define RESS_MANAGER_H_
 
@@ -15,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "cin_mng.h"
+#include "quests.h"
 
 enum NPC {
 	ENEMIE,
@@ -32,8 +35,6 @@ struct ressources {
 	struct npc *npcs[NB_NPCS];
 	cin_t *cinematiques[NB_CIN];
 };
-
-typedef struct ressources ressources_t;
 
 struct ressources *get_ressources(struct ressources *ress);
 struct ressources *create_ressources(void);

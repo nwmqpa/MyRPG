@@ -30,7 +30,8 @@ void draw_npc(game_t *game, struct npc *this);
 struct npc *npc_load_from_file(char *path);
 int npc_destroy(struct npc);
 char *npc_get_dialog(struct npc *this);
-int next_phase(game_t *game, struct npc *this);
+int npc_next_dialog(struct npc *this);
+int do_npc_interact(game_t *game, struct npc *npc);
 
 #endif /* NPC_H_ */
 
