@@ -36,11 +36,11 @@ static void parse_container(char *container_line, struct map *map)
 
 	if (!map->containers)
 		map->containers = my_calloc(sizeof(hashmap_t));
-	cont_sct->bounds = (sfIntRect) {my_atoi(cont[1]),
-					my_atoi(cont[2]),
-					my_atoi(cont[3]) - my_atoi(cont[1]),
-					my_atoi(cont[4]) - my_atoi(cont[2])};
-	cont_sct->inv = create_random_loots((rand() % 15) + 1);
+	cont_sct->bounds = (sfIntRect) {my_atoi(cont[2]),
+					my_atoi(cont[3]),
+					my_atoi(cont[4]) - my_atoi(cont[2]),
+					my_atoi(cont[5]) - my_atoi(cont[3])};
+	cont_sct->inv = create_random_loots((rand() % my_atoi(cont[1]))+ 1);
 	insert_hash_elem(map->containers, cont[0], cont_sct);
 }
 
