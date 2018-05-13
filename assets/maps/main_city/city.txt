@@ -9,8 +9,8 @@ door0:tutorial:door1:172:758:265:880
 door1:interior_1:door0:542:752:626:880
 door4:police_interior:door0:3230:746:3286:880
 chests
-chest0:384:828:456:880
-chest1:11:12:13:880
+chest0:1:384:828:456:880
+chest1:1:11:12:13:880
 npcs
 guard:2390:780
 guard:1400:780

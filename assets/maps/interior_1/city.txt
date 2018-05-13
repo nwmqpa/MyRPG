@@ -4,4 +4,4 @@ light:light.png
 doors
 door0:main_city:door1:694:757:778:880
 chests
-chest0:622:837:683:880
+chest0:1:622:837:683:880
