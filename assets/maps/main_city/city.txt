@@ -5,7 +5,7 @@ layer2:layer2.png
 light:light.png
 layer3:layer3.png
 doors
-door0:tutorial:door0:172:758:265:880
+door0:tutorial:door1:172:758:265:880
 door1:interior_1:door0:542:752:626:880
 door2:main_city:door5:1236:650:1482:880
 door3:tutorial:door0:2362:744:2464:880

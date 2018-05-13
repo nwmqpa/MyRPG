@@ -28,9 +28,6 @@ static int game_key_extended(game_t *game)
 
 int game_key(game_t *game)
 {
-	char *test = NULL;
-	cin_t *cin = NULL;
-
 	switch  (game->event.key.code) {
 	case sfKeyLeft:
 		get_ressources(NULL)->player->action[N_LEFT] = true;

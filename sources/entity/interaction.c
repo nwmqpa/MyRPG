@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** sources/entity/interaction.c
 ** File description:
-** Make interaction between world and entity. 
+** Make interaction between world and entity.
 */
 
 #include <SFML/Graphics.h>
@@ -13,6 +13,17 @@
 #include "structs.h"
 #include "assets_manager.h"
 #include "map_parser.h"
+
+void do_boundary(
+struct map *next_map, struct door *temp_door, sfIntRect *rect, game_t *game)
+{
+	*rect = temp_door->bounds;
+	get_ressources(NULL)->player->entity->pos =
+	(vec_t) {rect->left, rect->top};
+	game->actual_map = next_map;
+	sfSound_play(get_assets(0x0)->sounds[DOOR]);
+	game->delta_pos = (sfVector2f) {0.0f, 0.0f};
+}
 
 static int check_door_collisions(game_t *game, sfIntRect pl, hashmap_t *doors)
 {
@@ -28,12 +39,7 @@ static int check_door_collisions(game_t *game, sfIntRect pl, hashmap_t *doors)
 			door_ref = temp_door->door_ref;
 			next_map = get_hash_elem(maps, temp_door->scene_ref);
 			temp_door = get_hash_elem(next_map->doors, door_ref);
-			rect = temp_door->bounds;
-			get_ressources(NULL)->player->entity->pos =
-					(vec_t) {rect.left,rect.top};
-			game->actual_map = next_map;
-			sfSound_play(get_assets(0x0)->sounds[DOOR]);
-			game->delta_pos = (sfVector2f) {0.0f, 0.0f};
+			do_boundary(next_map, temp_door, &rect, game);
 			return (1);
 		}
 	}

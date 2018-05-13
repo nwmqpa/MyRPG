@@ -27,6 +27,7 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/vector2f.c				\
 		$(SRC_DIR)/particle/utils.c				\
 		$(SRC_DIR)/inventory/sort.c				\
+		$(SRC_DIR)/utils/str_utils.c				\
 		$(SRC_DIR)/utils/my_memcpy.c				\
 		$(SRC_DIR)/utils/my_memcmp.c				\
 		$(SRC_DIR)/utils/find_char.c				\

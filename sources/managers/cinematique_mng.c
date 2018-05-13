@@ -17,7 +17,7 @@ cin_t *cin_create(float time, char *string, sfFont *font, sfColor color)
 
 	if (cin == NULL || string == NULL)
 		return (NULL);
-	cin->text = sfText_create(); 
+	cin->text = sfText_create();
 	cin->time = my_strlen(string) * 0.0050;
 	cin->string = my_strdup(string);
 	cin->font = font;
@@ -72,22 +72,3 @@ void cin_free(cin_t *cin)
 	free(cin->string);
 	free(cin);
 }
-
-#ifdef TEST_CIN
-int main(void)
-{
-	FILE *file = fopen("../../ressources/cinematique/intro.txt", "r");
-	sfFont *font = sfFont_createFromFile("../../assets/fonts/Thorne-n.ttf");
-	char *string = malloc(1000000);
-	fread(string, 1, 1000000, file);
-	cin_t *cin = cin_create(30, string, font, (sfColor){255, 255, 255, 255});
-        sfVideoMode mode = {1920, 1080, 32};
-        sfRenderWindow *win = sfRenderWindow_create(mode, "Name", sfResize , NULL);
-	sfRenderWindow_setFramerateLimit(win, 60);
-
-	if (file == NULL || font == NULL || cin == NULL)
-		return (1);
-	cin_play(win, cin);
-	return (1);
-}
-#endif

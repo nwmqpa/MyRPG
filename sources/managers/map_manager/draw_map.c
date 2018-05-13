@@ -45,7 +45,7 @@ int draw_map(game_t *game)
 	play_map_music(game->actual_map);
 	if (ls)
 		sfShader_setFloatParameter(ls, "u_time", time);
-	while(temp) {
+	while (temp) {
 		temp_layer = (struct layer *) temp->data;
 		sfSprite_setPosition
 		(temp_layer->sprite, game->delta_pos);

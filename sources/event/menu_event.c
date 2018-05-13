@@ -16,13 +16,10 @@ int menu_key(game_t *game)
 {
 	switch  (game->event.key.code) {
 	case sfKeyUp:
-		//menu up
 		break;
 	case sfKeyDown:
-		//menu down
 		break;
 	case sfKeyReturn:
-		//menu trigger_selected
 		break;
 	case sfKeyEscape:
 		game->gamemode = GAME;

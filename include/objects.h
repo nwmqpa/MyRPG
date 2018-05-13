@@ -55,7 +55,7 @@ void inv_free(struct inventory **inv);
 struct object obj_create(unsigned int level);
 struct inventory *create_random_loots(unsigned int level);
 int draw_inventory(game_t *game);
-int draw_containers(game_t *game);
+void draw_containers(game_t *game);
 int transform_shader(sfShader *shader, struct object item);
 sfSprite *get_spr_item(item_t object);
 

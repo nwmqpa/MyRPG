@@ -58,7 +58,7 @@ anim_t *create_anim(sfTexture *tex, int count , float speed, int size)
 	return (anim);
 }
 
-sfSprite 
+sfSprite
 *animate(sfRenderWindow *window, anim_t *anim, float delta_time)
 {
 	anim->time += (1 * delta_time);
@@ -74,7 +74,7 @@ sfSprite
 	return ((anim->sprite)[anim->frame]);
 }
 
-anim_t 
+anim_t
 *create_anim_path_rect(const char *path, int cnt, float speed, sfIntRect rect)
 {
 	sfTexture *tex = sfTexture_createFromFile(path, NULL);
@@ -90,41 +90,3 @@ anim_t *create_anim_path(const char *path, int cnt, float speed, int size)
 
 	return (anim);
 }
-
-#ifdef ANIMATION_COMPILE_
-int main(void)
-{
-	sfRenderWindow *win = sfRenderWindow_create(
-			(sfVideoMode){1920, 1080, 32}, "Test", sfResize, NULL);
-	sfRenderWindow_setFramerateLimit(win, 60);
-	
-	anim_t *idle = create_anim_path_rect(
-	"../../assets/textures/Player/PlayerIdleAnim.png",
-	4, 0.1, (sfIntRect){0, 0, 100, 200});
-
-	anim_t *running = create_anim_path_rect(
-	"../../assets/textures/Player/PlayerRunningLeft.png",
-	4, 0.05, (sfIntRect){0, 0, 100, 200});
-
-	anim_t *lifes = create_anim_path(
-	"../../assets/UI/LifesAnimation.png",
-	2, 0.15, 100);
-	
-	anim_set_position(running, (sfVector2f){0, 400});
-	anim_set_position(lifes, (sfVector2f){0, 400});
-
-	while (1) {
-		sfRenderWindow_clear(win, sfWhite);
-		animate(win, idle,  0.016);
-		animate(win, running, 0.016);
-		
-		if (sfSprite_getPosition(running->sprite[0]).x - 5 < -100)
-			anim_set_position(running, (sfVector2f){1000, 200});
-		anim_move(running, (sfVector2f){-5, 0});
-
-		animate(win, lifes, 0.016);
-		sfRenderWindow_display(win);
-	}
-	return (0);
-}
-#endif /* ANIMATION_COMPILE_ */

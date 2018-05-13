@@ -45,7 +45,7 @@ typedef struct game game_t;
 #include "objects.h"
 
 /*
-** Game: 
+** Game:
 ** 	Main game structure that represent game state and
 ** 	game datas inside all the game.
 */

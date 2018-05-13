@@ -95,7 +95,7 @@ int draw_inventory(game_t *game)
 	return (0);
 }
 
-int draw_containers(game_t *game)
+void draw_containers(game_t *game)
 {
 	sfVector2u sz_w = sfRenderWindow_getSize(game->win);
 	sfSprite *cont_spr = get_assets(0x0)->sprites[CHEST];
@@ -117,5 +117,4 @@ int draw_containers(game_t *game)
 		draw_inv_object(inv->objects[i], i, off_i, game);
 	for (unsigned int i = 0; i < game->container->size; i++)
 		draw_cont_object(game->container->objects[i], i, off_c, game);
-	return (0);
 }

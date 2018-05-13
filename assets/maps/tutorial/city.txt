@@ -4,11 +4,6 @@ light:light.png
 layer1:layer1.png
 doors
 door0:main_city:door0:172:758:265:880
-door1:tutorial:door0:542:752:626:880
-door2:main_city:door5:1236:650:1482:880
-door3:tutorial:door0:2362:744:2464:880
-door4:tutorial:door0:3199:746:3286:880
-door5:main_city:door2:645:221:685:320
+door1:main_city:door0:3617:750:3693:880
 chests
-chest0:400:850:440:880
-chest1:11:12:13:880
+chest0:1995:757:2057:80000

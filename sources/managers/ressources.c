@@ -11,19 +11,10 @@
 #include "entities.h"
 #include "npc.h"
 #include "utils.h"
-
-void create_quests(UNUSED struct ressources *ress)
-{
-	//TODO
-}
+#include "quests.h"
 
 void create_npcs(struct ressources *ress)
 {
-	/*
-	ress->npcs[ENEMIE] = npc_create_from_file(
-		"assets/textures/NPC/EnemieIdle.png",
-	);
-	*/
 	ress->npcs[FEMAL] = npc_load_from_file("assets/npc/Jill.npc");
 }
 
@@ -36,6 +27,27 @@ void create_cin(struct ressources *ress)
 					str,
 					get_font(get_assets(NULL), THORN),
 					(sfColor){255, 255, 255, 255});
+}
+
+static void create_quests(struct ressources *ress)
+{
+	char *line = NULL;
+	size_t size = 0;
+	struct quest *q;
+	FILE *fs = fopen("ressources/quests/quests", "r");
+
+	getline_w_n(&line, &size, fs);
+	q = add_quest(NULL, line);
+	size = 0;
+	while(getline_w_n(&line, &size, fs) != -1) {
+		if (line[0] == 0)
+			break;
+		add_quest(&q, line);
+		free(line);
+		size = 0;
+	}
+	ress->quest = q;
+	fclose(fs);
 }
 
 struct ressources *create_ressources(void)

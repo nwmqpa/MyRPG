@@ -37,7 +37,7 @@ struct vector {
 hash_t hash(const char *str);
 
 /*
-** chained list funcs. 
+** chained list funcs.
 */
 int insert_elem(list_t *list, void *data);
 int pop_elem(list_t *list, int index);

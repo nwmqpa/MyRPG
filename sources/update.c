@@ -42,14 +42,13 @@ int draw_menu(game_t *game)
 
 int draw_game(game_t *game)
 {
-    draw_map(game);
-    draw_player(game, game->win, get_ressources(NULL)->player);
-    draw_ui(game);
-    return (0);
+	draw_map(game);
+	draw_player(game, game->win, get_ressources(NULL)->player);
+	draw_ui(game);
+	return (0);
 }
 
 int draw_combat(UNUSED game_t *game)
 {
-	//Draw combat phase
-    	return (0);
+	return (0);
 }

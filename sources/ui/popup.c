@@ -27,7 +27,8 @@ struct popup *popup_create(char *string, int pause)
 		return (NULL);
 	my_popup->text = sfText_create();
 	my_popup->sprite = sfSprite_create();
-	my_popup->texture = sfTexture_createFromFile("assets/UI/Popup.png", NULL);
+	my_popup->texture =
+	sfTexture_createFromFile("assets/UI/Popup.png", NULL);
 	my_popup->string = my_strdup(string);
 	my_popup->time = 0;
 	my_popup->value = -249;

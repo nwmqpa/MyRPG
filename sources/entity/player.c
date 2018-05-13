@@ -42,13 +42,13 @@ static void player_change_anim(struct player *player)
 	} else if (player->vec.x > 0) {
 		player->actual = player->normal[N_RIGHT];
 		player->normal[N_JUMP]->frame = 0;
-		if (sfSound_getStatus(get_assets(NULL)->sounds[FOOTSTEP]) 
+		if (sfSound_getStatus(get_assets(NULL)->sounds[FOOTSTEP])
 		== sfStopped)
 			sfSound_play(get_assets(NULL)->sounds[FOOTSTEP]);
 	} else if (player->vec.x < 0) {
 		player->actual = player->normal[N_LEFT];
 		player->normal[N_JUMP]->frame = 0;
-		if (sfSound_getStatus(get_assets(NULL)->sounds[FOOTSTEP]) 
+		if (sfSound_getStatus(get_assets(NULL)->sounds[FOOTSTEP])
 		== sfStopped)
 			sfSound_play(get_assets(NULL)->sounds[FOOTSTEP]);
 	} else {
@@ -69,7 +69,6 @@ static void player_move_pos(struct player *player)
 		player->vec.x += 50 * dtime;
 }
 
-// Add collision(player, player_colliding(player, game));
 void draw_player(game_t *game, sfRenderWindow *win, struct player *player)
 {
 	double dtime = get_dtime(-1);

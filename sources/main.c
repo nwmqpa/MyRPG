@@ -28,13 +28,18 @@ static game_t *init_game(void)
 	map_all_graph_init(get_map_mgr(0x0));
 	game->size[X] = WIDTH;
 	game->size[Y] = HEIGHT;
+<<<<<<< HEAD
 	game->win = sfRenderWindow_create(mode, NAME, FLAGS, NULL);
+=======
+	game->win = sfRenderWindow_create(
+			mode, NAME, sfResize | sfClose , NULL);
+>>>>>>> b313af1a680d4a3550ed422b6d1a801dcc374985
 	sfRenderWindow_setFramerateLimit(game->win, MAX_FPS);
 	sfRenderWindow_setVerticalSyncEnabled(game->win, sfTrue);
 	game->delta_time = 1.0 / MAX_FPS;
 	game->gamemode = GAME;
 	game->popup = popup_create("Error", 2);
-	game->dialog = dialog_create("error");
+	game->dialog = dialog_create("Error");
 	game->actual_map = get_hash_elem(get_map_mgr(NULL)->maps, MAPS[CAVE]);
 	return (game);
 }

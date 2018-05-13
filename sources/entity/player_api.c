@@ -25,7 +25,7 @@ void player_move_assets(game_t *game, struct player *player, sfVector2f pos)
 		pos.x = 0;
 		sfSprite_move(player->n_idle, pos);
 		for (int i = 0; i < NB_ANIM_N; ++i)
-			anim_move(player->normal[i], pos);	
+			anim_move(player->normal[i], pos);
 	}
 }
 

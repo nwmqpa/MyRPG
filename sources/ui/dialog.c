@@ -25,14 +25,14 @@ static char **alloc_string(char *string)
 	int nb_chaine = 1;
 	char **char_etoile_etoile = NULL;
 
-	while (string[++i]) 
+	while (string[++i])
 		if (string[i] == ':')
 			nb_chaine++;
 	char_etoile_etoile = my_calloc(sizeof(char *) * (nb_chaine + 1));
 	i = -1;
 	while (string[++i]) {
 		if (string[i] == ':') {
-			char_etoile_etoile[y++] = my_calloc(sizeof(char) * x + 1);
+			char_etoile_etoile[y++] = my_calloc(x + 1);
 			x = 0;
 		}
 		x++;
@@ -47,7 +47,7 @@ static char **create_string(char *string)
 	int y = 0;
 	int x = 0;
 	char **char_etoile_etoile = NULL;
-	
+
 	char_etoile_etoile = alloc_string(string);
 	while (string[++i]) {
 		if (string[i] == ':') {

@@ -37,7 +37,7 @@ sfSprite *animate(sfRenderWindow *window, anim_t *anim, float delta_time);
 anim_t *create_anim(sfTexture *tex, int count, float speed, int size);
 
 //Create anim from sfRect
-anim_t 
+anim_t
 *create_anim_path_rect(const char *path, int cnt, float speed, sfIntRect rect);
 
 //Create anim from sfRect
@@ -53,7 +53,7 @@ void anim_set_position(anim_t *anim, sfVector2f factor);
 //Move the anim
 void anim_move(anim_t *anim, sfVector2f factor);
 
-//Scale the anim 
+//Scale the anim
 void anim_scale(anim_t *anim, sfVector2f factor);
 
 #endif /* ANIMATION_H_ */

@@ -15,12 +15,12 @@ sfVector2f rand_vector(int disp);
 void reset_particles(particles *this, size_t i)
 {
 	this->vertex[i * 4 + 0].position = this->pos;
-	this->vertex[i * 4 + 1].position = 
+	this->vertex[i * 4 + 1].position =
 	(sfVector2f){this->pos.x + this->size_part, this->pos.y};
-	this->vertex[i * 4 + 2].position = 
+	this->vertex[i * 4 + 2].position =
 	(sfVector2f){this->pos.x + this->size_part,
 			this->pos.y + this->size_part};
-	this->vertex[i * 4 + 3].position = 
+	this->vertex[i * 4 + 3].position =
 	(sfVector2f){this->pos.x, this->pos.y + this->size_part};
 	for (int x = 0; x < 4; ++x)
 		this->speed[i] = rand_angle(360);
@@ -66,11 +66,11 @@ void set_particles(particles *this, sfVector2f speed, int size, size_t id)
 {
 	this->size_part = size;
 	this->vertex[id * 4 + 0].position = this->pos;
-	this->vertex[id * 4 + 1].position = 
+	this->vertex[id * 4 + 1].position =
 		(sfVector2f){this->pos.x + size, this->pos.y};
-	this->vertex[id * 4 + 2].position = 
+	this->vertex[id * 4 + 2].position =
 		(sfVector2f){this->pos.x + size, this->pos.y + size};
-	this->vertex[id * 4 + 3].position = 
+	this->vertex[id * 4 + 3].position =
 		(sfVector2f){this->pos.x , this->pos.y + size};
 	this->speed[id] = speed;
 	for (int x = 0; x < 4; ++x)
