@@ -55,6 +55,8 @@ static char **create_string(char *string)
 			x = 0;
 			i++;
 		}
+		if (string[i] == '~')
+			string[i] = '\n';
 		char_etoile_etoile[y][x++] = string[i];
 	}
 	return (char_etoile_etoile);

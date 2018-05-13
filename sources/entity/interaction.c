@@ -13,6 +13,8 @@
 #include "structs.h"
 #include "assets_manager.h"
 #include "map_parser.h"
+#include "npc.h"
+#include "ui.h"
 
 void do_boundary(
 struct map *next_map, struct door *temp_door, sfIntRect *rect, game_t *game)
@@ -62,6 +64,24 @@ static int check_chest_collisions(game_t *game, sfIntRect pl, hashmap_t *cont)
 	return (0);
 }
 
+static int check_npc_collisions(game_t *game, sfIntRect pl, hashmap_t *npcs)
+{
+	struct npc *npc = NULL;
+	int x = 0;
+	int y = 0;
+
+	for (hashmap_t *temp = npcs; temp; temp = temp->next) {
+		npc = (struct npc *) temp->data;
+		x = sfSprite_getPosition(npc->sprite).x;
+		y = sfSprite_getPosition(npc->sprite).y;
+		if (sfIntRect_contains(&pl, x + 25, y + 50)) {
+			dialog_launch(game, game->dialog, npc_get_dialog(npc));
+			return 1;
+		}
+	}
+	return 0;
+}
+
 void check_interactions(game_t *game)
 {
 	sfSprite *spr = get_ressources(NULL)->player->actual->sprite[0];
@@ -70,6 +90,8 @@ void check_interactions(game_t *game)
 	struct map *map = game->actual_map;
 
 	p_trans.left -= game->delta_pos.x;
+	if (check_npc_collisions(game, p_trans, map->npcs))
+		return;
 	if (check_door_collisions(game, p_trans, map->doors))
 		return;
 	if (check_chest_collisions(game, p_trans, map->containers))
