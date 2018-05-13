@@ -14,6 +14,9 @@
 #include "entities.h"
 #include "cybend2200.h"
 
+static char const *jill_quest = "Jill's Weapon:\n\nGo Find the weapon of\n"
+	"Jill in the abandonned house";
+
 struct npc {
 	sfTexture *texture;
 	sfSprite *sprite;
@@ -30,7 +33,7 @@ void draw_npc(game_t *game, struct npc *this);
 struct npc *npc_load_from_file(char *path);
 int npc_destroy(struct npc);
 char *npc_get_dialog(struct npc *this);
-int next_phase(game_t *game, struct npc *this);
+int npc_next_dialog(struct npc *this);
 
 #endif /* NPC_H_ */
 

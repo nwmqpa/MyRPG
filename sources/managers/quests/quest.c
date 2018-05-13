@@ -56,17 +56,13 @@ struct quest *add_quest(struct quest **head, char *string)
 	return (elem);
 }
 
-void valid_quest(struct quest *head, struct player *player, int id)
+void
+valid_quest(game_t *game, struct quest **head, struct player *player, int id)
 {
-	struct quest *tmp = head;
-
-	while (tmp != NULL) {
-		if (tmp->id == id) {
-			tmp->trigger = 1;
-			player->xp.x += tmp->xp;
-		}
-		tmp = tmp->next;
-	}
+	(*head)->trigger = 1;
+	player->xp.x += (*head)->xp;
+	*head = (*head)->next;
+	popup_launch(game, "Quest Ended 200xp");
 }
 
 void valid_quest_name(struct quest *head, struct player *player, char *name)

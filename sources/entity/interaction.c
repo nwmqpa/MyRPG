@@ -86,7 +86,7 @@ static int check_npc_collisions(game_t *game, sfIntRect pl, hashmap_t *npcs)
 		x = sfSprite_getPosition(npc->sprite).x - game->delta_pos.x;
 		y = sfSprite_getPosition(npc->sprite).y;
 		if (sfIntRect_contains(&pl, x + 25, y + 50)) {
-			dialog_launch(game, game->dialog, npc_get_dialog(npc));
+			do_npc_interact(game, npc);
 			return 1;
 		}
 	}
@@ -99,12 +99,16 @@ void check_interactions(game_t *game)
 	sfFloatRect rect = sfSprite_getGlobalBounds(spr);
 	sfIntRect p_trans = {rect.left, rect.top, rect.width, rect.height};
 	struct map *map = game->actual_map;
+	struct quest **q = &get_ressources(NULL)->quest;
 
 	p_trans.left -= game->delta_pos.x;
 	if (check_npc_collisions(game, p_trans, map->npcs))
 		return;
-	if (check_door_collisions(game, p_trans, map->doors))
+	if (check_door_collisions(game, p_trans, map->doors)) {
+		if ((*q)->id == 3 &&
+		!strcmp(game->actual_map->name, "main_city"))
+			valid_quest(game, q, get_ressources(NULL)->player, 3);
 		return;
-	if (check_chest_collisions(game, p_trans, map->containers))
+	} if (check_chest_collisions(game, p_trans, map->containers))
 		return;
 }
