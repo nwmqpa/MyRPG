@@ -21,32 +21,6 @@ int my_strcmp(const char *str1, const char *str2)
 		return (0);
 }
 
-char *my_strdup(const char *str)
-{
-	int i = -1;
-	char *new_str = my_malloc(sizeof(char) * (my_strlen((char *)str) + 1));
-
-	while (str[++i])
-		new_str[i] = str[i];
-	new_str[i] = '\0';
-	return (new_str);
-}
-
-char *my_strcat(char *dest, char *str)
-{
-	int i = 0;
-	int j = 0;
-
-	for (i = 0; dest[i] != '\0'; i++)
-		;
-	if (i > 0 && str[0] == '/' && dest[i - 1] == '/')
-		return (dest);
-	for (j = 0; str[j] != '\0'; j++)
-		dest[i + j] = str[j];
-	dest[i + j] = 0;
-	return (dest);
-}
-
 char *my_strcpy(char *dest, char *str)
 {
 	int i = 0;

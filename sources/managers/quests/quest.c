@@ -40,12 +40,13 @@ char *cut_string(struct quest *this, char *str)
 
 struct quest *add_quest(struct quest **head, char *string)
 {
-	static int salam = 0;
 	struct quest *elem = my_calloc(sizeof(struct quest));
 
 	if (head == NULL) {
+		elem->id = 0;
 		elem->next = NULL;
 	} else {
+		elem->id = (*head)->id + 1;
 		elem->next = *head;
 	}
 	cut_string(elem, string);
@@ -54,8 +55,28 @@ struct quest *add_quest(struct quest **head, char *string)
 	return (elem);
 }
 
-void valid_quest(struct quest *head, int id)
+void valid_quest(struct quest *head, struct player *player, int id)
 {
+	struct quest *tmp = head;
 
+	while (tmp != NULL) {
+		if (tmp->id == id) {
+			tmp->trigger = 1;
+			player->xp.x += tmp->xp;
+		}
+		tmp = tmp->next;
+	}
 }
 
+void valid_quest_name(struct quest *head, struct player *player, char *name)
+{
+	struct quest *tmp = head;
+
+	while (tmp != NULL) {
+		if (my_strcmp(name, tmp->name) == 0) {
+			tmp->trigger = 1;
+			player->xp.x += tmp->xp;
+		}
+		tmp = tmp->next;
+	}
+}
