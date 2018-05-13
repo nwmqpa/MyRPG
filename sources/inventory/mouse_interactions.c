@@ -39,12 +39,14 @@ void interact_with_inv(game_t *game, sfVector2u m_pos, sfVector2u ws)
 void interact_with_cont_bis(game_t *game, sfVector2i pos_i, sfVector2i pos_c)
 {
 	int slot = 0;
+	int iv = pos_i.x > 0 && pos_i.y > 0 && pos_i.x < 670 && pos_i.y < 526;
+	int ct = pos_c.x > 0 && pos_c.y > 0 && pos_c.x < 388 && pos_c.y < 388;
 
-	if (pos_i.x < 0 || pos_i.y < 0 || pos_i.x > 670 || pos_i.y > 526) {
+	if (!iv && ct) {
 		slot = ((pos_c.x / 141) * 3) + (pos_c.y / 141);
 		swap_items(game->container, slot, game);
 	}
-	if (pos_c.x < 0 || pos_c.y < 0 || pos_c.x > 388 || pos_c.y > 388) {
+	if (!ct && iv) {
 		slot = ((pos_i.x / 280) * 4) + (pos_i.y / 141);
 		swap_items(get_ressources(0x0)->player->inv, slot, game);
 	}
