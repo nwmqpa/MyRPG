@@ -5,6 +5,8 @@
 ## makefile of the source file
 ##
 
+DEFINES ?= NOTHING_
+
 ROOT	=	.
 
 SRC_DIR	=	sources
@@ -15,18 +17,27 @@ NAME	=	my_rpg
 
 REAL	=	$(ROOT)/release
 
-SRC	=	$(SRC_DIR)/main.c 					\
-		$(SRC_DIR)/ui/ui.c					\
-		$(SRC_DIR)/update.c					\
-		$(SRC_DIR)/ui/popup.c					\
-		$(SRC_DIR)/ui/dialog.c					\
-		$(SRC_DIR)/cybend2200.c					\
+SRC	=	$(SRC_DIR)/ui/ui.c					\
 		$(SRC_DIR)/entity/npc.c					\
+		$(SRC_DIR)/inventory/sort.c				\
+		$(SRC_DIR)/main.c 					\
+		$(SRC_DIR)/particle/utils.c				\
+		$(SRC_DIR)/event/event.c				\
 		$(SRC_DIR)/utils/utils.c				\
+		$(SRC_DIR)/managers/quests/quest.c			\
+		$(SRC_DIR)/ui/popup.c					\
+		$(SRC_DIR)/entity/stats_skills/stats.c			\
+		$(SRC_DIR)/entity/stats_skills/skills.c			\
+		$(SRC_DIR)/update.c					\
+		$(SRC_DIR)/entity/player.c				\
+		$(SRC_DIR)/managers/assets.c				\
+		$(SRC_DIR)/ui/dialog.c					\
+		$(SRC_DIR)/entity/bounds.c				\
+		$(SRC_DIR)/utils/my_itoa.c				\
 		$(SRC_DIR)/utils/my_atoi.c				\
 		$(SRC_DIR)/utils/vector2f.c				\
-		$(SRC_DIR)/particle/utils.c				\
-		$(SRC_DIR)/inventory/sort.c				\
+		$(SRC_DIR)/managers/map_manager/draw_map.c		\
+		$(SRC_DIR)/inventory/textures.c				\
 		$(SRC_DIR)/utils/str_utils.c				\
 		$(SRC_DIR)/utils/my_memcpy.c				\
 		$(SRC_DIR)/utils/my_memcmp.c				\
@@ -34,51 +45,42 @@ SRC	=	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/my_strdup.c				\
 		$(SRC_DIR)/utils/my_strcat.c				\
 		$(SRC_DIR)/utils/my_strlen.c				\
-		$(SRC_DIR)/utils/my_itoa.c				\
 		$(SRC_DIR)/utils/my_revstr.c				\
-		$(SRC_DIR)/entity/interaction.c				\
-		$(SRC_DIR)/entity/interaction2.c			\
-		$(SRC_DIR)/utils/getline_without_n.c 			\
-		$(SRC_DIR)/entity/management.c				\
-		$(SRC_DIR)/entity/bounds.c				\
-		$(SRC_DIR)/entity/player_api.c				\
-		$(SRC_DIR)/entity/player_api2.c				\
-		$(SRC_DIR)/entity/mem_management.c			\
-		$(SRC_DIR)/entity/stats_skills/stats.c			\
-		$(SRC_DIR)/entity/stats_skills/skills.c			\
-		$(SRC_DIR)/utils/split_string.c				\
+		$(SRC_DIR)/animation/animation.c			\
 		$(SRC_DIR)/particle/particles.c 			\
-		$(SRC_DIR)/utils/hashmap_utils.c			\
-		$(SRC_DIR)/managers/assets.c				\
-		$(SRC_DIR)/managers/assets_color.c			\
 		$(SRC_DIR)/managers/ressources.c			\
-		$(SRC_DIR)/managers/assets_getter.c			\
-		$(SRC_DIR)/managers/map_manager/draw_map.c		\
-		$(SRC_DIR)/event/event.c				\
-		$(SRC_DIR)/event/fight_event.c				\
+		$(SRC_DIR)/entity/management.c				\
+		$(SRC_DIR)/cybend2200.c					\
+		$(SRC_DIR)/entity/player_api.c				\
 		$(SRC_DIR)/event/game_event.c				\
 		$(SRC_DIR)/event/menu_event.c				\
-		$(SRC_DIR)/animation/animation.c			\
-		$(SRC_DIR)/particle/particles_2.c	 		\
-		$(SRC_DIR)/entity/player.c				\
 		$(SRC_DIR)/inventory/management.c			\
-		$(SRC_DIR)/inventory/textures.c				\
-		$(SRC_DIR)/inventory/draw_inventory.c			\
-		$(SRC_DIR)/inventory/mem_management.c			\
-		$(SRC_DIR)/inventory/mouse_interactions.c		\
 		$(SRC_DIR)/projectiles/management.c 			\
+		$(SRC_DIR)/managers/map_manager/management.c 		\
+		$(SRC_DIR)/particle/particles_2.c	 		\
+		$(SRC_DIR)/event/fight_event.c				\
+		$(SRC_DIR)/entity/interaction.c				\
+		$(SRC_DIR)/entity/player_api2.c				\
+		$(SRC_DIR)/entity/interaction2.c			\
+		$(SRC_DIR)/utils/split_string.c				\
+		$(SRC_DIR)/managers/map_manager/management_2.c		\
+		$(SRC_DIR)/managers/assets_color.c			\
+		$(SRC_DIR)/utils/hashmap_utils.c			\
+		$(SRC_DIR)/managers/assets_getter.c			\
+		$(SRC_DIR)/inventory/draw_inventory.c			\
+		$(SRC_DIR)/projectiles/mem_management.c			\
+		$(SRC_DIR)/inventory/mem_management.c			\
+		$(SRC_DIR)/managers/map_manager/mem_management.c	\
+		$(SRC_DIR)/entity/mem_management.c			\
 		$(SRC_DIR)/managers/cinematique_mng.c 			\
 		$(SRC_DIR)/animation/animation_extern.c			\
-		$(SRC_DIR)/projectiles/mem_management.c			\
-		$(SRC_DIR)/managers/map_manager/management.c 		\
-		$(SRC_DIR)/managers/map_manager/mem_management.c	\
-		$(SRC_DIR)/managers/map_manager/management_2.c		\
 		$(SRC_DIR)/managers/map_manager/graph_management.c	\
-		$(SRC_DIR)/managers/quests/quest.c
+		$(SRC_DIR)/utils/getline_without_n.c 			\
+		$(SRC_DIR)/inventory/mouse_interactions.c
 
 WARN	=	-W -Wall
 
-CFLAGS	=	-I $(ROOT)/include $(WARN) -g
+CFLAGS	=	-I $(ROOT)/include $(WARN) -g -D $(DEFINES)
 
 LDFLAGS	=	-L $(ROOT)/library -l c_graph_prog -l m
 

@@ -12,6 +12,16 @@
 #include "entities.h"
 #include "event.h"
 
+void interact_with_start(game_t *game)
+{
+	#ifdef BONUS_
+	system("firefox https://www.meilleur-comparatif-banques.com/");
+	#endif /* BONUS */
+	#ifndef BONUS_
+	cin_play(game->win, get_ressources(0x0)->cinematiques[1]);
+	#endif /* !BONUS_ */
+}
+
 int interact_with_menu(game_t *game, sfVector2u click, sfVector2u win_size)
 {
 	sfSprite *spr = get_assets(0x0)->sprites[BUTTON];
@@ -32,6 +42,8 @@ int interact_with_menu(game_t *game, sfVector2u click, sfVector2u win_size)
 			game->gamemode = GAME;
 		if (pos.y > 4 * rect.height && pos.y < 5 * rect.height)
 			sfRenderWindow_close(game->win);
+		if (pos.y > 2 * rect.height && pos.y < 3 * rect.height)
+			interact_with_start(game);
 	}
 	return (0);
 }

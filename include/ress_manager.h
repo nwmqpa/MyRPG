@@ -11,7 +11,7 @@ typedef struct ressources ressources_t;
 #define RESS_MANAGER_H_
 
 #define NB_NPCS 2
-#define NB_CIN	1
+#define NB_CIN	2
 
 #include <SFML/Graphics.h>
 #include <stdio.h>

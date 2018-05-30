@@ -22,9 +22,12 @@ void create_npcs(struct ressources *ress)
 void create_cin(struct ressources *ress)
 {
 	char *str = string_from_file("ressources/cinematique/intro.txt");
+	char *str2 = string_from_file("ressources/cinematique/credits.txt");
 
 	ress->cinematiques[0] =
 	cin_create(str, get_font(get_assets(NULL), THORN), sfWhite);
+	ress->cinematiques[1] =
+	cin_create(str2, get_font(get_assets(NULL), THORN), sfWhite);
 }
 
 static void create_quests(struct ressources *ress)
